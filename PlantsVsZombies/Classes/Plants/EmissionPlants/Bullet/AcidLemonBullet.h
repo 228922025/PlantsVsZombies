@@ -12,22 +12,22 @@ class AcidLemonBullet :public Bullet
 {
 public:
 	/**
-	 *´´½¨×Óµ¯
+	 *åˆ›å»ºå­å¼¹
 	 */
 	virtual void createBullet() override;
 
 	/**
-	 *×Óµ¯Óë½©Ê¬Åö×²¼ì²â
+	 *å­å¼¹ä¸åƒµå°¸ç¢°æ’æ£€æµ‹
 	 */
 	virtual void bulletAndZombiesCollision() override;
 	 
 	/**
-	 *×Óµ¯³õÊ¼»¯
+	 *å­å¼¹åˆå§‹åŒ–
 	 */
 	virtual void bulletInit() override;
 
 	/**
-	 *´´½¨×Óµ¯Ó°×Ó
+	 *åˆ›å»ºå­å¼¹å½±å­
 	 */
 	virtual void createShadow() override;
 

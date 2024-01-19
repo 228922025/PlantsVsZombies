@@ -20,10 +20,10 @@ CC_CONSTRUCTOR_ACCESS:
     //SGSSurvivalControlLayer();
 
 protected:
-    virtual void judgeLevelIsFinished()override;                                                /* 判断关卡是否结束 */
-    virtual void createZombies()override;                                                       /* 创建僵尸 */
-    virtual bool controlRefurbishZombies()override;                                             /* 控制僵尸刷新 */
-    virtual void controlRefurbishMusicAndText()override;                                        /* 控制音乐与文字的刷新*/
+    virtual void judgeLevelIsFinished()override;                                                /* 鍒ゆ柇鍏冲崱鏄惁缁撴潫 */
+    virtual void createZombies()override;                                                       /* 鍒涘缓鍍靛案 */
+    virtual bool controlRefurbishZombies()override;                                             /* 鎺у埗鍍靛案鍒锋柊 */
+    virtual void controlRefurbishMusicAndText()override;                                        /* 鎺у埗闊充箰涓庢枃瀛楃殑鍒锋柊*/
 
 private:
     int getZombiesNumbers();

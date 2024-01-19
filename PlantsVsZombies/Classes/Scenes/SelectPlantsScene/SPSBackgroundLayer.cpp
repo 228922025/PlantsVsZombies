@@ -28,12 +28,12 @@ bool SPSBackgroundLayer::init()
 {
 	if (!Layer::init()) return false;
 
-	/* ´´½¨±³¾° */
+	/* åˆ›å»ºèƒŒæ™¯ */
 	createBackGroundEffect();
 
 	setBackgroundImagePosition();
 
-	/* ´´½¨Ô¤ÀÀ½©Ê¬ */
+	/* åˆ›å»ºé¢„è§ˆåƒµå°¸ */
 	createPreviewZombie();
 
 	return true;

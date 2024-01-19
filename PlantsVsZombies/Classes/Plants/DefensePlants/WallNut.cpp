@@ -48,10 +48,10 @@ void WallNut::createPlantAnimation()
 	_plantAnimation->setSkin("WallNut_Normal");
 	_node->addChild(_plantAnimation);
 
-	// 影子
+	// 褰卞瓙
 	setPlantShadow(2.2f);
 
-	// 泥土飞溅动画
+	// 娉ュ湡椋炴簠鍔ㄧ敾
 	setPlantSoilSplashAnimation(1.0f);
 }
 

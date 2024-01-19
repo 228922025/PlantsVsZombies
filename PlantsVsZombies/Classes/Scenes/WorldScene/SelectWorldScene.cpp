@@ -30,7 +30,7 @@ Scene* SelectWorldScene::createScene()
 
 void SelectWorldScene::createMouseListener()
 {
-	/* Êó±ê»¬¶¯¼àÌı */
+	/* é¼ æ ‡æ»‘åŠ¨ç›‘å¬ */
 	auto mouse = EventListenerMouse::create();
 	mouse->onMouseScroll = [&](Event* event)
 	{
@@ -116,7 +116,7 @@ void SelectWorldScene::createSelectDifficulty()
 	text->setTextColor(Color4B(0, 255, 255, 200));
 	text->setFontName(GAME_FONT_NAME_1);
 	text->setFontSize(30);
-	text->setString(_global->userInformation->getGameDifficulty() ? "Ø¬ÃÎÄ£Ê½" : "¼òµ¥Ä£Ê½");
+	text->setString(_global->userInformation->getGameDifficulty() ? "å™©æ¢¦æ¨¡å¼" : "ç®€å•æ¨¡å¼");
 	checkbox->addChild(text);
 
 	checkbox->addEventListener([=](Ref* sender, CheckBox::EventType type)
@@ -125,11 +125,11 @@ void SelectWorldScene::createSelectDifficulty()
 			{
 			case cocos2d::ui::CheckBox::EventType::SELECTED:
 				_global->userInformation->setGameDifficulty(1);
-				text->setString("Ø¬ÃÎÄ£Ê½");
+				text->setString("å™©æ¢¦æ¨¡å¼");
 				break;
 			case cocos2d::ui::CheckBox::EventType::UNSELECTED:
 				_global->userInformation->setGameDifficulty(0);
-				text->setString("¼òµ¥Ä£Ê½");
+				text->setString("ç®€å•æ¨¡å¼");
 				break;
 			}
 			_global->userInformation->getUserSelectWorldData().at(
@@ -140,7 +140,7 @@ void SelectWorldScene::createSelectDifficulty()
 
 void SelectWorldScene::showTimeTravelAnimation()
 {
-	/* ²¥·ÅÒôÀÖ */
+	/* æ’­æ”¾éŸ³ä¹ */
 	PlayMusic::changeBgMusic("mainmusic2", true);
 	
 	auto layer = LayerColor::create(Color4B::BLACK);
@@ -214,7 +214,7 @@ void SelectWorldScene::createScrollView()
 void SelectWorldScene::showDifferentWorlds()
 {
 	const string worldImageName[] = { {"World1"},{"World12"} ,{"World3"} ,{"World4"} ,{"World5"} ,{"World6"} ,{"World7"} ,{"World8"} ,{"World9"} ,{"World10"} ,{"World11"},{"World12"} };
-	const string worldName[] = { {"ÏÖ´úÊÀ½ç"},{"¾¡ÇëÆÚ´ı"} ,{"ºÚ°µÊ±´ú"} ,{"º£µÁ¸ÛÍå"} ,{"¿ñÒ°Î÷²¿"} ,{"±ùºÓÊÀ¼Í"} ,{"Î´À´ÊÀ½ç"} ,{"ÙªÂŞ¼ÍÊÀ½ç"} ,{"´óÀËÉ³Ì²"} ,{"Ä§ÒôÊ±´ú"} ,{"Ê§ÂäÖ®³Ç"},{"¾¡ÇéÆÚ´ı"} };
+	const string worldName[] = { {"ç°ä»£ä¸–ç•Œ"},{"å°½è¯·æœŸå¾…"} ,{"é»‘æš—æ—¶ä»£"} ,{"æµ·ç›—æ¸¯æ¹¾"} ,{"ç‹‚é‡è¥¿éƒ¨"} ,{"å†°æ²³ä¸–çºª"} ,{"æœªæ¥ä¸–ç•Œ"} ,{"ä¾ç½—çºªä¸–ç•Œ"} ,{"å¤§æµªæ²™æ»©"} ,{"é­”éŸ³æ—¶ä»£"} ,{"å¤±è½ä¹‹åŸ"},{"å°½æƒ…æœŸå¾…"} };
 	for (int i = 0; i < 2; ++i)
 	{
 		_world[i] = ui::Button::create(worldImageName[i] + ".png", "", "", TextureResType::PLIST);
@@ -234,7 +234,7 @@ void SelectWorldScene::showDifferentWorlds()
 		if (i > 1)
 		{
 			_world[i]->setEnabled(false);
-			worldname->setString("¾¡ÇëÆÚ´ı");
+			worldname->setString("å°½è¯·æœŸå¾…");
 		}
 
 		_world[i]->addTouchEventListener([=](Ref* sender, ui::Widget::TouchEventType type)
@@ -249,12 +249,12 @@ void SelectWorldScene::showDifferentWorlds()
 					{
 					case 0:
 						_global->userInformation->setIsMirrorScene(false);
-						_global->userInformation->setSelectWorldName(WorldName::Mordern); /* ³õÊ¼»¯±³¾° */
+						_global->userInformation->setSelectWorldName(WorldName::Mordern); /* åˆå§‹åŒ–èƒŒæ™¯ */
 						Director::getInstance()->replaceScene(TransitionFade::create(1.f, World_1::createScene()));
 						break;
 					case 1:
 						//_global->userInformation->setIsMirrorScene(true);
-						//_global->userInformation->setSelectWorldName(WorldName::Mordern); /* ³õÊ¼»¯±³¾° */
+						//_global->userInformation->setSelectWorldName(WorldName::Mordern); /* åˆå§‹åŒ–èƒŒæ™¯ */
 						//Director::getInstance()->replaceScene(TransitionFade::create(1.0f, MirrorWorld_1::createScene()));
 						break;
 					default:

@@ -30,7 +30,7 @@ CC_CONSTRUCTOR_ACCESS:
 	~UserWinRequirement();
 
 private:
-	void showRequirement(GameTypes finishedid);                         /* 显示要求 */
+	void showRequirement(GameTypes finishedid);                         /* 鏄剧ず瑕佹眰 */
 	void showText(const string& text, const int& ID, Color3B color = Color3B::BLACK);
 	void createShieldLayer();
 
@@ -41,9 +41,9 @@ private:
 	Scale9Sprite* _levelObjiectives;
 	EventListenerTouchOneByOne* _listener;
 	EventListenerTouchOneByOne* _shieldListener;
-	Vec2 _phasePosition;                                                 /* 相差位置 */
+	Vec2 _phasePosition;                                                 /* 鐩稿樊浣嶇疆 */
 
-	Vec2 _textPosition[4][4] =                                           /* 文字位置 */
+	Vec2 _textPosition[4][4] =                                           /* 鏂囧瓧浣嶇疆 */
 	{
 		{Vec2(100,135),},
 		{Vec2(100,110),Vec2(100,160),},

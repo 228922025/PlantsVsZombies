@@ -45,7 +45,7 @@ void CommonFlagZombies::createZombie()
 
 	setZombieScale();
 
-	createZombieShadow();//Ó°×Ó
+	createZombieShadow();//å½±å­
 
 	_zombiesAnimation->setAttachment("Zombie_bucket", "tt_innerleg_foot3");
 	_zombiesAnimation->setAttachment("tt_innerarm_upper", "tt_flag");

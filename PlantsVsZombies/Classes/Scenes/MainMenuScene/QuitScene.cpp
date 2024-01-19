@@ -35,10 +35,10 @@ void QuitMenu::createDiglog()
 	_quitDialog->setScale(2.0f);
 	this->addChild(_quitDialog);
 
-	this->createButtons(_global->userInformation->getGameText().find("ÍË³öÓÎÏ·1")->second, Vec2(90, 65), 1);
-	this->createButtons(_global->userInformation->getGameText().find("È¡Ïû")->second, Vec2(225, 65), 2);
+	this->createButtons(_global->userInformation->getGameText().find("é€€å‡ºæ¸¸æˆ1")->second, Vec2(90, 65), 1);
+	this->createButtons(_global->userInformation->getGameText().find("å–æ¶ˆ")->second, Vec2(225, 65), 2);
 
-	/* ´´½¨´¥Ãþ¼àÌý */
+	/* åˆ›å»ºè§¦æ‘¸ç›‘å¬ */
 	this->createTouchtListener(_quitDialog);
 }
 
@@ -49,8 +49,8 @@ void QuitMenu::createButtons(const std::string &Label, Vec2 &vec2,const int& ID)
 	button->setPosition(vec2);
 	_quitDialog->addChild(button);
 
-	_quitDialog->addChild(label(_global->userInformation->getGameText().find("ÍË³ö")->second, 25, Vec2(155, 160), 0, Color3B::YELLOW));
-	_quitDialog->addChild(label(_global->userInformation->getGameText().find("È·¶¨ÒªÍË³öÓÎÏ·Âð£¿")->second, 15, Vec2(160, 130), 0, Color3B::YELLOW));
+	_quitDialog->addChild(label(_global->userInformation->getGameText().find("é€€å‡º")->second, 25, Vec2(155, 160), 0, Color3B::YELLOW));
+	_quitDialog->addChild(label(_global->userInformation->getGameText().find("ç¡®å®šè¦é€€å‡ºæ¸¸æˆå—ï¼Ÿ")->second, 15, Vec2(160, 130), 0, Color3B::YELLOW));
 
 	button->addTouchEventListener([=](Ref* sender, Widget::TouchEventType type)
 	{

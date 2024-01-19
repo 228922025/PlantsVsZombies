@@ -81,7 +81,7 @@ ATTRIBUTE_ALIGNED16(struct) PfxSortData16 {
 typedef PfxSortData16 PfxConstraintPair;
 
 
-//J	PfxBroadphasePair‚Æ‹¤’Ê
+//J	PfxBroadphasePairå²å«Ÿæ 
 
 SIMD_FORCE_INLINE void pfxSetConstraintId(PfxConstraintPair &pair,uint32_t i)	{pair.set32(2,i);}
 SIMD_FORCE_INLINE void pfxSetNumConstraints(PfxConstraintPair &pair,uint8_t n)	{pair.set8(7,n);}

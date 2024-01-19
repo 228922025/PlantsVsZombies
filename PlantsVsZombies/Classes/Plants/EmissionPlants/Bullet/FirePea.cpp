@@ -49,7 +49,7 @@ void FirePea::bulletInit()
 
 void FirePea::createShadow()
 {
-    /* 创建影子 */
+    /* 鍒涘缓褰卞瓙 */
     auto shadow = Sprite::createWithSpriteFrameName("plantshadow.png");
     shadow->setScaleY(0.7f);
     shadow->setName("shadow");

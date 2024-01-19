@@ -13,12 +13,12 @@
 #include "Based/PlayMusic.h"
 
 string INFORMATION_TEXT = { "\
-		´ËÓÎÏ·È«²¿ÓÉ±¾ÈË×Ô¼ºÖÆ×÷Íê³É¡£´Ë°æ±¾Îª²âÊÔ°æ(¾ßÓÐÒ»¶¨µÄ¿ÉÍæÐÔ)¡£½ñºó»á²»¶¨Ê±¸üÐÂ£¨²»¶ÏÍêÉÆ£©¡£Ä¿Ç°ÎÒ¼º¾­°Ñ¸ÃÏîÄ¿µÄÔ´Âë¿ªÔ´·¢µ½GitHub¡£\n\
-		ÓÎÏ·´ó²¿·ÖµÄËØ²ÄÀ´Ô´ÓÚÔ­°æÓÎÏ·ËØ²Ä£¬ÉÙ²¿·ÖËÑ¼¯ÓÚÍøÂç£¬ÒÔ¼°×Ô¼ºÖÆ×÷¡£\
-£¨£¡£¡£¡ÖØÒª£©´ËÓÎÏ·ÎªÍ¬ÈËÓÎÏ·¶øÇÒ½ö¹©Ñ§Ï°½»Á÷Ê¹ÓÃ¡£¸Ã³ÌÐòÓëÔ­°æÓÎÏ·³ÌÐòÃ»ÓÐÈÎºÎ¹ØÏµ£¬³ÌÐò²»ÊÇ»ùÓÚÔ­°æµÄ¶þ´Î¿ª·¢£¬\
-¶øÊÇ´ÓÁã¿ªÊ¼ÖÆ×÷µÄ¡£ÓÉÓÚÓÎÏ·×ÊÔ´¿ÉÄÜ´æÔÚÇÖÈ¨µÄÎÊÌâ£¬ËùÒÔÇëÎðÓÃÓÚÉÌÒµÓÃÍ¾£¬·ñÔòºó¹û×Ô¸º¡£\n\
-		Ä¿Ç°ÓÐ14ÖÖ½©Ê¬ºÍ13ÖÖÖ²Îï£¬ÓÉÓÚ×ö¶¯»­µÄÄÜÁ¦ÓÐÏÞ£¬ÓÐÐ©½©Ê¬ºÍÖ²Îï¶¯»­²»ÄÜÊµÏÖ»ò¶¯»­ÓëÔ­°æ´æÔÚºÜ´óÆ«²î¡£\
-£¨Ê¹ÓÃspine»òÕßDragonBonesÖÆ×÷µÄ2D¶¯»­£©¡£\nQQ:2117610943 QQÈº:926707238 ÍøÖ·:https://lzpvz.rthe.xyz\n"
+		æ­¤æ¸¸æˆå…¨éƒ¨ç”±æœ¬äººè‡ªå·±åˆ¶ä½œå®Œæˆã€‚æ­¤ç‰ˆæœ¬ä¸ºæµ‹è¯•ç‰ˆ(å…·æœ‰ä¸€å®šçš„å¯çŽ©æ€§)ã€‚ä»ŠåŽä¼šä¸å®šæ—¶æ›´æ–°ï¼ˆä¸æ–­å®Œå–„ï¼‰ã€‚ç›®å‰æˆ‘å·±ç»æŠŠè¯¥é¡¹ç›®çš„æºç å¼€æºå‘åˆ°GitHubã€‚\n\
+		æ¸¸æˆå¤§éƒ¨åˆ†çš„ç´ ææ¥æºäºŽåŽŸç‰ˆæ¸¸æˆç´ æï¼Œå°‘éƒ¨åˆ†æœé›†äºŽç½‘ç»œï¼Œä»¥åŠè‡ªå·±åˆ¶ä½œã€‚\
+ï¼ˆï¼ï¼ï¼é‡è¦ï¼‰æ­¤æ¸¸æˆä¸ºåŒäººæ¸¸æˆè€Œä¸”ä»…ä¾›å­¦ä¹ äº¤æµä½¿ç”¨ã€‚è¯¥ç¨‹åºä¸ŽåŽŸç‰ˆæ¸¸æˆç¨‹åºæ²¡æœ‰ä»»ä½•å…³ç³»ï¼Œç¨‹åºä¸æ˜¯åŸºäºŽåŽŸç‰ˆçš„äºŒæ¬¡å¼€å‘ï¼Œ\
+è€Œæ˜¯ä»Žé›¶å¼€å§‹åˆ¶ä½œçš„ã€‚ç”±äºŽæ¸¸æˆèµ„æºå¯èƒ½å­˜åœ¨ä¾µæƒçš„é—®é¢˜ï¼Œæ‰€ä»¥è¯·å‹¿ç”¨äºŽå•†ä¸šç”¨é€”ï¼Œå¦åˆ™åŽæžœè‡ªè´Ÿã€‚\n\
+		ç›®å‰æœ‰14ç§åƒµå°¸å’Œ13ç§æ¤ç‰©ï¼Œç”±äºŽåšåŠ¨ç”»çš„èƒ½åŠ›æœ‰é™ï¼Œæœ‰äº›åƒµå°¸å’Œæ¤ç‰©åŠ¨ç”»ä¸èƒ½å®žçŽ°æˆ–åŠ¨ç”»ä¸ŽåŽŸç‰ˆå­˜åœ¨å¾ˆå¤§åå·®ã€‚\
+ï¼ˆä½¿ç”¨spineæˆ–è€…DragonBonesåˆ¶ä½œçš„2DåŠ¨ç”»ï¼‰ã€‚\nQQ:2117610943 QQç¾¤:926707238 ç½‘å€:https://lzpvz.rthe.xyz\n"
 };
 
 Scene* HelpScene::createHelpScene()
@@ -46,7 +46,7 @@ void HelpScene::createBackground()
 
 void HelpScene::createText()
 {
-	/* ´´½¨ÎÄ×Ö±³¾° */
+	/* åˆ›å»ºæ–‡å­—èƒŒæ™¯ */
 	auto note = Sprite::createWithSpriteFrameName("ZombieNote.png");
 	note->setScale(1.7f);
 	note->setScaleX(2.2f);
@@ -57,7 +57,7 @@ void HelpScene::createText()
 
 	FileUtils::getInstance()->getStringFromFile("resources/Text/history.reanim.compiled", [=](string history)
 		{
-			auto helptext = Label::createWithTTF(INFORMATION_TEXT + (history.empty() ? "\t\t\t\t\t\t\t\t\t\t\t\t\tÎÄ±¾¼ÓÔØÊ§°Ü£¡" : history), GAME_FONT_NAME_1, 35);
+			auto helptext = Label::createWithTTF(INFORMATION_TEXT + (history.empty() ? "\t\t\t\t\t\t\t\t\t\t\t\t\tæ–‡æœ¬åŠ è½½å¤±è´¥ï¼" : history), GAME_FONT_NAME_1, 35);
 			helptext->setAnchorPoint(Vec2::ANCHOR_MIDDLE_TOP);
 			helptext->setColor(Color3B::BLACK);
 			helptext->setMaxLineWidth(1100);
@@ -74,7 +74,7 @@ void HelpScene::createGithubUrl()
 	auto github = Button::create();
 	github->setTitleFontName(GAME_FONT_NAME_1);
 	github->setTitleFontSize(35);
-	github->setTitleText("µã»÷´Ë´¦´ò¿ªgithubÏîÄ¿");
+	github->setTitleText("ç‚¹å‡»æ­¤å¤„æ‰“å¼€githubé¡¹ç›®");
 	github->setPosition(Vec2(1220, 740));
 	github->setTitleColor(Color3B(0, 255, 255));
 	github->addTouchEventListener([&](Ref* sender, Widget::TouchEventType type)
@@ -99,9 +99,9 @@ void HelpScene::createGithubUrl()
 
 void HelpScene::createButton()
 {
-	/* ´´½¨°´Å¥ */
+	/* åˆ›å»ºæŒ‰é’® */
 	auto button = Button::create("SeedChooser_Button2.png", "SeedChooser_Button2_Glow.png", "", TextureResType::PLIST);
-	button->setTitleText(_global->userInformation->getGameText().find("Ö÷²Ëµ¥")->second);
+	button->setTitleText(_global->userInformation->getGameText().find("ä¸»èœå•")->second);
 	button->setTitleColor(Color3B(0, 255, 255));
 	button->setTitleFontSize(18);
 	button->setScale(2.0f);
@@ -138,7 +138,7 @@ void HelpScene::addScrollView()
 
 void HelpScene::addMouseEvent()
 {
-	/* Êó±ê»¬¶¯¼àÌý */
+	/* é¼ æ ‡æ»‘åŠ¨ç›‘å¬ */
 	auto mouse = EventListenerMouse::create();
 	mouse->onMouseScroll = [=](Event* event)
 	{

@@ -32,7 +32,7 @@ protected:
 	virtual void createBackGroundEffect();
 
 private:
-	/* ‘§¿¿Ω© ¨ */
+	/* È¢ÑËßàÂÉµÂ∞∏ */
 	typedef struct
 	{
 		SkeletonAnimation* animation;
@@ -55,7 +55,7 @@ private:
 	static bool cmp(PreviewZombies& a, PreviewZombies& b);
 
 private:
-	int _previewZombiesTag;      // ‘§¿¿Ω© ¨±‡∫≈
+	int _previewZombiesTag;      // È¢ÑËßàÂÉµÂ∞∏ÁºñÂè∑
 	Global* _global;
 	OpenLevelData* _openLevelData;
 	default_random_engine _random;

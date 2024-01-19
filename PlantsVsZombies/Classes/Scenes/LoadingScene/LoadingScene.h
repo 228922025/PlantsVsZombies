@@ -30,46 +30,46 @@ CC_CONSTRUCTOR_ACCESS:
 	virtual bool init() override; 
 
 private:
-	void update(float Time) override;                 /* ¶¨Ê±Æ÷ */
-	void setSystem();                                 /* ÉèÖÃÏµÍ³²ÎÊı */
-	void calculateFileNumbers();                      /* ¼ÆËãÎÄ¼ş×ÜÊı */
-	void setRunFirstTime();                           /* »ñÈ¡µÚÒ»´ÎÔËĞĞÊ±¼ä */
+	void update(float Time) override;                 /* å®šæ—¶å™¨ */
+	void setSystem();                                 /* è®¾ç½®ç³»ç»Ÿå‚æ•° */
+	void calculateFileNumbers();                      /* è®¡ç®—æ–‡ä»¶æ€»æ•° */
+	void setRunFirstTime();                           /* è·å–ç¬¬ä¸€æ¬¡è¿è¡Œæ—¶é—´ */
 
-	void loadUserData();                              /* ¼ÓÔØÓÃ»§Êı¾İ */
-	void loadingText();                               /* ¼ÓÔØÎÄ×Ö */
-	void loadingImage();                              /* ¼ÓÔØÍ¼Æ¬ */
-	void loadingMusic();                              /* ¼ÓÔØÒôÀÖ */
-	void loadingAnimation();                          /* ¼ÓÔØ¶¯»­ */
+	void loadUserData();                              /* åŠ è½½ç”¨æˆ·æ•°æ® */
+	void loadingText();                               /* åŠ è½½æ–‡å­— */
+	void loadingImage();                              /* åŠ è½½å›¾ç‰‡ */
+	void loadingMusic();                              /* åŠ è½½éŸ³ä¹ */
+	void loadingAnimation();                          /* åŠ è½½åŠ¨ç”» */
 
-	void showLoadingBackGround();                     /* Õ¹Ê¾±³¾° */
-	void showTileAndLoadingBar();                     /* Õ¹Ê¾½ø¶ÈÌõ */
-	void showLoadingBarFlower(const int &ID);         /* Õ¹Ê¾½ø¶ÈÌõÉÏµÄ»¨ */
-	void beginLoadingImageAndMusic();                 /* ¿ªÊ¼¼ÓÔØÍ¼Æ¬ÓëÒôÀÖ */
+	void showLoadingBackGround();                     /* å±•ç¤ºèƒŒæ™¯ */
+	void showTileAndLoadingBar();                     /* å±•ç¤ºè¿›åº¦æ¡ */
+	void showLoadingBarFlower(const int &ID);         /* å±•ç¤ºè¿›åº¦æ¡ä¸Šçš„èŠ± */
+	void beginLoadingImageAndMusic();                 /* å¼€å§‹åŠ è½½å›¾ç‰‡ä¸éŸ³ä¹ */
 
-	void runLoGoCallBack(Node* node,const int &ID);   /* Õ¹Ê¾logo»Øµ÷ */
-	void loadingTextCallBack();                       /* ¼ÓÔØÎÄ×Ö»Øµ÷ */
-	void loadingAnimationCallBack();                  /* ¼ÓÔØ¶¯»­»Øµ÷ */
-	void beginGameCallBack(Ref* pSender);             /* ¿ªÊ¼ÓÎÏ·»Øµ÷ */
+	void runLoGoCallBack(Node* node,const int &ID);   /* å±•ç¤ºlogoå›è°ƒ */
+	void loadingTextCallBack();                       /* åŠ è½½æ–‡å­—å›è°ƒ */
+	void loadingAnimationCallBack();                  /* åŠ è½½åŠ¨ç”»å›è°ƒ */
+	void beginGameCallBack(Ref* pSender);             /* å¼€å§‹æ¸¸æˆå›è°ƒ */
 
-	int openResourcesPath(map<string, string>& Path, const std::string& xml, bool IsEncryption = false);  /* ´ò¿ª×ÊÔ´Â·¾¶ */
+	int openResourcesPath(map<string, string>& Path, const std::string& xml, bool IsEncryption = false);  /* æ‰“å¼€èµ„æºè·¯å¾„ */
 
 	void throwException();
 	void checkEdition();
 	void changeFiles();
 
 private:
-	int _textNumbers;                                 // ÎÄ±¾Êı
-	int _loadFileNumbers;                             // ÎÄ¼ş¼ÓÔØÊı
-	int _allFileNumbers;                              // ÎÄ¼ş×ÜÊı(Í¼Æ¬£¬ÒôÀÖ£¬¶¯»­£¬ÎÄ±¾)
-	bool _flowerVisible[5] = { false };               // ¼ÓÔØ»¨¶äÊÇ·ñ¿É¼û 
-	float _loadingPrecent;                            // ¼ÓÔØ½ø¶È 
-	Sprite* _sprite[8];                               // ¾«ÁéÍ¼Æ¬ 
-	MenuItemLabel* _label;                            // ÎÄ×Ö±êÇ© 
-	LoadingBar* _loadingBar;                          // ½ø¶ÈÌõ 
-	EventListenerTouchOneByOne* _listener;            // ¼ÓÔØ¼àÌı 
-	Global* _global;                                  // È«¾Ö±äÁ¿µ¥Àı
-	Director* _director;                              // µ¼Ñİµ¥Àı 
-	FileUtils* _files;                                // ÎÄ¼şµ¥Àı 
+	int _textNumbers;                                 // æ–‡æœ¬æ•°
+	int _loadFileNumbers;                             // æ–‡ä»¶åŠ è½½æ•°
+	int _allFileNumbers;                              // æ–‡ä»¶æ€»æ•°(å›¾ç‰‡ï¼ŒéŸ³ä¹ï¼ŒåŠ¨ç”»ï¼Œæ–‡æœ¬)
+	bool _flowerVisible[5] = { false };               // åŠ è½½èŠ±æœµæ˜¯å¦å¯è§ 
+	float _loadingPrecent;                            // åŠ è½½è¿›åº¦ 
+	Sprite* _sprite[8];                               // ç²¾çµå›¾ç‰‡ 
+	MenuItemLabel* _label;                            // æ–‡å­—æ ‡ç­¾ 
+	LoadingBar* _loadingBar;                          // è¿›åº¦æ¡ 
+	EventListenerTouchOneByOne* _listener;            // åŠ è½½ç›‘å¬ 
+	Global* _global;                                  // å…¨å±€å˜é‡å•ä¾‹
+	Director* _director;                              // å¯¼æ¼”å•ä¾‹ 
+	FileUtils* _files;                                // æ–‡ä»¶å•ä¾‹ 
 	UserData* _userData;
 	std::unique_ptr<network::Downloader> _downloader;
 };

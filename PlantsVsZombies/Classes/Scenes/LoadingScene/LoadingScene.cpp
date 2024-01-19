@@ -46,24 +46,24 @@ bool LoadingScene::init()
 
 #if MYRELEASE
 #   if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
-	checkEdition();          /* ¼ì²é°æ±¾ */
+	checkEdition();          /* æ£€æŸ¥ç‰ˆæœ¬ */
 #   endif
 #endif
-	setRunFirstTime();       /* »ñÈ¡µÚÒ»´ÎÔËĞĞÊ±¼ä */
-	calculateFileNumbers();  /* ¼ÆËãÎÄ¼ş×ÜÊı */
-	setSystem();             /* ÉèÖÃÏµÍ³²ÎÊı */
-	loadUserData();          /* ¼ÓÔØÓÃ»§ĞÅÏ¢ */
-	showLoadingBackGround(); /* Õ¹Ê¾¼ÓÔØ½çÃæ */
+	setRunFirstTime();       /* è·å–ç¬¬ä¸€æ¬¡è¿è¡Œæ—¶é—´ */
+	calculateFileNumbers();  /* è®¡ç®—æ–‡ä»¶æ€»æ•° */
+	setSystem();             /* è®¾ç½®ç³»ç»Ÿå‚æ•° */
+	loadUserData();          /* åŠ è½½ç”¨æˆ·ä¿¡æ¯ */
+	showLoadingBackGround(); /* å±•ç¤ºåŠ è½½ç•Œé¢ */
 
 	return true;
 }
 
 void LoadingScene::setSystem()
 {
-	/* ÉèÖÃ¹â±ê */
+	/* è®¾ç½®å…‰æ ‡ */
 	_director->getOpenGLView()->setCursor("resources/images/System/cursor.png", Point::ANCHOR_TOP_LEFT);
 
-	/* ÉèÖÃÍ¼±ê */
+	/* è®¾ç½®å›¾æ ‡ */
 	_director->getOpenGLView()->setIcon("resources/images/System/PlantsVsZombies.png");
 
 }
@@ -72,12 +72,12 @@ void LoadingScene::loadUserData()
 {
 	auto userdefault = UserDefault::getInstance();
 
-	/* ¶ÁÈ¡ÓÃ»§´æµµÃû³Æ */
+	/* è¯»å–ç”¨æˆ·å­˜æ¡£åç§° */
 	for (int i = 0; i < 8; i++)
 	{
 		if (!userdefault->getStringForKey(_global->userInformation->getUserCaveFileNameKey(i).c_str()).size())
 		{
-			_global->userInformation->setUserCaveFileName(i, "Î´ÃüÃû´æµµ");
+			_global->userInformation->setUserCaveFileName(i, "æœªå‘½åå­˜æ¡£");
 		}
 		else
 		{
@@ -88,11 +88,11 @@ void LoadingScene::loadUserData()
 	_userData->createNewUserDataDocument();
 	loadUserFileData();
 
-	/* ÓÃ»§Ãû³Æ */
+	/* ç”¨æˆ·åç§° */
 	_global->userInformation->setUserName(_global->userInformation->getUserCaveFileName(_global->userInformation->getUserCaveFileNumber()));
 	_global->userInformation->setIsUpdate(true);
 
-	/* ÏÔÊ¾ĞÅÏ¢ */
+	/* æ˜¾ç¤ºä¿¡æ¯ */
 	switch (userdefault->getBoolForKey("SHOWINFORMATION"))
 	{
 	case true:
@@ -105,7 +105,7 @@ void LoadingScene::loadUserData()
 		break;
 	}
 
-	/* ÊÇ·ñ¸ßÖ¡ÂÊ */
+	/* æ˜¯å¦é«˜å¸§ç‡ */
 	switch (userdefault->getBoolForKey("SHOWHIGHFPS"))
 	{
 	case true:
@@ -118,7 +118,7 @@ void LoadingScene::loadUserData()
 		break;
 	}
 
-	/* ÊÇ·ñÈ«ÆÁ */
+	/* æ˜¯å¦å…¨å± */
 	switch (userdefault->getBoolForKey("SHOWFULLSCREEN"))
 	{
 	case true:
@@ -131,7 +131,7 @@ void LoadingScene::loadUserData()
 		break;
 	}
 
-	/* ÊÇ·ñÀ­ÉìÏÔÊ¾ */
+	/* æ˜¯å¦æ‹‰ä¼¸æ˜¾ç¤º */
 	switch (userdefault->getBoolForKey("STRETCHINGSHOW"))
 	{
 	case true:
@@ -144,7 +144,7 @@ void LoadingScene::loadUserData()
 		break;
 	}
 
-	/* ÊÇ·ñ´¹Ö±Í¬²½ */
+	/* æ˜¯å¦å‚ç›´åŒæ­¥ */
 	switch (userdefault->getBoolForKey("VERTICALSYNCHRONIZATION"))
 	{
 	case true:
@@ -157,11 +157,11 @@ void LoadingScene::loadUserData()
 		break;
 	}
 
-	/* ÊÇ·ñÒş²ØÊó±ê */
+	/* æ˜¯å¦éšè—é¼ æ ‡ */
 	_global->userInformation->setIsSelectCursorNotHide(_userData->openBoolUserData("CURSORHIDE") ?
 		cocos2d::ui::CheckBox::EventType::SELECTED : cocos2d::ui::CheckBox::EventType::UNSELECTED);
 
-	/* ÊÇ·ñÏÔÊ¾»ºÈë¶¯»­ */
+	/* æ˜¯å¦æ˜¾ç¤ºç¼“å…¥åŠ¨ç”» */
 	_global->userInformation->setIsEaseAnimation(_userData->openBoolUserData("EASEANIMATION") ?
 		cocos2d::ui::CheckBox::EventType::SELECTED : cocos2d::ui::CheckBox::EventType::UNSELECTED);
 
@@ -184,15 +184,15 @@ void LoadingScene::loadUserFileData()
 		UserDefault::getInstance()->setBoolForKey("FIRSTRUNGAME", true);
 	}
 
-	Global::getInstance()->userInformation->setUserCaveFileNumber(UserDefault::getInstance()->getIntegerForKey("USERDATANUMBER"));      /* ´æµµ±àºÅ */
-	Global::getInstance()->userInformation->setSoundEffectVolume(UserDefault::getInstance()->getFloatForKey("SOUNDEFFECT"));            /* ÒôĞ§ */
-	Global::getInstance()->userInformation->setBackGroundMusicVolume(UserDefault::getInstance()->getFloatForKey("GLOBALMUSIC"));        /* ÒôÀÖ */
+	Global::getInstance()->userInformation->setUserCaveFileNumber(UserDefault::getInstance()->getIntegerForKey("USERDATANUMBER"));      /* å­˜æ¡£ç¼–å· */
+	Global::getInstance()->userInformation->setSoundEffectVolume(UserDefault::getInstance()->getFloatForKey("SOUNDEFFECT"));            /* éŸ³æ•ˆ */
+	Global::getInstance()->userInformation->setBackGroundMusicVolume(UserDefault::getInstance()->getFloatForKey("GLOBALMUSIC"));        /* éŸ³ä¹ */
 
-	Global::getInstance()->userInformation->setKillZombiesNumbers(UserData::getInstance()->openIntUserData("KILLALLZOMBIES"));          /* É±ËÀ½©Ê¬Êı */
-	Global::getInstance()->userInformation->setUsePlantsNumbers(UserData::getInstance()->openIntUserData("USEPLANTSNUMBERS"));          /* Ê¹ÓÃÖ²ÎïÊıÁ¿ */
-	Global::getInstance()->userInformation->setIsShowEggs(UserData::getInstance()->openBoolUserData("ISBEGINSHOWEGGS"));                /* ÏÔÊ¾²Êµ° */
-	Global::getInstance()->userInformation->setCoinNumbers(UserData::getInstance()->openIntUserData("COINNUMBERS"));                    /* ½ğ±ÒÊı */
-	Global::getInstance()->userInformation->setBreakThroughNumbers(UserData::getInstance()->openIntUserData("BREAKTHROUGH"));           /* ´³¹ØÊ§°Ü¸öÊı */
+	Global::getInstance()->userInformation->setKillZombiesNumbers(UserData::getInstance()->openIntUserData("KILLALLZOMBIES"));          /* æ€æ­»åƒµå°¸æ•° */
+	Global::getInstance()->userInformation->setUsePlantsNumbers(UserData::getInstance()->openIntUserData("USEPLANTSNUMBERS"));          /* ä½¿ç”¨æ¤ç‰©æ•°é‡ */
+	Global::getInstance()->userInformation->setIsShowEggs(UserData::getInstance()->openBoolUserData("ISBEGINSHOWEGGS"));                /* æ˜¾ç¤ºå½©è›‹ */
+	Global::getInstance()->userInformation->setCoinNumbers(UserData::getInstance()->openIntUserData("COINNUMBERS"));                    /* é‡‘å¸æ•° */
+	Global::getInstance()->userInformation->setBreakThroughNumbers(UserData::getInstance()->openIntUserData("BREAKTHROUGH"));           /* é—¯å…³å¤±è´¥ä¸ªæ•° */
 
 	Global::getInstance()->userInformation->newUserSelectWorldData();
 }
@@ -208,54 +208,54 @@ void LoadingScene::caveUserFileData()
 
 void LoadingScene::showLoadingBackGround()
 {
-	/* ²¥·ÅÒôÀÖ */
+	/* æ’­æ”¾éŸ³ä¹ */
 	PlayMusic::changeBgMusic("mainmusic", true);
 
-	/* »ñÈ¡´°¿Ú´óĞ¡ */
+	/* è·å–çª—å£å¤§å° */
 	auto const size = Director::getInstance()->getWinSize();
 
-	/* ´´½¨¾«Áé */
+	/* åˆ›å»ºç²¾çµ */
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("resources/images/LoadingScene/LoadingScene.plist");
 	_sprite[0] = Sprite::createWithSpriteFrameName("cocos2dx_Logo.png");
 	_sprite[1] = Sprite::createWithSpriteFrameName("PopCap_Logo.png");
 	_sprite[7] = Sprite::create("resources/text/txt/About.txt");
 	_sprite[2] = Sprite::createWithSpriteFrameName("titlescreen.png");
 
-	/* Îª¾«ÁéÉèÖÃÃû×Ö */
+	/* ä¸ºç²¾çµè®¾ç½®åå­— */
 	_sprite[0]->setName("0");
 	_sprite[1]->setName("1");
 	_sprite[7]->setName("7");
 
-	/* ÉèÖÃ¾«Áé´óĞ¡ */
+	/* è®¾ç½®ç²¾çµå¤§å° */
 	_sprite[0]->setScale(1.5f);
 	_sprite[1]->setScale(1.5f);
 	_sprite[2]->setContentSize(size);
 	_sprite[7]->setScale(1.5f);
 
-	/* ÉèÖÃ¾«ÁéµÄÎ»ÖÃ */
+	/* è®¾ç½®ç²¾çµçš„ä½ç½® */
 	_sprite[0]->setPosition(size / 2);
 	_sprite[1]->setPosition(size / 2);
 	_sprite[7]->setPosition(size / 2);
 	_sprite[2]->setPosition(size / 2);
 
-	/* ÉèÖÃ¾«ÁéÍ¸Ã÷¶È */
+	/* è®¾ç½®ç²¾çµé€æ˜åº¦ */
 	_sprite[0]->setOpacity(0);
 	_sprite[1]->setOpacity(0);
 	_sprite[7]->setOpacity(0);
 	_sprite[2]->setOpacity(0);
 
-	/* °Ñ¾«Áé¼ÓÔØµ½³¡¾°ÖĞ */
+	/* æŠŠç²¾çµåŠ è½½åˆ°åœºæ™¯ä¸­ */
 	this->addChild(_sprite[0]);
 	this->addChild(_sprite[1]);
 	this->addChild(_sprite[7]);
 	this->addChild(_sprite[2]);
 
-	/* ÉèÖÃ¾«Áé²»¿É¼û */
+	/* è®¾ç½®ç²¾çµä¸å¯è§ */
 	_sprite[1]->setVisible(false);
 	_sprite[7]->setVisible(false);
 	_sprite[2]->setVisible(false);
 
-	/* ÉèÖÃ¾«Áé¶¯×÷ */
+	/* è®¾ç½®ç²¾çµåŠ¨ä½œ */
 	_sprite[0]->runAction(Sequence::create(FadeIn::create(1.f), 
 		FadeOut::create(1.f), CallFuncN::create(CC_CALLBACK_1(LoadingScene::runLoGoCallBack, this, 1)), NULL));
 }
@@ -265,26 +265,26 @@ void LoadingScene::runLoGoCallBack(Node* node, const int& ID)
 	switch (ID)
 	{
 	case 1:
-		this->removeChildByName("0"); /* ´Ó³¡¾°ÖĞÒÆ³ıÃû×ÖÎª0µÄº¢×Ó */
-		_sprite[1]->setVisible(true);  /* ÉèÖÃ¾«Áé1¿É¼û */
+		this->removeChildByName("0"); /* ä»åœºæ™¯ä¸­ç§»é™¤åå­—ä¸º0çš„å­©å­ */
+		_sprite[1]->setVisible(true);  /* è®¾ç½®ç²¾çµ1å¯è§ */
 		_sprite[1]->runAction(Sequence::create(FadeIn::create(1.f), 
 			FadeOut::create(1.f), CallFuncN::create(CC_CALLBACK_1(LoadingScene::runLoGoCallBack, this, 5)), NULL));
 		break;
 	case 2:
-		this->removeChildByName("7"); /* ´Ó³¡¾°ÖĞÒÆ³ıÃû×ÖÎª7µÄº¢×Ó */
-		_sprite[2]->setVisible(true);  /* ÉèÖÃ¾«Áé2¿É¼û */
+		this->removeChildByName("7"); /* ä»åœºæ™¯ä¸­ç§»é™¤åå­—ä¸º7çš„å­©å­ */
+		_sprite[2]->setVisible(true);  /* è®¾ç½®ç²¾çµ2å¯è§ */
 		_sprite[2]->runAction(Sequence::create(FadeIn::create(1.f), 
 			CallFuncN::create(CC_CALLBACK_1(LoadingScene::runLoGoCallBack, this, 3)), NULL));
 		break;
 	case 3:
-		this->showTileAndLoadingBar(); /* Õ¹Ê¾±êÌâºÍ½ø¶ÈÌõ */
+		this->showTileAndLoadingBar(); /* å±•ç¤ºæ ‡é¢˜å’Œè¿›åº¦æ¡ */
 		break;
 	case 4:
-		this->beginLoadingImageAndMusic(); /* ¿ªÊ¼¼ÓÔØÍ¼Æ¬ºÍÒôÀÖ */
+		this->beginLoadingImageAndMusic(); /* å¼€å§‹åŠ è½½å›¾ç‰‡å’ŒéŸ³ä¹ */
 		break;
 	case 5:
-		this->removeChildByName("1"); /* ´Ó³¡¾°ÖĞÒÆ³ıÃû×ÖÎª1µÄº¢×Ó */
-		_sprite[7]->setVisible(true);  /* ÉèÖÃ¾«Áé7¿É¼û */
+		this->removeChildByName("1"); /* ä»åœºæ™¯ä¸­ç§»é™¤åå­—ä¸º1çš„å­©å­ */
+		_sprite[7]->setVisible(true);  /* è®¾ç½®ç²¾çµ7å¯è§ */
 		_sprite[7]->runAction(Sequence::create(FadeIn::create(1.f), 
 			FadeOut::create(1.f), CallFuncN::create(CC_CALLBACK_1(LoadingScene::runLoGoCallBack, this, 2)), NULL));
 		break;
@@ -293,33 +293,33 @@ void LoadingScene::runLoGoCallBack(Node* node, const int& ID)
 
 void LoadingScene::showTileAndLoadingBar()
 {
-	/* »ñÈ¡´°¿Ú´óĞ¡ */
+	/* è·å–çª—å£å¤§å° */
 	auto const size = _director->getWinSize();
 
-	/* ´´½¨¾«Áé */
+	/* åˆ›å»ºç²¾çµ */
 	_sprite[3] = Sprite::createWithSpriteFrameName("PvZ_Logo.png");
 	_sprite[4] = Sprite::createWithSpriteFrameName("LoadBar_dirt.png");
 	_sprite[5] = Sprite::createWithSpriteFrameName("SodRollCap.png");
 	_sprite[6] = Sprite::createWithSpriteFrameName("spark.png");
 
-	/* ´´½¨²Ã¼ô½Úµã */
+	/* åˆ›å»ºè£å‰ªèŠ‚ç‚¹ */
 	auto clippingNode = ClippingNode::create();
 
-	/* »ñÈ¡µÚÈı¸ö¾«ÁéµÄ´óĞ¡ */
+	/* è·å–ç¬¬ä¸‰ä¸ªç²¾çµçš„å¤§å° */
 	Size const SpriteSize = _sprite[3]->getContentSize();
 
-	/* Îª¾«ÁéÉèÖÃ³õÊ¼Î»ÖÃ */
+	/* ä¸ºç²¾çµè®¾ç½®åˆå§‹ä½ç½® */
 	_sprite[4]->setPosition(Vec2(size.width / 2, -100));
 	_sprite[5]->setPosition(Vec2(10, 95));
 	_sprite[6]->setPosition(Vec2(-SpriteSize.width, 0));
 	clippingNode->setPosition(Vec2(size.width / 2 + 10, 1100));
 
-	/* Îª¾«ÁéÉèÖÃ´óĞ¡ */
+	/* ä¸ºç²¾çµè®¾ç½®å¤§å° */
 	_sprite[3]->setScaleX(1.25f);
 	_sprite[4]->setScale(2.0f);
 	_sprite[6]->setScale(2.0f);
 
-	/* ÈÃ¾«ÁéÔË¶¯ÆğÀ´ */
+	/* è®©ç²¾çµè¿åŠ¨èµ·æ¥ */
 	_sprite[4]->runAction(Sequence::create(
 		MoveTo::create(0.5f, Vec2(size.width / 2, 150)), 
 		CallFuncN::create(CC_CALLBACK_1(LoadingScene::runLoGoCallBack, this, 4)), NULL));
@@ -331,26 +331,26 @@ void LoadingScene::showTileAndLoadingBar()
 			}), nullptr)));
 	clippingNode->runAction(MoveTo::create(0.5f, Vec2(size.width / 2, 900)));
 
-	/* ¼Óµ½³¡¾°ÖĞ */
+	/* åŠ åˆ°åœºæ™¯ä¸­ */
 	this->addChild(_sprite[4]);
 	this->addChild(clippingNode);
 	_sprite[4]->addChild(_sprite[5], 1);
 
-	/* ÉèÖÃ²Ã¼ô½ÚµãµÄ»ù±¾ÊôĞÔ */
-	clippingNode->setAlphaThreshold(0.01f);    //ÉèÖÃalphaÕ¢Öµ
-	clippingNode->setContentSize(SpriteSize);  //ÉèÖÃ³ß´ç´óĞ¡
-	clippingNode->setStencil(_sprite[3]);      //ÉèÖÃÄ£°åstencil
-	clippingNode->addChild(_sprite[3]);        //ÏÈÌí¼Ó±êÌâ,»áÍêÈ«ÏÔÊ¾³öÀ´,ÒòÎª¸úÄ£°åÒ»Ñù´óĞ¡
-	clippingNode->addChild(_sprite[6]);        //»á±»²Ã¼õ
+	/* è®¾ç½®è£å‰ªèŠ‚ç‚¹çš„åŸºæœ¬å±æ€§ */
+	clippingNode->setAlphaThreshold(0.01f);    //è®¾ç½®alphaé—¸å€¼
+	clippingNode->setContentSize(SpriteSize);  //è®¾ç½®å°ºå¯¸å¤§å°
+	clippingNode->setStencil(_sprite[3]);      //è®¾ç½®æ¨¡æ¿stencil
+	clippingNode->addChild(_sprite[3]);        //å…ˆæ·»åŠ æ ‡é¢˜,ä¼šå®Œå…¨æ˜¾ç¤ºå‡ºæ¥,å› ä¸ºè·Ÿæ¨¡æ¿ä¸€æ ·å¤§å°
+	clippingNode->addChild(_sprite[6]);        //ä¼šè¢«è£å‡
 
-	/* ´´½¨²Ëµ¥±êÇ© */
+	/* åˆ›å»ºèœå•æ ‡ç­¾ */
 	_label = MenuItemLabel::create(
-		Label::createWithTTF("¼ÓÔØÖĞ......", GAME_FONT_NAME_1, 20), 
+		Label::createWithTTF("åŠ è½½ä¸­......", GAME_FONT_NAME_1, 20), 
 		CC_CALLBACK_1(LoadingScene::beginGameCallBack, this));
 	_label->setColor(Color3B::YELLOW);
 	_label->setEnabled(false);
 
-	/* ´´½¨²Ëµ¥ */
+	/* åˆ›å»ºèœå• */
 	auto menu = Menu::create(_label, NULL);
 	menu->setPosition(150, 55);
 	_sprite[4]->addChild(menu);
@@ -358,30 +358,30 @@ void LoadingScene::showTileAndLoadingBar()
 
 void LoadingScene::beginLoadingImageAndMusic()
 {
-	/* ´´½¨½ø¶ÈÌõ */
+	/* åˆ›å»ºè¿›åº¦æ¡ */
 	_loadingBar = LoadingBar::create();
 	_loadingBar->loadTexture("LoadBar_grass.png", Widget::TextureResType::PLIST);
-	_loadingBar->setDirection(LoadingBar::Direction::LEFT); /* ÉèÖÃ¼ÓÔØ·½Ïò */
+	_loadingBar->setDirection(LoadingBar::Direction::LEFT); /* è®¾ç½®åŠ è½½æ–¹å‘ */
 	_loadingBar->setPosition(Vec2(150, 70));
 	_sprite[4]->addChild(_loadingBar);
 
-	/* ¶¨Ê±Æ÷ */
+	/* å®šæ—¶å™¨ */
 	scheduleUpdate();
 
-	loadingText();         /* ¼ÓÔØÎÄ±¾ */
-	loadingMusic();        /* ¼ÓÔØÒôÀÖ */
-	loadingImage();        /* ¼ÓÔØÍ¼Æ¬ */
-	loadingAnimation();    /* ¼ÓÔØ¶¯»­ */
-	throwException();      /* Å×³öÒì³£ */
+	loadingText();         /* åŠ è½½æ–‡æœ¬ */
+	loadingMusic();        /* åŠ è½½éŸ³ä¹ */
+	loadingImage();        /* åŠ è½½å›¾ç‰‡ */
+	loadingAnimation();    /* åŠ è½½åŠ¨ç”» */
+	throwException();      /* æŠ›å‡ºå¼‚å¸¸ */
 }
 
 void LoadingScene::update(float Time)
 {
 	if (_loadingPrecent <= 100)
 	{
-		_loadingBar->setPercent(_loadingPrecent);              /* ÉèÖÃ¼ÓÔØ½ø¶È */
-		_sprite[5]->setScale(1 - _loadingPrecent / 170);       /* ÉèÖÃ¾«Áé´óĞ¡ */
-		_sprite[5]->setRotation(9 * _loadingPrecent);          /* ÉèÖÃ¾«Ğı×ª¶ÈÊı */
+		_loadingBar->setPercent(_loadingPrecent);              /* è®¾ç½®åŠ è½½è¿›åº¦ */
+		_sprite[5]->setScale(1 - _loadingPrecent / 170);       /* è®¾ç½®ç²¾çµå¤§å° */
+		_sprite[5]->setRotation(9 * _loadingPrecent);          /* è®¾ç½®ç²¾æ—‹è½¬åº¦æ•° */
 		_sprite[5]->setPosition(Vec2(10 + 290 / 100.0 * _loadingPrecent, 100 - _sprite[5]->getContentSize().height / 400 * _loadingPrecent));
 
 		if (_loadingPrecent >= 20)  showLoadingBarFlower(0);
@@ -391,48 +391,48 @@ void LoadingScene::update(float Time)
 		if (_loadingPrecent >= 100) showLoadingBarFlower(4);
 
 	}
-	if (_loadingPrecent >= 100) /* Èç¹û¼ÓÔØÍê³É */
+	if (_loadingPrecent >= 100) /* å¦‚æœåŠ è½½å®Œæˆ */
 	{
-		_label->setString(_global->userInformation->getGameText().find("µã»÷¿ªÊ¼")->second);  /* ÖØĞÂÉèÖÃ±êÇ©ÎÄ×ÖÄÚÈİ */
+		_label->setString(_global->userInformation->getGameText().find("ç‚¹å‡»å¼€å§‹")->second);  /* é‡æ–°è®¾ç½®æ ‡ç­¾æ–‡å­—å†…å®¹ */
 		auto action = TintBy::create(0.5f, 0, 255, 255);
 		_label->runAction(RepeatForever::create(Sequence::create(action, action->reverse(), nullptr)));
-		_sprite[5]->setVisible(false);  /* ÉèÖÃ¾«Áé5Îª²»¿É¼û */
-		_label->setEnabled(true);       /* ÉèÖÃ´¥Ãş¿ÉĞĞ */
+		_sprite[5]->setVisible(false);  /* è®¾ç½®ç²¾çµ5ä¸ºä¸å¯è§ */
+		_label->setEnabled(true);       /* è®¾ç½®è§¦æ‘¸å¯è¡Œ */
 	}
 }
 
 void LoadingScene::showLoadingBarFlower(const int& ID)
 {
 	srand(unsigned(time(nullptr)));
-	if (!_flowerVisible[ID]) /* Èç¹û»¨µÄIDÊÇ²»¿É¼û */
+	if (!_flowerVisible[ID]) /* å¦‚æœèŠ±çš„IDæ˜¯ä¸å¯è§ */
 	{
-		/* ´´½¨»¨ */
+		/* åˆ›å»ºèŠ± */
 		auto flower = Sprite::createWithSpriteFrameName("sprout_petal.png");
 		flower->setScale(0.1f);
 		flower->setPosition(Vec2(20 + (55 + rand() % 10) * ID, 85 + rand() % 10));
 		flower->runAction(ScaleTo::create(0.2f, 0.5f));
 		_sprite[4]->addChild(flower);
-		if (ID == 4) /* Èç¹ûID==4 ´´½¨½©Ê¬Í·*/
+		if (ID == 4) /* å¦‚æœID==4 åˆ›å»ºåƒµå°¸å¤´*/
 		{
 			PlayMusic::playMusic("loadingbar_zombie");
 			
 			flower->setSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("ZombieHead1.png"));
 		}
-		else  /* ·ñÔò´´½¨»¨ */
+		else  /* å¦åˆ™åˆ›å»ºèŠ± */
 		{
 			PlayMusic::playMusic("loadingbar_flower");
 			
 			flower->setRotation(rand() % 180);
 		}
 
-		_flowerVisible[ID] = true; /* »¨IDÉèÖÃÎª¿É¼û */
+		_flowerVisible[ID] = true; /* èŠ±IDè®¾ç½®ä¸ºå¯è§ */
 	}
 }
 
 void LoadingScene::calculateFileNumbers()
 {
 #if MYDEBUG
-	/* ÎÄ¼ş×ÜÊı = ÎÄ±¾Êı + Í¼Æ¬Êı + ÒôÀÖÊı + ¶¯»­Êı */
+	/* æ–‡ä»¶æ€»æ•° = æ–‡æœ¬æ•° + å›¾ç‰‡æ•° + éŸ³ä¹æ•° + åŠ¨ç”»æ•° */
 	_allFileNumbers =
 		openResourcesPath(_global->userInformation->getTextPath(), "resources/Text/TextPath.reanim.compiled", true) +
 		openResourcesPath(_global->userInformation->getImagePath(), "resources/Text/ImagePath.reanim.compiled", true) +
@@ -456,9 +456,9 @@ void LoadingScene::setRunFirstTime()
 
 	if (UserDefault::getInstance()->getStringForKey("FIRSTRUNTIME").size() == 0)
 	{
-		UserDefault::getInstance()->setStringForKey("FIRSTRUNTIME", to_string(nowtime->tm_year + 1900) + "Äê " +
-			to_string(nowtime->tm_mon) + "ÔÂ " + to_string(nowtime->tm_mday) + "ÈÕ ĞÇÆÚ" + to_string(nowtime->tm_wday) + " " +
-			to_string(nowtime->tm_hour) + "Ê± " + to_string(nowtime->tm_min) + "·Ö " + to_string(nowtime->tm_sec) + "Ãë");
+		UserDefault::getInstance()->setStringForKey("FIRSTRUNTIME", to_string(nowtime->tm_year + 1900) + "å¹´ " +
+			to_string(nowtime->tm_mon) + "æœˆ " + to_string(nowtime->tm_mday) + "æ—¥ æ˜ŸæœŸ" + to_string(nowtime->tm_wday) + " " +
+			to_string(nowtime->tm_hour) + "æ—¶ " + to_string(nowtime->tm_min) + "åˆ† " + to_string(nowtime->tm_sec) + "ç§’");
 	}
 
 	UserDefault::getInstance()->setIntegerForKey("BEGINDAY", nowtime->tm_mday);
@@ -478,12 +478,12 @@ int LoadingScene::openResourcesPath(map<string, string>& Path, const std::string
 
 		OpenLevelData::getInstance()->decrypt(textpath, passWords);
 
-		/* ´ò¿ª×ÊÔ´Â·¾¶ */
+		/* æ‰“å¼€èµ„æºè·¯å¾„ */
 		doc->Parse(passWords);
 	}
 	else
 	{
-		/* ´ò¿ª×ÊÔ´Â·¾¶ */
+		/* æ‰“å¼€èµ„æºè·¯å¾„ */
 		doc->Parse(_files->getStringFromFile(xml).c_str());
 	}
 
@@ -508,14 +508,14 @@ void LoadingScene::throwException()
 			{
 				if (_loadFileNumbers > 10 && _loadFileNumbers < _allFileNumbers)
 				{
-					wstring str = L"Ôã¸â£¡·¢ÉúÁËÒ»Ğ©´íÎó£¬²¿·Ö×ÊÔ´ÎÄ¼ş¼ÓÔØÊ§°Ü£¡\nÑ¡Ôñ¡°ÖØÊÔ¡±ÖØĞÂÆô¶¯ÓÎÏ·£¬Ñ¡Ôñ¡°È¡Ïû¡±¹Ø±ÕÓÎÏ·¡£";
+					wstring str = L"ç³Ÿç³•ï¼å‘ç”Ÿäº†ä¸€äº›é”™è¯¯ï¼Œéƒ¨åˆ†èµ„æºæ–‡ä»¶åŠ è½½å¤±è´¥ï¼\né€‰æ‹©â€œé‡è¯•â€é‡æ–°å¯åŠ¨æ¸¸æˆï¼Œé€‰æ‹©â€œå–æ¶ˆâ€å…³é—­æ¸¸æˆã€‚";
 					PlayMusic::playMusic("buzzer", false);
 					throw str;
 				}
 			}
 			catch (wstring str)
 			{
-				auto yon = MessageBoxW(_director->getOpenGLView()->getWin32Window(), str.c_str(), L"×ÊÔ´¼ÓÔØÒì³£", MB_RETRYCANCEL);
+				auto yon = MessageBoxW(_director->getOpenGLView()->getWin32Window(), str.c_str(), L"èµ„æºåŠ è½½å¼‚å¸¸", MB_RETRYCANCEL);
 				if (yon == IDRETRY)
 				{
 					TCHAR szPath[MAX_PATH];
@@ -589,7 +589,7 @@ void LoadingScene::changeFiles()
 
 void LoadingScene::loadingText()
 {
-	/* Ñ­»·¼ÓÔØÎÄ±¾ */
+	/* å¾ªç¯åŠ è½½æ–‡æœ¬ */
 	for (auto& i : _global->userInformation->getTextPath())
 	{
 		ValueVector Text = _files->getValueVectorFromFile(i.second);
@@ -598,36 +598,36 @@ void LoadingScene::loadingText()
 			auto file_map = file.asValueMap();
 			_global->userInformation->getGameText().insert(pair<string, string>(file_map.at("id").asString(), file_map.at("info").asString()));
 		}
-		/* ¼ÓÔØ»Øµ÷ */
+		/* åŠ è½½å›è°ƒ */
 		this->loadingTextCallBack();
 	}
 }
 
 void LoadingScene::loadingImage()
 {
-	/* Ñ­»·¼ÓÔØÍ¼Æ¬ */
+	/* å¾ªç¯åŠ è½½å›¾ç‰‡ */
 	for (auto& i : _global->userInformation->getImagePath())
 	{
 		_director->getTextureCache()->addImageAsync(i.second + "pvr.ccz", [=](Texture2D* texture)
 			{
 				SpriteFrameCache::getInstance()->addSpriteFramesWithFile(i.second + "plist", texture);
-				_loadFileNumbers++;     /* ÎÄ¼şÊı¼ÓÒ» */
-				_loadingPrecent = ((_loadFileNumbers * 1.0f) / _allFileNumbers) * 100;  /* ¼ÆËã¼ÓÔØµÄ°Ù·Ö±È */
+				_loadFileNumbers++;     /* æ–‡ä»¶æ•°åŠ ä¸€ */
+				_loadingPrecent = ((_loadFileNumbers * 1.0f) / _allFileNumbers) * 100;  /* è®¡ç®—åŠ è½½çš„ç™¾åˆ†æ¯” */
 			});
 	}
 }
 
 void LoadingScene::loadingMusic()
 {
-	/* Ñ­»·¼ÓÔØÒôÀÖ */
+	/* å¾ªç¯åŠ è½½éŸ³ä¹ */
 	for (auto& i : _global->userInformation->getMusicPath())
 	{
 		AudioEngine::preload(i.second, [=](bool isSucceed)
 			{
-				if (isSucceed)/* Èç¹û¼ÓÔØ³É¹¦ */
+				if (isSucceed)/* å¦‚æœåŠ è½½æˆåŠŸ */
 				{
-					_loadFileNumbers++;     /* ÎÄ¼şÊı¼ÓÒ» */
-					_loadingPrecent = ((_loadFileNumbers * 1.0f) / _allFileNumbers) * 100;  /* ¼ÆËã¼ÓÔØµÄ°Ù·Ö±È */
+					_loadFileNumbers++;     /* æ–‡ä»¶æ•°åŠ ä¸€ */
+					_loadingPrecent = ((_loadFileNumbers * 1.0f) / _allFileNumbers) * 100;  /* è®¡ç®—åŠ è½½çš„ç™¾åˆ†æ¯” */
 				}
 			});
 	}
@@ -635,43 +635,43 @@ void LoadingScene::loadingMusic()
 
 void LoadingScene::loadingAnimation()
 {
-	/* Ñ­»·¼ÓÔØ¶¯»­ */
+	/* å¾ªç¯åŠ è½½åŠ¨ç”» */
 	for (auto& i : _global->userInformation->getAnimationPath())
 	{
-		/* ÁÙÊ±´æ´¢ÎÄ¼şÃû×Ö */
+		/* ä¸´æ—¶å­˜å‚¨æ–‡ä»¶åå­— */
 		char JsonName[128], AtlasName[128];
 
-		/* ×ª»» */
+		/* è½¬æ¢ */
 		snprintf(JsonName, 128, "resources/Animations/compiled/%s.compiled", (i.second).c_str());
 		snprintf(AtlasName, 128, "resources/Animations/reanim/%s.reanim", (i.second).c_str());
 
-		/* ¼ÓÔØ */
+		/* åŠ è½½ */
 		spSkeletonJson* json = spSkeletonJson_createWithLoader((spAttachmentLoader*)Cocos2dAttachmentLoader_create(spAtlas_createFromFile(AtlasName, nullptr)));
 		auto skeletonData = spSkeletonJson_readSkeletonDataFile(json, JsonName);
 		spSkeletonJson_dispose(json);
 
-		/* °Ñ¼ÓÔØµ½µÄ¶¯»­·ÅÈëmapÖĞ*/
+		/* æŠŠåŠ è½½åˆ°çš„åŠ¨ç”»æ”¾å…¥mapä¸­*/
 		_global->userInformation->getAnimationData().insert(pair<string, spSkeletonData*>(i.second, skeletonData));
 
-		/* ½øĞĞ»Øµ÷ */
+		/* è¿›è¡Œå›è°ƒ */
 		this->loadingAnimationCallBack();
 	}
 }
 
 void LoadingScene::loadingTextCallBack()
 {
-	_loadFileNumbers++;     /* ÎÄ¼şÊı¼ÓÒ» */
-	_loadingPrecent = ((_loadFileNumbers * 1.0f) / _allFileNumbers) * 100;  /* ¼ÆËã¼ÓÔØµÄ°Ù·Ö±È */
+	_loadFileNumbers++;     /* æ–‡ä»¶æ•°åŠ ä¸€ */
+	_loadingPrecent = ((_loadFileNumbers * 1.0f) / _allFileNumbers) * 100;  /* è®¡ç®—åŠ è½½çš„ç™¾åˆ†æ¯” */
 }
 
 void LoadingScene::loadingAnimationCallBack()
 {
-	_loadFileNumbers++;     /* ÎÄ¼şÊı¼ÓÒ» */
-	_loadingPrecent = ((_loadFileNumbers * 1.0f) / _allFileNumbers) * 100;  /* ¼ÆËã¼ÓÔØµÄ°Ù·Ö±È */
+	_loadFileNumbers++;     /* æ–‡ä»¶æ•°åŠ ä¸€ */
+	_loadingPrecent = ((_loadFileNumbers * 1.0f) / _allFileNumbers) * 100;  /* è®¡ç®—åŠ è½½çš„ç™¾åˆ†æ¯” */
 }
 
 void LoadingScene::beginGameCallBack(Ref* pSender)
 {
 	PlayMusic::playMusic("buttonclick");
-	_director->replaceScene(MainMenu::createScene()); /* ÇĞ»»³¡¾° */
+	_director->replaceScene(MainMenu::createScene()); /* åˆ‡æ¢åœºæ™¯ */
 }

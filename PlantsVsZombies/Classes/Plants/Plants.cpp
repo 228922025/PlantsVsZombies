@@ -47,7 +47,7 @@ Plants::~Plants()
 SkeletonAnimation* Plants::plantInit(const std::string& plantname, const std::string& animaionname)
 {
 	auto iter = _global->userInformation->getAnimationData().find(plantname);
-	if (iter != _global->userInformation->getAnimationData().end())/* Èç¹û¿ÉÒÔÕÒµ½ */
+	if (iter != _global->userInformation->getAnimationData().end())/* å¦‚æžœå¯ä»¥æ‰¾åˆ° */
 	{
 		_plantAnimation = SkeletonAnimation::createWithData(iter->second);
 		_plantAnimation->setPosition(_position);
@@ -74,9 +74,9 @@ void Plants::determineRelativePositionPlantsAndZombies()
 {
 	for (auto zombie : ZombiesGroup)
 	{
-		zombieEatPlant(zombie);      /* ½©Ê¬³ÔÖ²Îï */
+		zombieEatPlant(zombie);      /* åƒµå°¸åƒæ¤ç‰© */
 
-		zombieRecoveryMove(zombie);  /* ½©Ê¬»Ö¸´ÒÆ¶¯ */
+		zombieRecoveryMove(zombie);  /* åƒµå°¸æ¢å¤ç§»åŠ¨ */
 	}
 }
 
@@ -90,7 +90,7 @@ void Plants::stopPlantsAllAction()
 
 void Plants::setPlantSoilSplashAnimation(const float& scale)
 {
-	/* ´´½¨ÖÖÖ²ÄàÍÁ·É½¦¶¯»­ */
+	/* åˆ›å»ºç§æ¤æ³¥åœŸé£žæº…åŠ¨ç”» */
 	auto iter = _global->userInformation->getAnimationData().find("SplashOfSoil");
 	if (iter != _global->userInformation->getAnimationData().end())
 	{
@@ -106,7 +106,7 @@ void Plants::setPlantSoilSplashAnimation(const float& scale)
 
 void Plants::setPlantShadow(const float& scale)
 {
-	/* ´´½¨Ö²ÎïÓ°×Ó */
+	/* åˆ›å»ºæ¤ç‰©å½±å­ */
 	_plantShadow = Sprite::createWithSpriteFrameName("plantshadow.png");
 	_plantShadow->setScale(scale);
 	_plantShadow->setPosition(Vec2(-5, 15));
@@ -186,8 +186,8 @@ bool Plants::getzombieIsEncounterPlant(Zombies* zombie) const
 
 void Plants::zombieEatPlant(Zombies* zombie)
 {
-	if (getPlantIsSurvive() && getZombieIsSameLineWithPlant(zombie) && getzombieIsEncounterPlant(zombie)&& /* Ö²Îï´æ»î && Ö²ÎïÓë½©Ê¬ÔÚÍ¬Ò»ÐÐ && ½©Ê¬Óöµ½Ö²Îï */
-		zombie->getZombieType() != ZombiesType::SnowZombies) /* ½©Ê¬²»ÊÇÑ©ÈË½©Ê¬ */
+	if (getPlantIsSurvive() && getZombieIsSameLineWithPlant(zombie) && getzombieIsEncounterPlant(zombie)&& /* æ¤ç‰©å­˜æ´» && æ¤ç‰©ä¸Žåƒµå°¸åœ¨åŒä¸€è¡Œ && åƒµå°¸é‡åˆ°æ¤ç‰© */
+		zombie->getZombieType() != ZombiesType::SnowZombies) /* åƒµå°¸ä¸æ˜¯é›ªäººåƒµå°¸ */
 	{
 		if (zombie->getZombieIsSurvive() && !zombie->getZombieIsEat())
 		{
@@ -215,14 +215,14 @@ void Plants::zombieEatPlant(Zombies* zombie)
 
 void Plants::zombieRecoveryMove(Zombies* zombie)
 {
-	if (!getPlantIsSurvive() && zombie->getZombieEatPlantNumber() == _plantNumber &&  /* Ö²ÎïËÀÍö && ½©Ê¬ÊÇ³ÔµÄ¸ÃÖ²Îï */
-		zombie->getZombieIsEat() && zombie->getZombieIsStop()) /* ½©Ê¬ÕýÔÚ³ÔÖ²Îï && ½©Ê¬ÕýÔÚÍ£Ö¹ÒÆ¶¯ */
+	if (!getPlantIsSurvive() && zombie->getZombieEatPlantNumber() == _plantNumber &&  /* æ¤ç‰©æ­»äº¡ && åƒµå°¸æ˜¯åƒçš„è¯¥æ¤ç‰© */
+		zombie->getZombieIsEat() && zombie->getZombieIsStop()) /* åƒµå°¸æ­£åœ¨åƒæ¤ç‰© && åƒµå°¸æ­£åœ¨åœæ­¢ç§»åŠ¨ */
 	{
 		setPlantVisible(false);
 		_plantAnimation->stopAllActions();
 		Bullet::playSoundEffect("gulp");
 		zombie->setZombieIsEat(false);
-		if (!zombie->getZombieIsPlayDieAnimation()) /* ½©Ê¬Ã»ÓÐ²¥·ÅËÀÍö¶¯»­ */
+		if (!zombie->getZombieIsPlayDieAnimation()) /* åƒµå°¸æ²¡æœ‰æ’­æ”¾æ­»äº¡åŠ¨ç”» */
 		{
 			zombie->getZombieAnimation()->setMix("Zombies_Eat", Zombies::getZombieAniamtionName(zombie->getZombieType()), 1.5f);
 			zombie->getZombieAnimation()->addAnimation(1, Zombies::getZombieAniamtionName(zombie->getZombieType()), true);

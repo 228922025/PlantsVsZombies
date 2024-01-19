@@ -56,7 +56,7 @@ void SunFlower::stopSun()
 
 void SunFlower::createRandomSuns()
 {
-	/* »ñÈ¡Ì«Ñô²ã */
+	/* è·å–å¤ªé˜³å±‚ */
 	_sunLayer->runAction(RepeatForever::create(Sequence::create(DelayTime::create(5),
 		CallFunc::create([this]()
 			{
@@ -95,10 +95,10 @@ void SunFlower::createPlantAnimation()
 	_plantAnimation->setSkin("SunFlower_Normal");
 	_node->addChild(_plantAnimation);
 
-	// Ó°×Ó
+	// å½±å­
 	setPlantShadow(2.3f);
 
-	// ÄàÍÁ·É½¦¶¯»­
+	// æ³¥åœŸé£æº…åŠ¨ç”»
 	setPlantSoilSplashAnimation(1.0f);
 	
 	createListener();
@@ -140,7 +140,7 @@ void SunFlower::playAnimation()
 	auto delaytime1 = DelayTime::create(0.5f);
 	auto delaytime2 = DelayTime::create(_sunShowTime.y);
 	auto callfunc = CallFunc::create([&]() { createSuns(); });
-	auto callfunc1 = CallFunc::create([=]() { _plantAnimation->setSkin("SunFlower_Normal"); /* ÉèÖÃÆ¤·ô */});
+	auto callfunc1 = CallFunc::create([=]() { _plantAnimation->setSkin("SunFlower_Normal"); /* è®¾ç½®çš®è‚¤ */});
 
 	_plantAnimation->runAction(RepeatForever::create(Sequence::create(delaytime, callfunc, delaytime1, callfunc1, delaytime2, nullptr)));
 }
@@ -177,7 +177,7 @@ void SunFlower::sunRecovery(Sun* sun)
 			{
 				Global::getInstance()->userInformation->setSunNumbers(Global::getInstance()->userInformation->getSunNumbers() + 50);
 				informationLayerInformation->updateSunNumbers();
-				backgroundLayerInformation->gameType->updateRequirementNumbers("Ñô¹âÊıÁ¿Ôö¼Ó");
+				backgroundLayerInformation->gameType->updateRequirementNumbers("é˜³å…‰æ•°é‡å¢åŠ ");
 			}), DelayTime::create(5.0f),
 		CallFunc::create([temporary]()
 			{
@@ -220,7 +220,7 @@ void SunFlower::goodsRecovery()
 void SunFlower::createSuns()
 {
 	Bullet::playSoundEffect(rand() % 2 == 0 ? "throw" : "throw2");
-	_plantAnimation->setSkin("SunFlower_ProduceSun"); /* ÉèÖÃÆ¤·ô */
+	_plantAnimation->setSkin("SunFlower_ProduceSun"); /* è®¾ç½®çš®è‚¤ */
 
 	_sun = new Sun(_sunLayer);
 	_sun->setSunTag(++_sunTag);

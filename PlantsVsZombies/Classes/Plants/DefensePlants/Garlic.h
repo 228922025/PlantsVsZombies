@@ -29,7 +29,7 @@ private:
 	void changeZombiePositionY(Zombies* zombie);
 
 private:
-	int _canEatNumbers;             // ¿ÉÒÔ±»³ÔµÄ´ÎÊı
-	int _currentCanEatNumbers;      // µ±Ç°¿ÉÒÔ±»³ÔµÄ´ÎÊı
-	int _animationId;               // ¶¯»­±àºÅ
+	int _canEatNumbers;             // å¯ä»¥è¢«åƒçš„æ¬¡æ•°
+	int _currentCanEatNumbers;      // å½“å‰å¯ä»¥è¢«åƒçš„æ¬¡æ•°
+	int _animationId;               // åŠ¨ç”»ç¼–å·
 };

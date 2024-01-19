@@ -51,19 +51,19 @@ bool SelectPlantsScene::init()
 
 void SelectPlantsScene::createBackgroundLayer()
 {
-	/* ÉèÖÃÈÝÆ÷´óÐ¡ */
+	/* è®¾ç½®å®¹å™¨å¤§å° */
 	_scrollLayer = Layer::create();
 	_scrollLayer->setContentSize(Size(2930, 1080));
 
-	/* ´´½¨ÈÝÆ÷ÖÐµÄ¶«Î÷£¨¾«Áé£©*/
+	/* åˆ›å»ºå®¹å™¨ä¸­çš„ä¸œè¥¿ï¼ˆç²¾çµï¼‰*/
 	_scrollLayer->addChild(SPSBackgroundLayer::create());
 	
-	//´´½¨¹ö¶¯ÊÓÍ¼
+	//åˆ›å»ºæ»šåŠ¨è§†å›¾
 	_scrollView = extension::ScrollView::create();
 	_scrollView = extension::ScrollView::create(_director->getWinSize(), _scrollLayer);
 	_scrollView->setPosition(Vec2(0, 0));
-	_scrollView->setDirection(extension::ScrollView::Direction::HORIZONTAL);//ÉèÖÃÖ»ÄÜ×ÝÏò¹ö¶¯
-	_scrollView->setTouchEnabled(false);//¹Ø±Õ´¥ÅöÊÂ¼þ
+	_scrollView->setDirection(extension::ScrollView::Direction::HORIZONTAL);//è®¾ç½®åªèƒ½çºµå‘æ»šåŠ¨
+	_scrollView->setTouchEnabled(false);//å…³é—­è§¦ç¢°äº‹ä»¶
 	_scrollView->runAction(Sequence::create(DelayTime::create(1.0f),
 		CallFuncN::create([&](Node* node)
 			{
@@ -89,7 +89,7 @@ void SelectPlantsScene::eventUpdate(float Time)
 	{
 		if (_scrollView->getContentOffset().x <= SCROLLRIGHTFINISHED)
 		{
-			/* È¡Ïû¶¨Ê±º¯Êý */
+			/* å–æ¶ˆå®šæ—¶å‡½æ•° */
 			unschedule(schedule_selector(SelectPlantsScene::eventUpdate)); 
 
 			runAction(Sequence::create(DelayTime::create(1.0f), CallFunc::create([&]() {controlShowRequirement(); }), nullptr));
@@ -99,9 +99,9 @@ void SelectPlantsScene::eventUpdate(float Time)
 	{
 		if (_scrollView->getContentOffset().x >= SCROLLLEFTFINISHED)
 		{
-			/* ²¥·ÅÒôÀÖ */
+			/* æ’­æ”¾éŸ³ä¹ */
 			PlayMusic::playMusic("readysetplant");
-			/* È¡Ïû¶¨Ê±º¯Êý */
+			/* å–æ¶ˆå®šæ—¶å‡½æ•° */
 			this->unschedule(schedule_selector(SelectPlantsScene::eventUpdate));
 
 			createReadyText("StartReady", 1);
@@ -111,7 +111,7 @@ void SelectPlantsScene::eventUpdate(float Time)
 
 void SelectPlantsScene::createSelectPlantsDialog()
 {
-	/* É¾³ýÃû×Ö */
+	/* åˆ é™¤åå­— */
 	_controlLayer->removeChildByName("username");
 
 	_spriteLayer = SPSSpriteLayer::create();
@@ -122,7 +122,7 @@ void SelectPlantsScene::createSelectPlantsDialog()
 
 void SelectPlantsScene::controlShowRequirement()
 {
-	/* Èç¹ûÓÐÒªÇóÔòÏÔÊ¾Í¨¹ýÒªÇó */
+	/* å¦‚æžœæœ‰è¦æ±‚åˆ™æ˜¾ç¤ºé€šè¿‡è¦æ±‚ */
 	auto _levelData = OpenLevelData::getInstance()->readLevelData(OpenLevelData::getInstance()->getLevelNumber());
 	if (_levelData->getGameType().size())
 	{
@@ -133,7 +133,7 @@ void SelectPlantsScene::controlShowRequirement()
 
 void SelectPlantsScene::selectPlantsCallBack()
 {
-	_scrollView->setContentOffsetInDuration(Vec2(-220, 0), 2.0f);//ÉèÖÃ¹ö¶¯·½ÏòÓëÊ±¼ä
+	_scrollView->setContentOffsetInDuration(Vec2(-220, 0), 2.0f);//è®¾ç½®æ»šåŠ¨æ–¹å‘ä¸Žæ—¶é—´
 	this->schedule(schedule_selector(SelectPlantsScene::eventUpdate), 0.3f);
 }
 
@@ -170,7 +170,7 @@ void SelectPlantsScene::readyTextCallBack(Node* node, const std::string& name, c
 void SelectPlantsScene::replaceScene()
 {
 	_global->userInformation->setUserSelectCrads(_spriteLayer->seedBankButton);
-	_global->userInformation->setSunNumbers(100); //Éè¶¨³õÊ¼Ñô¹âÊý 
+	_global->userInformation->setSunNumbers(100); //è®¾å®šåˆå§‹é˜³å…‰æ•° 
 
 	if (_global->userInformation->getIsEaseAnimation() == ui::CheckBox::EventType::SELECTED)
 		Director::getInstance()->replaceScene(TransitionFade::create(1.f, GameScene::createScene()));

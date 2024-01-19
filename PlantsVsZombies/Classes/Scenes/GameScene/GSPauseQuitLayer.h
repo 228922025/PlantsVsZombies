@@ -13,11 +13,11 @@ using namespace cocos2d;
 
 enum class PauseQuitLayer_Button
 {
-	²é¿´Í¼¼ø = 0,
-	´ÓĞÂ¿ªÊ¼,
-	ÍË³öÓÎÏ·,
-	°´¼üËµÃ÷,
-	·µ»ØÓÎÏ·
+	æŸ¥çœ‹å›¾é‰´ = 0,
+	ä»æ–°å¼€å§‹,
+	é€€å‡ºæ¸¸æˆ,
+	æŒ‰é”®è¯´æ˜,
+	è¿”å›æ¸¸æˆ
 };
 
 class GSPauseQuitLayer :public OptionsMenu

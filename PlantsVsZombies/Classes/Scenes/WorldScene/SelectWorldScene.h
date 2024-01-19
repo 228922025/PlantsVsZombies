@@ -19,7 +19,7 @@ class SelectWorldScene :public Scene
 {
 public:
 	CREATE_FUNC(SelectWorldScene);
-	static Scene* createScene();             /* ´´½¨³¡¾° */
+	static Scene* createScene();             /* åˆ›å»ºåœºæ™¯ */
 	static void createGalaxy(Node* node);
 
 CC_CONSTRUCTOR_ACCESS:

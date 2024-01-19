@@ -26,14 +26,14 @@ CC_CONSTRUCTOR_ACCESS:
 private:
     enum class Update_Button
     {
-        °Ù¶ÈÍøÅÌÏÂÔØ,
-        ÌÚÑ¶Î¢ÔÆÏÂÔØ,
-        Ö±½ÓÏÂÔØ,
-		ÍË³öÓÎÏ·,
-        È·¶¨
+        ç™¾åº¦ç½‘ç›˜ä¸‹è½½,
+        è…¾è®¯å¾®äº‘ä¸‹è½½,
+        ç›´æ¥ä¸‹è½½,
+		é€€å‡ºæ¸¸æˆ,
+        ç¡®å®š
     };
-    void createDiglog();	                                                       /* ´´½¨¶Ô»°¿ò */
-    void createButton(const std::string& name, Vec2& vec2, Update_Button button);  /* ´´½¨°´Å¥ */
+    void createDiglog();	                                                       /* åˆ›å»ºå¯¹è¯æ¡† */
+    void createButton(const std::string& name, Vec2& vec2, Update_Button button);  /* åˆ›å»ºæŒ‰é’® */
     void showText();
     void addScrollView();
     void addMouseEvent();
@@ -44,7 +44,7 @@ private:
     void downloadError();
 
 private:
-    Sprite* _dialog;    /* ¶Ô»°¿ò */
+    Sprite* _dialog;    /* å¯¹è¯æ¡† */
     std::unique_ptr<network::Downloader> _downloader;
     Label* _remindText;
     Label* _progressText;

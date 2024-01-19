@@ -52,21 +52,21 @@ void Jalapeno::createPlantAnimation()
 	_plantAnimation->setTimeScale(1.5f);
 	_node->addChild(_plantAnimation);
 
-	// Ó°×Ó
+	// å½±å­
 	setPlantShadow(1.8f);
 
-	// ÄàÍÁ·É½¦¶¯»­
+	// æ³¥åœŸé£žæº…åŠ¨ç”»
 	setPlantSoilSplashAnimation(0.8f);
 
-	// ÊÂ¼þ¼àÌý
+	// äº‹ä»¶ç›‘å¬
 	setEventListener();
 }
 
 void Jalapeno::plantExplode()
 {
-	if (!getPlantIsSurvive() || getPlantIsReadyExplode()) /* Ö²ÎïËÀÍö || Ö²Îï×¼±¸±¬Õ¨ */
+	if (!getPlantIsSurvive() || getPlantIsReadyExplode()) /* æ¤ç‰©æ­»äº¡ || æ¤ç‰©å‡†å¤‡çˆ†ç‚¸ */
 	{
-		if (!_isExplode) /* Èç¹ûÃ»ÓÐ±¬Õ¨ */
+		if (!_isExplode) /* å¦‚æžœæ²¡æœ‰çˆ†ç‚¸ */
 		{
 			_isExplode = true;
 			explodeHurtZombies();
@@ -86,7 +86,7 @@ void Jalapeno::showExplodeAnimation()
 		jalapenoFire->setPosition(Vec2(570 + 122 * i + 60, _plantAnimation->getPositionY() - 10));
 		jalapenoFire->setAnimation(0, "animation", false);
 		jalapenoFire->setScaleY(1.3f);
-		jalapenoFire->setLocalZOrder(_plantAnimation->getLocalZOrder() + 10); // Ö²Îï»æÖÆË³Ðò¼Ó10ÕýºÃµÈÓÚ½©Ê¬»æÖÆË³Ðò £¬±¬Õ¨¾Í¿ÉÒÔ¸²¸Çµ½½©Ê¬ÉÏÃæ
+		jalapenoFire->setLocalZOrder(_plantAnimation->getLocalZOrder() + 10); // æ¤ç‰©ç»˜åˆ¶é¡ºåºåŠ 10æ­£å¥½ç­‰äºŽåƒµå°¸ç»˜åˆ¶é¡ºåº ï¼Œçˆ†ç‚¸å°±å¯ä»¥è¦†ç›–åˆ°åƒµå°¸ä¸Šé¢
 		jalapenoFire->runAction(Sequence::create(DelayTime::create(2),
 			CallFunc::create([jalapenoFire]()
 				{

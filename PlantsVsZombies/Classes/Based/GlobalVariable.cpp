@@ -50,10 +50,10 @@ void Global::checkAnimationInterval()
 	if (_sumAnimationInterval <= 20 && _frequence > 60)
 	{
 		AudioEngine::stopAll();
-		wstring str = L"        ºÜ±§Ç¸£¡¼ì²âµ½³ÌĞòÔËĞĞµÄÆ½¾ùÖ¡ÊıÌ«µÍ¶ÔÓÎÏ·µÄ¿ÉÍæĞÔÓĞ¼«´óµÄÓ°Ïì¡£\
-ËùÒÔÇëµã»÷È·¶¨°´Å¥¹Ø±Õ´ËÓÎÏ·£¡¹Ø±Õ²»Ê¹ÓÃµÄÆäËû³ÌĞò»òÌáÉıµçÄÔÓ²¼şÅäÖÃµÈ²Ù×÷ºóÔÙ´Î³¢ÊÔÔËĞĞ´ËÓÎÏ·¡£";
+		wstring str = L"        å¾ˆæŠ±æ­‰ï¼æ£€æµ‹åˆ°ç¨‹åºè¿è¡Œçš„å¹³å‡å¸§æ•°å¤ªä½å¯¹æ¸¸æˆçš„å¯ç©æ€§æœ‰æå¤§çš„å½±å“ã€‚\
+æ‰€ä»¥è¯·ç‚¹å‡»ç¡®å®šæŒ‰é’®å…³é—­æ­¤æ¸¸æˆï¼å…³é—­ä¸ä½¿ç”¨çš„å…¶ä»–ç¨‹åºæˆ–æå‡ç”µè„‘ç¡¬ä»¶é…ç½®ç­‰æ“ä½œåå†æ¬¡å°è¯•è¿è¡Œæ­¤æ¸¸æˆã€‚";
 
-		if (MessageBoxW(Director::getInstance()->getOpenGLView()->getWin32Window(), str.c_str(), L"ÓÎÏ·Æ½¾ùÖ¡ÊıÌ«µÍ(Æ½¾ùFPS <= 20FPS)", MB_ICONERROR | MB_OK) == MB_OKCANCEL)
+		if (MessageBoxW(Director::getInstance()->getOpenGLView()->getWin32Window(), str.c_str(), L"æ¸¸æˆå¹³å‡å¸§æ•°å¤ªä½(å¹³å‡FPS <= 20FPS)", MB_ICONERROR | MB_OK) == MB_OKCANCEL)
 		{
 			Director::getInstance()->end();
 		}

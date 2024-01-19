@@ -81,7 +81,7 @@ void World_1::onEnter()
 				}), nullptr));
 	}
 
-	/* ²¥·ÅÒôÀÖ */
+	/* æ’­æ”¾éŸ³ä¹ */
 	PlayMusic::changeBgMusic("mainmusic2", true);
 }
 
@@ -157,7 +157,7 @@ void World_1::createScrollView()
 
 void World_1::addScrollView(const int id)
 {
-	/* ´´½¨±³¾°ÎïÆ· */
+	/* åˆ›å»ºèƒŒæ™¯ç‰©å“ */
 	const string name[5] = { {"World1_32"},{"World1_31"},{"World1_36"},{"World1_30"},{"World1_27"} };
 	const string name1[2] = { {"World1_22"},{"World1_40"}};
 
@@ -177,7 +177,7 @@ void World_1::addScrollView(const int id)
 		}
 	}
 	
-	/* ´´½¨ÏßÌõ */
+	/* åˆ›å»ºçº¿æ¡ */
 	auto draw = DrawNode::create();
 	draw->setOpacity(0);
 	Vec2 BeginPoint[53] =
@@ -221,7 +221,7 @@ void World_1::addScrollView(const int id)
 
 void World_1::showLevels()
 {
-	/* ´´½¨¹Ø¿¨ */
+	/* åˆ›å»ºå…³å¡ */
 	auto World1_38 = createSprite("World1_38", Vec2(10, _backgroundSize.height / 2.0f), 1.7f, 2, 0.5f, false);
 	auto sprite = Button::create("begingame.png", "", "", TextureResType::PLIST);
 	sprite->setPosition(Vec2(250, 230));
@@ -646,7 +646,7 @@ void World_1::createButtonListener(ui::Button* button, const int& ID)
 
 void World_1::readWorldLevel()
 {
-	/* ¶ÁÈ¡¸ÃÊÀ½ç¹Ø¿¨Êý¾Ý */
+	/* è¯»å–è¯¥ä¸–ç•Œå…³å¡æ•°æ® */
 	if (!_global->userInformation->getUserSelectWorldData().at(0)->isReadWoldInformation)
 	{
 		OpenLevelData::getInstance()->openLevelsData(
@@ -695,7 +695,7 @@ void World_1::createGoBack()
 
 				UserData::getInstance()->caveUserData(
 					_global->userInformation->getGameDifficulty() ? "WORLD_1_POSITION_DIF" : "WORLD_1_POSITION",
-					_scrollView->getScrolledPercentHorizontal()); /* ¼ÇÂ¼Î»ÖÃ */
+					_scrollView->getScrolledPercentHorizontal()); /* è®°å½•ä½ç½® */
 
 				_global->userInformation->setMainToWorld(false);
 				Director::getInstance()->replaceScene(TransitionFade::create(0.5f, SelectWorldScene::createScene()));
@@ -708,17 +708,17 @@ void World_1::playLevelGameAndCaveThings(const int id)
 {
 	UserData::getInstance()->caveUserData(
 		_global->userInformation->getGameDifficulty() ? "WORLD_1_POSITION_DIF" : "WORLD_1_POSITION",
-		_scrollView->getScrolledPercentHorizontal()); /* ¼ÇÂ¼Î»ÖÃ */
+		_scrollView->getScrolledPercentHorizontal()); /* è®°å½•ä½ç½® */
 
 	char LevelName[20] = {};
 	snprintf(LevelName, 20, "Level_%d", id);
-	//¶ÁÈ¡¹Ø¿¨ÐÅÏ¢
+	//è¯»å–å…³å¡ä¿¡æ¯
 	OpenLevelData::getInstance()->createLevelData(id, LevelName);
 	OpenLevelData::getInstance()->setLevelNumber(id);
 
 	_global->userInformation->setCurrentPlayLevels(id);
 	_global->userInformation->setCurrentPlayWorldTag(0);
-	_global->userInformation->setCurrentPlayWorldName(" - ÏÖ´úÊÀ½ç - ");
+	_global->userInformation->setCurrentPlayWorldName(" - çŽ°ä»£ä¸–ç•Œ - ");
 
 	UserData::getInstance()->createNewLevelDataDocument();
 	if (UserData::getInstance()->isHaveLevelData(_global->userInformation->getCurrentCaveFileLevelWorldName()))

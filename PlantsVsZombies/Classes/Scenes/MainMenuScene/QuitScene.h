@@ -25,11 +25,11 @@ CC_CONSTRUCTOR_ACCESS:
 	virtual bool init();
 
 private:
-	void createDiglog();	/* ´´½¨¶Ô»°¿ò */
-	void createButtons(const std::string& Label, Vec2& vec2, const int& ID);/* ´´½¨°´Å¥ */
+	void createDiglog();	/* åˆ›å»ºå¯¹è¯æ¡† */
+	void createButtons(const std::string& Label, Vec2& vec2, const int& ID);/* åˆ›å»ºæŒ‰é’® */
 	void caveTime(const int time);
 	virtual void deleteDialog() override;
 
 private:
-	Sprite* _quitDialog;    /* ¶Ô»°¿ò */
+	Sprite* _quitDialog;    /* å¯¹è¯æ¡† */
 };

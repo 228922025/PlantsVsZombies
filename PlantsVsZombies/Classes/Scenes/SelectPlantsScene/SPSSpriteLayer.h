@@ -50,19 +50,19 @@ CC_CONSTRUCTOR_ACCESS:
 	virtual bool init();
 
 public:
-	bool _selectFinished;                      /* ÊÇ·ñÑ¡ÔñÍê³É */
+	bool _selectFinished;                      /* æ˜¯å¦é€‰æ‹©å®Œæˆ */
 	vector<UserSelectCard> seedBankButton;
 
 private:
 	Global* _global;
 	Sprite* _seedChooser;
-	Text* _animationText[15];                  /* ¶¯»­ËµÃ÷ */
-	SkeletonAnimation* _plantsAnimation;       /* Ö²Îï¶¯»­ */
-	ui::ScrollView* _plantCardScrollView;      /* Ö²Îï¿¨ÅÆ¹ö¶¯ÊÓÍ¼ */
-	ui::ScrollView* _plantCardTextScrollView;  /* Ö²Îï¿¨ÅÆ¹ö¶¯ÊÓÍ¼ */
-	float _plantCardScrollViewPercent;         /* Ö²Îï¿¨ÅÆ¹ö¶¯ÊÓÍ¼¹ö¶¯¾àÀë */
-	float _plantCardRollingDistance;           /* ¼ÆËãÊó±ê¹ö¶¯¾àÀë */
-	unsigned int _plantsNumber;                /* Ö²ÎïÊıÁ¿ */
-	bool _isPlantIsCanSelect[13];              /* ÊÇ·ñ¿ÉÒÔÑ¡Ôñ¸ÃÖ²Îï */
+	Text* _animationText[15];                  /* åŠ¨ç”»è¯´æ˜ */
+	SkeletonAnimation* _plantsAnimation;       /* æ¤ç‰©åŠ¨ç”» */
+	ui::ScrollView* _plantCardScrollView;      /* æ¤ç‰©å¡ç‰Œæ»šåŠ¨è§†å›¾ */
+	ui::ScrollView* _plantCardTextScrollView;  /* æ¤ç‰©å¡ç‰Œæ»šåŠ¨è§†å›¾ */
+	float _plantCardScrollViewPercent;         /* æ¤ç‰©å¡ç‰Œæ»šåŠ¨è§†å›¾æ»šåŠ¨è·ç¦» */
+	float _plantCardRollingDistance;           /* è®¡ç®—é¼ æ ‡æ»šåŠ¨è·ç¦» */
+	unsigned int _plantsNumber;                /* æ¤ç‰©æ•°é‡ */
+	bool _isPlantIsCanSelect[13];              /* æ˜¯å¦å¯ä»¥é€‰æ‹©è¯¥æ¤ç‰© */
 };
 

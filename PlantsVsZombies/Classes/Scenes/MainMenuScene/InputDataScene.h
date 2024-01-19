@@ -35,11 +35,11 @@ protected:
 	virtual void deleteDialog() override;
 
 private:
-	/* ´´½¨¶Ô»°¿ò */
+	/* åˆ›å»ºå¯¹è¯æ¡† */
 	void createDialog();
 	void CreateInputDialog();
 
-	/* ´´½¨°´Å¥ */
+	/* åˆ›å»ºæŒ‰é’® */
 	void createButtons(Sprite* sprite, const std::string &Label, Vec2 &vec2, const float& scale, const int& ID);
 	void createDataButton(const std::string& Label, Vec2& vec2, const float& scale, const int& ID);
 	void createShieldLayer();
@@ -55,8 +55,8 @@ private:
 	LayerColor* _shieldDialogLayer;
 	Sprite* _caveFileDialog;
 	Sprite* _inputCursor;
-	Sprite* _inputDataDialog;                                /* ¶Ô»°¿ò */
-	EditBox* _editbox;                                       /* ÊäÈë¿ò */
+	Sprite* _inputDataDialog;                                /* å¯¹è¯æ¡† */
+	EditBox* _editbox;                                       /* è¾“å…¥æ¡† */
 	TextField* _textField;
 	Vec2  _beginPos;
 	string _inputString, _newInputstring, _lastString;

@@ -21,6 +21,6 @@ protected:
     virtual void plantAttack(Zombies* zombie) = 0;
 
 protected:
-    bool _isChanged;           // ÊÇ·ñ¸Ä±äÎª¹¥»÷ĞÎÌ¬
-    Bullet* _bulletAnimation;  // ×Óµ¯¶¯»­
+    bool _isChanged;           // æ˜¯å¦æ”¹å˜ä¸ºæ”»å‡»å½¢æ€
+    Bullet* _bulletAnimation;  // å­å¼¹åŠ¨ç”»
 };

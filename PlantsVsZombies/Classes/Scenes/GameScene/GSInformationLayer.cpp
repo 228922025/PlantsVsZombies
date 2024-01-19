@@ -40,10 +40,10 @@ bool GSInformationLayer::init()
 void GSInformationLayer::showUserText()
 {
 	char buff[128];
-	snprintf(buff, 128, "µÚ %d Ìì", _global->userInformation->getCurrentPlayLevels());
+	snprintf(buff, 128, "ç¬¬ %d å¤©", _global->userInformation->getCurrentPlayLevels());
 
 	auto username = ui::Text::create();
-	username->setString("¡°" + _global->userInformation->getUserName() + "¡±" + "µÄÊ±¿ÕÃ°ÏÕÖ®ÂÃ" + _global->userInformation->getCurrentPlayWorldName() + buff);
+	username->setString("â€œ" + _global->userInformation->getUserName() + "â€" + "çš„æ—¶ç©ºå†’é™©ä¹‹æ—…" + _global->userInformation->getCurrentPlayWorldName() + buff);
 	username->setFontName(GAME_FONT_NAME_1);
 	username->setFontSize(30);
 	username->setColor(Color3B(0, 255, 255));
@@ -64,9 +64,9 @@ void GSInformationLayer::showProgressBar()
 	_progressBar->setScaleX(3.0f);
 	_progressBar->setScaleY(2.0f);
 	_progressBar->setPosition(Vec2(240, 20));
-	_progressBar->setType(ProgressTimer::Type::BAR);  //ÉèÖÃÌõÐÎ½ø¶ÈÌõ
-	_progressBar->setBarChangeRate(Vec2(1, 0));       //ÉèÖÃºáÏò
-	_progressBar->setMidpoint(Vec2(1, 0));            //ÉèÖÃ´Ó×óÍùÓÒ
+	_progressBar->setType(ProgressTimer::Type::BAR);  //è®¾ç½®æ¡å½¢è¿›åº¦æ¡
+	_progressBar->setBarChangeRate(Vec2(1, 0));       //è®¾ç½®æ¨ªå‘
+	_progressBar->setMidpoint(Vec2(1, 0));            //è®¾ç½®ä»Žå·¦å¾€å³
 	//progressbar->setDirection(LoadingBar::Direction::RIGHT);
 	progressBarBackgroundImage->addChild(_progressBar, -1);
 
@@ -185,7 +185,7 @@ void GSInformationLayer::createPromptText()
 	promptText->setName("PromptText");
 	this->addChild(promptText);
 
-	auto requiretext = Label::createWithTTF(_global->userInformation->getGameText().find("ÌáÊ¾ÐÅÏ¢")->second, GAME_FONT_NAME_1, 40);
+	auto requiretext = Label::createWithTTF(_global->userInformation->getGameText().find("æç¤ºä¿¡æ¯")->second, GAME_FONT_NAME_1, 40);
 	requiretext->setColor(Color3B::WHITE);
 	requiretext->setPosition(Vec2(Director::getInstance()->getWinSize().width / 2.0f, 300));
 	requiretext->setName("requiretext");

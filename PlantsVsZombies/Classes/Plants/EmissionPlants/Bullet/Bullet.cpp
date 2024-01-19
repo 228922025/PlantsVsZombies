@@ -90,17 +90,17 @@ int Bullet::getBulletAttack() const
 
 void Bullet::bulletAttackHurtZombies(Zombies* zombie)
 {
-	if (zombie->getZombieCurrentBodyShieldVolume() < _attack) /* Èç¹ûµ±Ç°ÉíÌå»¤¶ÜÑªÁ¿Ð¡ÓÚ±¬Õ¨ÉËº¦ */
+	if (zombie->getZombieCurrentBodyShieldVolume() < _attack) /* å¦‚æžœå½“å‰èº«ä½“æŠ¤ç›¾è¡€é‡å°äºŽçˆ†ç‚¸ä¼¤å®³ */
 	{
-		if (zombie->getZombieCurrentBodyShieldVolume() + zombie->getZombieCurrentHeadShieldVolume() < _attack) /* Èç¹ûµ±Ç°ÉíÌå»¤¶Ü¼ÓÍ·²¿»¤¶ÜÑªÁ¿Ð¡ÓÚ±¬Õ¨ÉËº¦ */
+		if (zombie->getZombieCurrentBodyShieldVolume() + zombie->getZombieCurrentHeadShieldVolume() < _attack) /* å¦‚æžœå½“å‰èº«ä½“æŠ¤ç›¾åŠ å¤´éƒ¨æŠ¤ç›¾è¡€é‡å°äºŽçˆ†ç‚¸ä¼¤å®³ */
 		{
-			if (zombie->getZombieCurrentBodyShieldVolume() + zombie->getZombieCurrentHeadShieldVolume() + zombie->getZombieCurrentBloodVolume() <= _attack) /* Èç¹û½©Ê¬ËùÓÐÑªÁ¿Ð¡ÓÚ±¬Õ¨ÉËº¦£¨½©Ê¬ËÀÍö£© */
+			if (zombie->getZombieCurrentBodyShieldVolume() + zombie->getZombieCurrentHeadShieldVolume() + zombie->getZombieCurrentBloodVolume() <= _attack) /* å¦‚æžœåƒµå°¸æ‰€æœ‰è¡€é‡å°äºŽçˆ†ç‚¸ä¼¤å®³ï¼ˆåƒµå°¸æ­»äº¡ï¼‰ */
 			{
 				zombie->setZombieDeath(true);
 			}
 			else
 			{
-				/* ¼ÆËã½©Ê¬±¾ÌåÑªÁ¿ */
+				/* è®¡ç®—åƒµå°¸æœ¬ä½“è¡€é‡ */
 				zombie->setZombieCurrentBloodVolume(zombie->getZombieCurrentBodyShieldVolume() + zombie->getZombieCurrentHeadShieldVolume() + zombie->getZombieCurrentBloodVolume() - _attack);
 				zombie->setZombieCurrentHeadShieldVolume(0);
 				zombie->setZombieCurrentBodyShieldVolume(0);
@@ -108,7 +108,7 @@ void Bullet::bulletAttackHurtZombies(Zombies* zombie)
 		}
 		else
 		{
-			/* ¼ÆËã½©Ê¬»¤¶ÜÊ£ÓÚÑªÁ¿ */
+			/* è®¡ç®—åƒµå°¸æŠ¤ç›¾å‰©äºŽè¡€é‡ */
 			zombie->setZombieCurrentHeadShieldVolume(zombie->getZombieCurrentBodyShieldVolume() + zombie->getZombieCurrentHeadShieldVolume() - _attack);
 			zombie->setZombieCurrentBodyShieldVolume(0);
 		}

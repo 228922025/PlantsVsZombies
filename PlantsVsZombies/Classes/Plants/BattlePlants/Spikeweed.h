@@ -26,7 +26,7 @@ private:
 	void plantAnimationRecovery();
 
 private:
-	bool _isHaveZombies;         // �Ƿ��н�ʬ
-	bool _isAttack = true;         // �Ƿ񹥻�
+	bool _isHaveZombies;         // 是否有僵尸
+	bool _isAttack = true;         // 是否攻击
 	bool _isChanged;
 };

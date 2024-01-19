@@ -16,13 +16,13 @@
 using namespace cocos2d;
 using namespace cocos2d::ui;
 
-struct MouseSelectImage /* Êó±êÑ¡ÔñµÄÖ²Îï */
+struct MouseSelectImage /* é¼ æ ‡é€‰æ‹©çš„æ¤ç‰© */
 {
 	MouseSelectImage():Iamge(nullptr), isSelectPlants(false), isSelectShovel(false){}
-	Sprite* Iamge;                    /* Í¼Æ¬ */
-	PlantsType selectPlantsId;        /* ËùÑ¡Ö²Îï±àºÅ */
-	bool isSelectPlants;              /* ÊÇ·ñÑ¡ÔñÁËÖ²Îï */
-	bool isSelectShovel;              /* ÊÇ·ñÑ¡ÔñÁË²ù×Ó */
+	Sprite* Iamge;                    /* å›¾ç‰‡ */
+	PlantsType selectPlantsId;        /* æ‰€é€‰æ¤ç‰©ç¼–å· */
+	bool isSelectPlants;              /* æ˜¯å¦é€‰æ‹©äº†æ¤ç‰© */
+	bool isSelectShovel;              /* æ˜¯å¦é€‰æ‹©äº†é“²å­ */
 };
 
 class PlantsInformation
@@ -33,32 +33,32 @@ public:
 		PlantsCards():
 			timeBarIsFinished(false)
 		{}
-		Button* plantsCards;            /* ¿¨ÅÆ */
-		Text* plantsCardText;           /* ¿¨ÅÆÎÄ×Ö */
-		ProgressTimer* progressTimer;   /* µ¹¼ÆÊ± */
-		int plantsNeedSunNumbers;       /* ËùĞèÑô¹â */
-		int tag;                        /* ±àºÅ */
-		bool timeBarIsFinished;         /* µ¹¼ÆÊ±ÊÇ·ñÍê³É */
+		Button* plantsCards;            /* å¡ç‰Œ */
+		Text* plantsCardText;           /* å¡ç‰Œæ–‡å­— */
+		ProgressTimer* progressTimer;   /* å€’è®¡æ—¶ */
+		int plantsNeedSunNumbers;       /* æ‰€éœ€é˜³å…‰ */
+		int tag;                        /* ç¼–å· */
+		bool timeBarIsFinished;         /* å€’è®¡æ—¶æ˜¯å¦å®Œæˆ */
 	};
 
-	/* Ö²ÎïÀäÈ´Ê±¼ä */
+	/* æ¤ç‰©å†·å´æ—¶é—´ */
 	float PlantsCoolTime[13] =
 	{
-		/*ÏòÈÕ¿û*/  7.5f, /*Íã¶¹ÉäÊÖ    */  7.5f, /*¼á¹û    */  30,   /*Ó£ÌÒÕ¨µ¯*/     35,
-		/*ÍÁ¶¹À×*/  30,   /*¾íĞÄ²ËÍ¶ÊÖ  */  7.5f, /*»ğ¾æÊ÷×®*/  7.5f, /*µØ´Ì    */     7.5f,
-		/*´óËâ  */  10,   /*»ğÑæÍã¶¹ÉäÊÖ*/  10,   /*»ğ±¬À±½·*/  35,   /*Ç¿ËáÄûÃÊÉäÊÖ*/ 7.5f,
-		/*Àë×ÓÔµ*/  7.5f
+		/*å‘æ—¥è‘µ*/  7.5f, /*è±Œè±†å°„æ‰‹    */  7.5f, /*åšæœ    */  30,   /*æ¨±æ¡ƒç‚¸å¼¹*/     35,
+		/*åœŸè±†é›·*/  30,   /*å·å¿ƒèœæŠ•æ‰‹  */  7.5f, /*ç«ç‚¬æ ‘æ¡©*/  7.5f, /*åœ°åˆº    */     7.5f,
+		/*å¤§è’œ  */  10,   /*ç«ç„°è±Œè±†å°„æ‰‹*/  10,   /*ç«çˆ†è¾£æ¤’*/  35,   /*å¼ºé…¸æŸ æª¬å°„æ‰‹*/ 7.5f,
+		/*ç¦»å­ç¼˜*/  7.5f
 	};
-	/* Ö²ÎïËùĞèÑô¹â */
+	/* æ¤ç‰©æ‰€éœ€é˜³å…‰ */
 	int PlantsNeedSunNumbers[13] =
 	{
-		/*ÏòÈÕ¿û*/ 50, /*Íã¶¹ÉäÊÖ    */ 100, /*¼á¹û    */ 50,  /*Ó£ÌÒÕ¨µ¯*/     150,
-		/*ÍÁ¶¹À×*/ 25, /*¾íĞÄ²ËÍ¶ÊÖ  */ 100, /*»ğ¾æÊ÷×®*/ 175, /*µØ´Ì    */     100,
-		/*´óËâ  */ 50, /*»ğÑæÍã¶¹ÉäÊÖ*/ 200, /*»ğ±¬À±½·*/ 150, /*Ç¿ËáÄûÃÊÉäÊÖ*/ 125,
-		/*Àë×ÓÔµ*/ 350
+		/*å‘æ—¥è‘µ*/ 50, /*è±Œè±†å°„æ‰‹    */ 100, /*åšæœ    */ 50,  /*æ¨±æ¡ƒç‚¸å¼¹*/     150,
+		/*åœŸè±†é›·*/ 25, /*å·å¿ƒèœæŠ•æ‰‹  */ 100, /*ç«ç‚¬æ ‘æ¡©*/ 175, /*åœ°åˆº    */     100,
+		/*å¤§è’œ  */ 50, /*ç«ç„°è±Œè±†å°„æ‰‹*/ 200, /*ç«çˆ†è¾£æ¤’*/ 150, /*å¼ºé…¸æŸ æª¬å°„æ‰‹*/ 125,
+		/*ç¦»å­ç¼˜*/ 350
 	};
 
-	/* Ö²ÎïÊ£ÓàÀäÈ´Ê±¼ä */
+	/* æ¤ç‰©å‰©ä½™å†·å´æ—¶é—´ */
 	struct PlantsCardFileData
 	{
 		static float PlantsSurPlusCoolTime[13];
@@ -79,7 +79,7 @@ public:
 	CREATE_FUNC(GSButtonLayer);
 
 	/**
-	 *Ìí¼Óµ½Ö÷³¡¾°ÖĞ
+	 *æ·»åŠ åˆ°ä¸»åœºæ™¯ä¸­
 	 */
 	void addLayer(Node* node, const int order, const string& name) { node->addChild(this, order, name); }
 
@@ -102,16 +102,16 @@ private:
 	ProgressTimer* createProgressTimer(Button* button, const float _time, const int from, const unsigned int& id);
 	
 public:
-	MouseSelectImage* mouseSelectImage;                 // Êó±êÑ¡Ôñ
-	PlantsInformation* plantsInformation;               // Ö²ÎïÊôĞÔ
-	PlantsInformation::PlantsCards plantsCards[20];     // Ö²Îï¿¨Æ¬
+	MouseSelectImage* mouseSelectImage;                 // é¼ æ ‡é€‰æ‹©
+	PlantsInformation* plantsInformation;               // æ¤ç‰©å±æ€§
+	PlantsInformation::PlantsCards plantsCards[20];     // æ¤ç‰©å¡ç‰‡
 	
 private:
-	Global* _global;                                     // È«¾Ö±äÁ¿
-	Director* _director;                                 // µ¼Ñİµ¥Àı
-	Layer* _quitLayer;                                   // ÍË³öÆÁ±Î²ã
-	Button* _accelerateButton;                           // ¼ÓËÙ°´Å¥
-	Button* _decelerateButton;                           // ¼õËÙ°´Å¥
+	Global* _global;                                     // å…¨å±€å˜é‡
+	Director* _director;                                 // å¯¼æ¼”å•ä¾‹
+	Layer* _quitLayer;                                   // é€€å‡ºå±è”½å±‚
+	Button* _accelerateButton;                           // åŠ é€ŸæŒ‰é’®
+	Button* _decelerateButton;                           // å‡é€ŸæŒ‰é’®
 	OpenLevelData* _openLevelData;
 };
 

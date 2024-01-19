@@ -17,11 +17,11 @@ bool MirrorGameScene::init()
 	if (!Scene::init())return false;
 
 	controlPlayMusic();
-	backgroundLayer();   // ±³¾°²ã
-	informationLayer();  // ĞÅÏ¢²ã
-	buttonLayer();       // °´Å¥²ã
-	controlLayer();      // ¿ØÖÆ²ã
-	animationLayer();    // ¶¯»­²ã
+	backgroundLayer();   // èƒŒæ™¯å±‚
+	informationLayer();  // ä¿¡æ¯å±‚
+	buttonLayer();       // æŒ‰é’®å±‚
+	controlLayer();      // æ§åˆ¶å±‚
+	animationLayer();    // åŠ¨ç”»å±‚
 
     pauseGame();
     createMirrorWorld();

@@ -23,19 +23,19 @@ class Zombies;
 enum class PlantsType
 {
 	None = -1,
-	SunFlower,          /* ÏòÈÕ¿û */
-	PeaShooter,         /* Íã¶¹ÉäÊÖ */
-	WallNut,            /* ¼á¹ûÇ½ */
-	CherryBomb,         /* Ó£ÌÒÕ¨µ¯ */
-	PotatoMine,         /* ÍÁ¶¹À× */
-	CabbagePult,        /* ¾íĞÄ²ËÍ¶ÊÖ */
-	Torchwood,          /* »ğ¾æÊ÷×® */
-	Spikeweed,          /* µØ´Ì */
-	Garlic,             /* ´óËâ */
-	FirePeaShooter,     /* »ğÑæÍã¶¹ÉäÊÖ */
-	Jalapeno,           /* »ğ±¬À±½· */
-	AcidLemonShooter,   /* Ç¿ËáÄûÃÊÉäÊÖ */
-	Citron              /* Àë×ÓÔµ */
+	SunFlower,          /* å‘æ—¥è‘µ */
+	PeaShooter,         /* è±Œè±†å°„æ‰‹ */
+	WallNut,            /* åšæœå¢™ */
+	CherryBomb,         /* æ¨±æ¡ƒç‚¸å¼¹ */
+	PotatoMine,         /* åœŸè±†é›· */
+	CabbagePult,        /* å·å¿ƒèœæŠ•æ‰‹ */
+	Torchwood,          /* ç«ç‚¬æ ‘æ¡© */
+	Spikeweed,          /* åœ°åˆº */
+	Garlic,             /* å¤§è’œ */
+	FirePeaShooter,     /* ç«ç„°è±Œè±†å°„æ‰‹ */
+	Jalapeno,           /* ç«çˆ†è¾£æ¤’ */
+	AcidLemonShooter,   /* å¼ºé…¸æŸ æª¬å°„æ‰‹ */
+	Citron              /* ç¦»å­ç¼˜ */
 	//...
 };  
 
@@ -43,117 +43,117 @@ class  Plants :public Node
 {
 public:
 	/**
-	 *ÔİÍ£Ö²ÎïËùÓĞ¶¯×÷
+	 *æš‚åœæ¤ç‰©æ‰€æœ‰åŠ¨ä½œ
 	 */
 	static void stopPlantsAllAction();
 
 	/**
-	 *´´½¨Í¼Æ¬
+	 *åˆ›å»ºå›¾ç‰‡
 	*/
 	virtual Sprite* createPlantImage() = 0;
 
 	/**
-	 *´´½¨Ö²Îï¶¯»­
+	 *åˆ›å»ºæ¤ç‰©åŠ¨ç”»
 	 */
 	virtual void createPlantAnimation() = 0;
 
 	/**
-	 *ÅĞ¶Ï½©Ê¬ÓëÖ²ÎïÖ®¼äµÄÏà¶ÔÎ»ÖÃ
+	 *åˆ¤æ–­åƒµå°¸ä¸æ¤ç‰©ä¹‹é—´çš„ç›¸å¯¹ä½ç½®
 	 */
 	virtual void determineRelativePositionPlantsAndZombies();
 
 	/**
-	 *¼ì²âÖ²ÎïÉúÃüÇé¿ö
+	 *æ£€æµ‹æ¤ç‰©ç”Ÿå‘½æƒ…å†µ
 	 */
 	virtual void checkPlantHealthPoint() {}
 
 	/**
-	 *ÉèÖÃ½Úµã
+	 *è®¾ç½®èŠ‚ç‚¹
 	 */
 	virtual void setPlantNode(Node* node) { _node = node; }
 
 	/**
-	 *ÉèÖÃÎ»ÖÃ
+	 *è®¾ç½®ä½ç½®
 	 */
 	virtual void setPlantPosition(const Vec2& position) { _position = position; }
 
 	/**
-	 *ÉèÖÃ»æÖÆË³Ğò
+	 *è®¾ç½®ç»˜åˆ¶é¡ºåº
 	 */
 	virtual void setPlantLocalZOrder(const int& order) { _zOrder = order; }
 
 	/**
-	 *ÉèÖÃÖ²ÎïËùÔÚĞĞÁĞ
+	 *è®¾ç½®æ¤ç‰©æ‰€åœ¨è¡Œåˆ—
 	 */
 	virtual void setPlantRowAndColumn(const Vec2& rowAndColumn) { _rowAndColumn = rowAndColumn; }
 
 	/**
-	 *ÉèÖÃÖ²ÎïÊÇ·ñ¿É¼û
+	 *è®¾ç½®æ¤ç‰©æ˜¯å¦å¯è§
 	 */
 	virtual void setPlantVisible(const bool visible);
 
 	/**
-	 *»ñÈ¡Ö²ÎïÀàĞÍ
+	 *è·å–æ¤ç‰©ç±»å‹
 	 */
 	PlantsType getPlantType() const { return _plantsType; }
 
 	/**
-	 *ÉèÖÃÖ²Îï±ê¼Ç
+	 *è®¾ç½®æ¤ç‰©æ ‡è®°
 	 */
 	virtual void setPlantTag(const int& tag) { _plantTag = tag; }
 
 	/**
-	 *ÉèÖÃÖ²ÎïÉúÃüÖµ
+	 *è®¾ç½®æ¤ç‰©ç”Ÿå‘½å€¼
 	 */
 	virtual void setPlantHealthPoint(int healthPoint) { _healthPoint = healthPoint; }
 
 	/**
-	 *ÉèÖÃÖ²Îï´óĞ¡
+	 *è®¾ç½®æ¤ç‰©å¤§å°
 	 */
 	virtual void setPlantScale();
 
 	/**
-	 *»ñÈ¡Ö²Îï±ê¼Ç
+	 *è·å–æ¤ç‰©æ ‡è®°
 	 */
 	virtual int getPlantTag() const { return _plantTag; }
 
 	/**
-	 *»ñÈ¡¶¯»­
+	 *è·å–åŠ¨ç”»
 	 */
 	SkeletonAnimation* getPlantAnimation() { return _plantAnimation; }
 
 	/**
-	 *ÅĞ¶ÏÖ²ÎïÊÇ·ñ´æ»î
+	 *åˆ¤æ–­æ¤ç‰©æ˜¯å¦å­˜æ´»
 	 */
 	virtual bool getPlantIsSurvive() const;
 
 	/**
-	 *»ñÈ¡Ö²ÎïÉúÃüÖµ
+	 *è·å–æ¤ç‰©ç”Ÿå‘½å€¼
 	 */
 	virtual float getPlantHealthPoint() const { return _healthPoint; }
 
 	/**
-	 *@ 1.»ñÈ¡Ö²ÎïËùÔÚĞĞÁĞ
+	 *@ 1.è·å–æ¤ç‰©æ‰€åœ¨è¡Œåˆ—
 	 */
 	virtual Vec2 getPlantRowAndColumn() const { return _rowAndColumn; }
 
 	/**
-	 *@ 2.»ñÈ¡Ö²ÎïËùÔÚĞĞ
+	 *@ 2.è·å–æ¤ç‰©æ‰€åœ¨è¡Œ
 	 */
 	virtual int getPlantRow() const { return _rowAndColumn.x; }
 
 	/**
-	 *@ 3.»ñÈ¡Ö²ÎïËùÔÚÁĞ
+	 *@ 3.è·å–æ¤ç‰©æ‰€åœ¨åˆ—
 	 */
 	virtual int getPlantColumn() const { return _rowAndColumn.y; }
 
 	/**
-	 *»ñÈ¡ÊÇ·ñÏÔÊ¾
+	 *è·å–æ˜¯å¦æ˜¾ç¤º
 	 */
 	virtual bool getPlantVisible();
 
 	/**
-	 *»ñÈ¡Ö²ÎïÊÇ·ñ¿ÉÒÔÉ¾³ı
+	 *è·å–æ¤ç‰©æ˜¯å¦å¯ä»¥åˆ é™¤
 	 */
 	virtual bool* getPlantIsCanDelete();
 
@@ -163,58 +163,58 @@ CC_CONSTRUCTOR_ACCESS:
 	
 protected:
 	/**
-	 *ÖÖÖ²Ö²Îï
+	 *ç§æ¤æ¤ç‰©
 	 */
 	virtual SkeletonAnimation* plantInit(const std::string& plantname, const std::string& animaionname);
 
 	/**
-	 *´´½¨Ö²ÎïÍ¼Æ¬
+	 *åˆ›å»ºæ¤ç‰©å›¾ç‰‡
 	 */
 	virtual void imageInit(const std::string& name, const Vec2& position);
 
 	/**
-	 *¼õÉÙÖ²ÎïÉúÃüÖµ
+	 *å‡å°‘æ¤ç‰©ç”Ÿå‘½å€¼
 	 */
 	virtual void reducePlantHealthPoint(int number) { _healthPoint -= number; }
 
 	/**
-	 *ÄàÍÁ·É½¦¶¯»­
+	 *æ³¥åœŸé£æº…åŠ¨ç”»
 	 */
 	virtual void setPlantSoilSplashAnimation(const float& scale);
 
 	/**
-	 *ÉèÖÃÖ²ÎïÓ°×Ó
+	 *è®¾ç½®æ¤ç‰©å½±å­
 	 */
 	virtual void setPlantShadow(const float& scale);
 
 	/**
-	 *ÉèÖÃÖ²ÎïÊÜµ½ÉËº¦ÉÁË¸
+	 *è®¾ç½®æ¤ç‰©å—åˆ°ä¼¤å®³é—ªçƒ
 	 */
 	virtual void setPlantHurtBlink();
 	virtual void setPlantHurtBlink(PlantsType type) const;
 
 	/**
-	 *»ñÈ¡½©Ê¬ÊÇ·ñÔÚÖ²ÎïÇ°·½
+	 *è·å–åƒµå°¸æ˜¯å¦åœ¨æ¤ç‰©å‰æ–¹
 	 */
 	virtual bool getZombieIsTheFrontOfPlant(Zombies* zombie) const;
 
 	/**
-	 *»ñÈ¡½©Ê¬ÊÇ·ñÓÚÖ²ÎïÔÚÍ¬Ò»ĞĞ
+	 *è·å–åƒµå°¸æ˜¯å¦äºæ¤ç‰©åœ¨åŒä¸€è¡Œ
 	 */
 	virtual bool getZombieIsSameLineWithPlant(Zombies* zombie) const;
 
 	/**
-	 *»ñÈ¡½©Ê¬ÊÇ·ñÓöµ½Ö²Îï
+	 *è·å–åƒµå°¸æ˜¯å¦é‡åˆ°æ¤ç‰©
 	 */
 	virtual bool getzombieIsEncounterPlant(Zombies* zombie) const;
 
 	/**
-	 *½©Ê¬³ÔÖ²Îï
+	 *åƒµå°¸åƒæ¤ç‰©
 	 */
 	virtual void zombieEatPlant(Zombies* zombie);
 
 	/**
-	 *½©Ê¬´Ó³ÔÖ²ÎïÖĞ»Ö¸´
+	 *åƒµå°¸ä»åƒæ¤ç‰©ä¸­æ¢å¤
 	 */
 	virtual void zombieRecoveryMove(Zombies* zombie);
 
@@ -222,28 +222,28 @@ private:
 	void setPlantGLProgram();
 
 protected:
-	int _sunNeed;                               // Ñô¹âĞèÇó
-	int _costGold;                              // »¨·Ñ½ğ±Ò
-	int _costMasonry;                           // »¨·Ñ×©Ê¯
-	int _combatEffecttiveness;                  // Õ½¶·Á¦
-	int _plantTag;                              // Ö²Îï±êÇ©
-	int _zOrder;                                // »æÖÆË³Ğò
-	int _plantNumber;                           // ´æ´¢Ö²Îï±àºÅ£¨Î¨Ò»ĞÔ £©
-	bool _isLoop;                               // ÊÇ·ñÑ­»·
-	bool _isCanDelete[2];                       // ÊÇ·ñ¿ÉÒÔÉ¾³ı
-	float _coolDownTime;                        // ÀäÈ´Ê±¼ä
-	float _healthPoint;                         // ÉúÃüÖµ
-	float _totalHealthPoint;                    // ÉúÃü×ÜÖµ
-	Vec2 _position;                             // Î»ÖÃ
-	Vec2 _rowAndColumn;                         // ÏêÏ¸µØÖ·,ËùÔÚĞĞÁĞ
-	SkeletonAnimation* _plantAnimation;         // Ö²Îï¶¯»­
-	Node* _node;                                // ½Úµã
-	Global* _global;                            // È«¾Ö±äÁ¿
-	Sprite* _plantImage;                        // Ö²ÎïÍ¼Æ¬
-	Sprite* _plantShadow;                       // Ö²ÎïÓ°×Ó
-	PlantsType _plantsType;                     // Ö²ÎïÀàĞÍ
-	SkeletonAnimation* _soilSplashAnimation;    // ÄàÍÁ·É½¦¶¯»­
-	static int plantNumber;                     // Ö²Îï±àºÅ£¨Î¨Ò»ĞÔ£©
+	int _sunNeed;                               // é˜³å…‰éœ€æ±‚
+	int _costGold;                              // èŠ±è´¹é‡‘å¸
+	int _costMasonry;                           // èŠ±è´¹ç –çŸ³
+	int _combatEffecttiveness;                  // æˆ˜æ–—åŠ›
+	int _plantTag;                              // æ¤ç‰©æ ‡ç­¾
+	int _zOrder;                                // ç»˜åˆ¶é¡ºåº
+	int _plantNumber;                           // å­˜å‚¨æ¤ç‰©ç¼–å·ï¼ˆå”¯ä¸€æ€§ ï¼‰
+	bool _isLoop;                               // æ˜¯å¦å¾ªç¯
+	bool _isCanDelete[2];                       // æ˜¯å¦å¯ä»¥åˆ é™¤
+	float _coolDownTime;                        // å†·å´æ—¶é—´
+	float _healthPoint;                         // ç”Ÿå‘½å€¼
+	float _totalHealthPoint;                    // ç”Ÿå‘½æ€»å€¼
+	Vec2 _position;                             // ä½ç½®
+	Vec2 _rowAndColumn;                         // è¯¦ç»†åœ°å€,æ‰€åœ¨è¡Œåˆ—
+	SkeletonAnimation* _plantAnimation;         // æ¤ç‰©åŠ¨ç”»
+	Node* _node;                                // èŠ‚ç‚¹
+	Global* _global;                            // å…¨å±€å˜é‡
+	Sprite* _plantImage;                        // æ¤ç‰©å›¾ç‰‡
+	Sprite* _plantShadow;                       // æ¤ç‰©å½±å­
+	PlantsType _plantsType;                     // æ¤ç‰©ç±»å‹
+	SkeletonAnimation* _soilSplashAnimation;    // æ³¥åœŸé£æº…åŠ¨ç”»
+	static int plantNumber;                     // æ¤ç‰©ç¼–å·ï¼ˆå”¯ä¸€æ€§ï¼‰
 
 private:
 	static GLProgram* _normalGLProgram;

@@ -24,7 +24,7 @@ void Dialog::setMouseListenerEnable(bool isEnable)
 
 EventListenerTouchOneByOne* Dialog::createTouchtListener(Sprite* sprite)
 {
-	/* ´´½¨´¥Ãþ¼àÌý */
+	/* åˆ›å»ºè§¦æ‘¸ç›‘å¬ */
 	static Vec2 phasePosition = Vec2(Vec2::ZERO);
 	auto listener = EventListenerTouchOneByOne::create();
 	listener->onTouchBegan = [&,sprite](Touch *t, Event *e) {
@@ -49,8 +49,8 @@ Label* Dialog::label(const std::string &name, const float& fontsize, Vec2 &vec2,
 	auto label = Label::createWithTTF(name, GAME_FONT_NAME_1, fontsize);
 	label->setScaleX(scale);
 	label->setColor(color);
-	label->setAdditionalKerning(space);//ÉèÖÃÁÐ¼ä¾à
-	label->enableShadow(Color4B(100, 20, 100, 255));//ÉèÖÃÒõÓ°
+	label->setAdditionalKerning(space);//è®¾ç½®åˆ—é—´è·
+	label->enableShadow(Color4B(100, 20, 100, 255));//è®¾ç½®é˜´å½±
 	label->setPosition(vec2);
 	return label;
 }
@@ -60,8 +60,8 @@ void Dialog::createLabel(Sprite* sprite, MenuItemImage* MenuItem, const std::str
 	auto label = Label::createWithTTF(name, GAME_FONT_NAME_1, fontsize);
 	label->setPosition(vec2);
 	label->setColor(color);
-	label->enableShadow(Color4B(100, 25, 100, 255));//ÉèÖÃÒõÓ°
-	label->setAdditionalKerning(space);//ÉèÖÃÁÐ¼ä¾à
+	label->enableShadow(Color4B(100, 25, 100, 255));//è®¾ç½®é˜´å½±
+	label->setAdditionalKerning(space);//è®¾ç½®åˆ—é—´è·
 	MenuItem->addChild(label);
 
 	auto Buttons = Menu::create(MenuItem, NULL);

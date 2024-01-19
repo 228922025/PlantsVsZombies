@@ -14,11 +14,11 @@
 
 #include "Zombies/Zombies.h"
 
-GSBackgroundLayer* backgroundLayerInformation;   // 背景层实例化
-GSInformationLayer* informationLayerInformation; // 信息层实例化
-GSButtonLayer* buttonLayerInformation;           // 按钮层实例化
-GSControlLayer* controlLayerInformation;         // 控制层实例化
-GSAnimationLayer* animationLayerInformation;     // 动画层示例化
+GSBackgroundLayer* backgroundLayerInformation;   // 鑳屾櫙灞傚疄渚嬪寲
+GSInformationLayer* informationLayerInformation; // 淇℃伅灞傚疄渚嬪寲
+GSButtonLayer* buttonLayerInformation;           // 鎸夐挳灞傚疄渚嬪寲
+GSControlLayer* controlLayerInformation;         // 鎺у埗灞傚疄渚嬪寲
+GSAnimationLayer* animationLayerInformation;     // 鍔ㄧ敾灞傜ず渚嬪寲
 
 multimap<int, Plants*> PlantsGroup;
 list<Zombies*> ZombiesGroup;

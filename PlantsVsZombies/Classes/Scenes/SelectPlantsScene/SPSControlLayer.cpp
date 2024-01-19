@@ -23,10 +23,10 @@ bool SPSControlLayer::init()
 {
 	if (!Layer::init()) return false;
 
-	/* ´´½¨°´Å¥ */
+	/* åˆ›å»ºæŒ‰é’® */
 	createButton();
 
-	/* ÏÔÊ¾ÓÃ»§Ãû×Ö */
+	/* æ˜¾ç¤ºç”¨æˆ·åå­— */
 	showUserName();
 
 	return true;
@@ -34,7 +34,7 @@ bool SPSControlLayer::init()
 
 void SPSControlLayer::createButton()
 {
-	/* ´´½¨ÍË³ö°´Å¥ */
+	/* åˆ›å»ºé€€å‡ºæŒ‰é’® */
 	auto button = ui::Button::create("StopButton.png", "StopButtonDown.png", "", TextureResType::PLIST);
 	button->setPosition(Vec2(1870, 1030));
 	button->setScale(0.7f);
@@ -56,11 +56,11 @@ void SPSControlLayer::createButton()
 void SPSControlLayer::showUserName()
 {
 	char buff[128];
-	snprintf(buff, 128, "µÚ %d Ìì", _global->userInformation->getCurrentPlayLevels());
+	snprintf(buff, 128, "ç¬¬ %d å¤©", _global->userInformation->getCurrentPlayLevels());
 
 	auto username = Text::create();
-	username->setString("¡°" + _global->userInformation->getUserName() + "¡±" +
-		_global->userInformation->getGameText().find("µÄÊ±¿ÕÃ°ÏÕÖ®ÂÃ")->second +
+	username->setString("â€œ" + _global->userInformation->getUserName() + "â€" +
+		_global->userInformation->getGameText().find("çš„æ—¶ç©ºå†’é™©ä¹‹æ—…")->second +
 		_global->userInformation->getCurrentPlayWorldName() + buff);
 	username->setFontName(GAME_FONT_NAME_1);
 	username->setFontSize(60);

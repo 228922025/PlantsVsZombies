@@ -29,7 +29,7 @@ int WINAPI _tWinMain(HINSTANCE hInstance,
         {
             CloseHandle(hMutex);
             hMutex = NULL;
-            MessageBoxW(nullptr, L"´Ë³ÌĞòÒÑ¾­Æô¶¯£¬½ûÖ¹¶à´ÎÆô¶¯´Ë³ÌĞò!", L"error", MB_OK);
+            MessageBoxW(nullptr, L"æ­¤ç¨‹åºå·²ç»å¯åŠ¨ï¼Œç¦æ­¢å¤šæ¬¡å¯åŠ¨æ­¤ç¨‹åº!", L"error", MB_OK);
 
             return 0;
         }

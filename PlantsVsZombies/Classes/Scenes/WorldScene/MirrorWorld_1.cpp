@@ -20,7 +20,7 @@ MirrorWorld_1::MirrorWorld_1()
     _worldPosition = UserData::getInstance()->openDoubleUserData(
         _global->userInformation->getGameDifficulty() ? "WORLD_2_POSITION_DIF" : "WORLD_2_POSITION");
 
-    /* ²¥·ÅÒôÀÖ */
+    /* æ’­æ”¾éŸ³ä¹ */
     PlayMusic::changeBgMusic("mainmusic2", true);
 }
 
@@ -69,7 +69,7 @@ void MirrorWorld_1::createScrollView()
 
 void MirrorWorld_1::readWorldLevel()
 {
-    /* ¶ÁÈ¡¸ÃÊÀ½ç¹Ø¿¨Êý¾Ý */
+    /* è¯»å–è¯¥ä¸–ç•Œå…³å¡æ•°æ® */
     if (!_global->userInformation->getUserSelectWorldData().at(1)->isReadWoldInformation)
     {
         OpenLevelData::getInstance()->openLevelsData(
@@ -165,15 +165,15 @@ void MirrorWorld_1::createButtonListener(ui::Button* button, const int& ID)
 
                 UserData::getInstance()->caveUserData(
                     _global->userInformation->getGameDifficulty() ? "WORLD_2_POSITION_DIF" : "WORLD_2_POSITION",
-                    _scrollView->getScrolledPercentHorizontal()); /* ¼ÇÂ¼Î»ÖÃ */
+                    _scrollView->getScrolledPercentHorizontal()); /* è®°å½•ä½ç½® */
 
-                //¶ÁÈ¡¹Ø¿¨ÐÅÏ¢
+                //è¯»å–å…³å¡ä¿¡æ¯
                 OpenLevelData::getInstance()->createLevelData(ID, LevelName);
                 OpenLevelData::getInstance()->setLevelNumber(ID);
 
                 _global->userInformation->setCurrentPlayLevels(ID);
                 _global->userInformation->setCurrentPlayWorldTag(1);
-                _global->userInformation->setCurrentPlayWorldName(" - ¾µÏñÊÀ½ç - ");
+                _global->userInformation->setCurrentPlayWorldName(" - é•œåƒä¸–ç•Œ - ");
 
                 Director::getInstance()->pushScene(TransitionFade::create(1.0f, MirrorSelectPlantsScene::createScene()));
 
@@ -219,7 +219,7 @@ void MirrorWorld_1::createGoBack()
 
                 UserData::getInstance()->caveUserData(
                     _global->userInformation->getGameDifficulty() ? "WORLD_2_POSITION_DIF" : "WORLD_2_POSITION",
-                    _scrollView->getScrolledPercentHorizontal()); /* ¼ÇÂ¼Î»ÖÃ */
+                    _scrollView->getScrolledPercentHorizontal()); /* è®°å½•ä½ç½® */
 
                 _global->userInformation->setMainToWorld(false);
                 Director::getInstance()->replaceScene(TransitionFade::create(0.5f, SelectWorldScene::createScene()));

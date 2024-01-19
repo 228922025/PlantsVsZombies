@@ -31,8 +31,8 @@ private:
 	int calculateGreatEvocationProbability();
 
 private:
-	int _attackInterval;              // ¹¥»÷¼ä¸ô
-	int _animationId;                 // ¶¯»­±àºÅ
-	bool _isBaginReady;               // ÊÇ·ñÒÑ¾­¿ªÊ¼×¼±¸
-	bool _readyFinished;              // ×¼±¸Íê³É
+	int _attackInterval;              // æ”»å‡»é—´éš”
+	int _animationId;                 // åŠ¨ç”»ç¼–å·
+	bool _isBaginReady;               // æ˜¯å¦å·²ç»å¼€å§‹å‡†å¤‡
+	bool _readyFinished;              // å‡†å¤‡å®Œæˆ
 };

@@ -35,9 +35,9 @@ void CitronBullet::bulletAndZombiesCollision()
 {
 	for (auto zombie : ZombiesGroup)
 	{
-		if (!_isUsed && getBulletIsSameLineWithZombie(zombie) &&  /* Ã»ÓÐ±»Ê¹ÓÃ && ½©Ê¬ÔÚÍ¬Ò»ÐÐ */
-			getBulletIsEncounterWithZombie(zombie) &&   /* Óë½©Ê¬Åö×² */
-			zombie->getZombieIsSurvive() && zombie->getZombieIsEnterMap()) /* ½©Ê¬Ã»ÓÐËÀÍö && ½©Ê¬½øÈëµØÍ¼ÄÚ */
+		if (!_isUsed && getBulletIsSameLineWithZombie(zombie) &&  /* æ²¡æœ‰è¢«ä½¿ç”¨ && åƒµå°¸åœ¨åŒä¸€è¡Œ */
+			getBulletIsEncounterWithZombie(zombie) &&   /* ä¸Žåƒµå°¸ç¢°æ’ž */
+			zombie->getZombieIsSurvive() && zombie->getZombieIsEnterMap()) /* åƒµå°¸æ²¡æœ‰æ­»äº¡ && åƒµå°¸è¿›å…¥åœ°å›¾å†… */
 		{
 			if (_animationId)
 			{
@@ -61,9 +61,9 @@ void CitronBullet::bulletAndZombiesCollision()
 			{
 				playSoundEffect("cherrybomb");
 
-				setBulletOpacity(); /* ×Óµ¯ÏûÊ§ */
-				attackZombies();    /* ±¬Õ¨¶Ô½©Ê¬Ôì³ÉÉËº¦ */
-				createExplode();    /* ´´½¨±¬Õ¨¶¯»­ */
+				setBulletOpacity(); /* å­å¼¹æ¶ˆå¤± */
+				attackZombies();    /* çˆ†ç‚¸å¯¹åƒµå°¸é€ æˆä¼¤å®³ */
+				createExplode();    /* åˆ›å»ºçˆ†ç‚¸åŠ¨ç”» */
 				setBulletAttack(0);
 				setBulletIsUsed(true);
 
@@ -101,7 +101,7 @@ void CitronBullet::bulletInit()
 
 void CitronBullet::createShadow()
 {
-	/* ´´½¨Ó°×Ó */
+	/* åˆ›å»ºå½±å­ */
 	auto shadow = Sprite::createWithSpriteFrameName("plantshadow.png");
 	shadow->setScale(1.7f);
 	shadow->setName("shadow");
@@ -146,7 +146,7 @@ void CitronBullet::attackZombies()
 
 float CitronBullet::getZombieInExplodeRange(Zombies* zombie)
 {
-	/* ½©Ê¬ÊÇ·ñÔÚ±¬Õ¨·¶Î§ÅÐ¶Ï */
+	/* åƒµå°¸æ˜¯å¦åœ¨çˆ†ç‚¸èŒƒå›´åˆ¤æ–­ */
 	return sqrt(pow(zombie->getZombieAnimation()->getPositionX() - _bulletAnimation->getPositionX(), 2) +
 		pow(zombie->getZombieAnimation()->getPositionY() - _bulletAnimation->getPositionY(), 2));
 }

@@ -90,7 +90,7 @@ void GSControlLayer::controlCardEnabled()
 {
 	for (auto& card : _global->userInformation->getUserSelectCrads())
 	{
-		/* Èç¹ûÖ²ÎïËùĞèÑô¹âÊı´óÓÚÓµÓĞÑô¹âÊı */
+		/* å¦‚æœæ¤ç‰©æ‰€éœ€é˜³å…‰æ•°å¤§äºæ‹¥æœ‰é˜³å…‰æ•° */
 		if (buttonLayerInformation->plantsCards[card.cardTag].plantsNeedSunNumbers > _global->userInformation->getSunNumbers())
 		{
 			buttonLayerInformation->plantsCards[card.cardTag].plantsCardText->setColor(Color3B::RED);
@@ -99,11 +99,11 @@ void GSControlLayer::controlCardEnabled()
 		{
 			buttonLayerInformation->plantsCards[card.cardTag].plantsCardText->setColor(Color3B::BLACK);
 		}
-		/* Èç¹û¿¨ÅÆÌî³äµ¹¼ÆÊ±Íê³É */
+		/* å¦‚æœå¡ç‰Œå¡«å……å€’è®¡æ—¶å®Œæˆ */
 		if (buttonLayerInformation->plantsCards[card.cardTag].timeBarIsFinished)
 		{
 			buttonLayerInformation->plantsCards[card.cardTag].plantsCards->setEnabled(true);
-			/* Èç¹ûÖ²ÎïËùĞèÑô¹âÊıĞ¡ÓÚÑô¹âÊı */
+			/* å¦‚æœæ¤ç‰©æ‰€éœ€é˜³å…‰æ•°å°äºé˜³å…‰æ•° */
 			if (buttonLayerInformation->plantsCards[card.cardTag].plantsNeedSunNumbers <= _global->userInformation->getSunNumbers())
 			{
 				buttonLayerInformation->plantsCards[card.cardTag].plantsCards->setColor(Color3B::WHITE);
@@ -130,7 +130,7 @@ void GSControlLayer::calculatePlantPosition()
 		}
 	}
 
-	/* Èç¹û²»ÔÚ·¶Î§ÄÚ£¬ÒÆ³ıµ½»­ÃæÍâ */
+	/* å¦‚æœä¸åœ¨èŒƒå›´å†…ï¼Œç§»é™¤åˆ°ç”»é¢å¤– */
 	if (GRASS_OUTSIDE(_cur))
 	{
 		_plantsPosition.x = 100;
@@ -140,18 +140,18 @@ void GSControlLayer::calculatePlantPosition()
 
 void GSControlLayer::createMouseListener()
 {
-	/* ´´½¨Êó±ê¼àÌı */
+	/* åˆ›å»ºé¼ æ ‡ç›‘å¬ */
 	auto Mouse = EventListenerMouse::create();
 
-	/* Êó±êÒÆ¶¯ */
+	/* é¼ æ ‡ç§»åŠ¨ */
 	Mouse->onMouseMove = [&](Event* event)
 	{
-		/* »ñÈ¡Êó±êÎ»ÖÃ */
+		/* è·å–é¼ æ ‡ä½ç½® */
 		_cur = ((EventMouse*)event)->getLocationInView();
 		mouseMoveControl();
 	};
 
-	/* Êó±ê°´ÏÂ */
+	/* é¼ æ ‡æŒ‰ä¸‹ */
 	Mouse->onMouseDown = [&](Event* event)
 	{
 		mouseDownControl((EventMouse*)event);
@@ -189,24 +189,24 @@ void GSControlLayer::selectPlantsPreviewImage()
 		buttonLayerInformation->plantsCards[static_cast<unsigned int>(_selectPlantsTag)].progressTimer->setPercentage(0);
 		buttonLayerInformation->plantsCards[static_cast<unsigned int>(_selectPlantsTag)].plantsCards->setColor(Color3B::WHITE);
 
-		/* ¼ÓÉÏËùĞèµÄÑô¹âÊı²¢¸üĞÂ */
+		/* åŠ ä¸Šæ‰€éœ€çš„é˜³å…‰æ•°å¹¶æ›´æ–° */
 		_global->userInformation->setSunNumbers(_global->userInformation->getSunNumbers() + 
 			buttonLayerInformation->plantsCards[static_cast<unsigned int>(buttonLayerInformation->mouseSelectImage->selectPlantsId)].plantsNeedSunNumbers);
 		informationLayerInformation->updateSunNumbers();
 
 		removePreviewPlant();
 
-		/* Ö²ÎïÒªÇó¸üĞÂ */
-		backgroundLayerInformation->gameType->updateRequirementNumbers("Ö²ÎïÊıÁ¿Ôö¼Ó");
+		/* æ¤ç‰©è¦æ±‚æ›´æ–° */
+		backgroundLayerInformation->gameType->updateRequirementNumbers("æ¤ç‰©æ•°é‡å¢åŠ ");
 		break;
 	case false:
-		/* Èç¹ûÖ²ÎïËùĞèÑô¹â´óÓÚÓµÓĞÑô¹â£¬Ôò·¢³ö¾¯¸æ */
+		/* å¦‚æœæ¤ç‰©æ‰€éœ€é˜³å…‰å¤§äºæ‹¥æœ‰é˜³å…‰ï¼Œåˆ™å‘å‡ºè­¦å‘Š */
 		if (buttonLayerInformation->plantsCards[static_cast<unsigned int>(_selectPlantsTag)].plantsNeedSunNumbers > _global->userInformation->getSunNumbers())
 		{
 			PlayMusic::playMusic("buzzer");
 			informationLayerInformation->sunNumberTextWarning();
 		}
-		/* Ê£ÓàÖ²ÎïÊıÁ¿Ğ¡ÓÚµÈÓÚ0 */
+		/* å‰©ä½™æ¤ç‰©æ•°é‡å°äºç­‰äº0 */
 		else if (backgroundLayerInformation->gameType->getPlantsRequriement()->isHavePlantsRequriement && backgroundLayerInformation->gameType->getPlantsRequriement()->surPlusPlantsNumbers <= 0)
 		{
 			PlayMusic::playMusic("buzzer");
@@ -216,22 +216,22 @@ void GSControlLayer::selectPlantsPreviewImage()
 		{
 			PlayMusic::playMusic("seedlift");
 			
-			/* ¼õÈ¥ËùĞèµÄÑô¹âÊı²¢¸üĞÂ */
+			/* å‡å»æ‰€éœ€çš„é˜³å…‰æ•°å¹¶æ›´æ–° */
 			_global->userInformation->setSunNumbers(_global->userInformation->getSunNumbers() - buttonLayerInformation->plantsCards[static_cast<unsigned int>(_selectPlantsTag)].plantsNeedSunNumbers);
 			informationLayerInformation->updateSunNumbers();
 
-			/* ¿¨Æ¬±äºÚ */
+			/* å¡ç‰‡å˜é»‘ */
 			buttonLayerInformation->plantsCards[static_cast<unsigned int>(_selectPlantsTag)].plantsCards->setColor(Color3B::GRAY);
 			buttonLayerInformation->plantsCards[static_cast<unsigned int>(_selectPlantsTag)].progressTimer->setPercentage(100);
 
-			/* Êó±êÑ¡Ôñ±ê¼Ç */
+			/* é¼ æ ‡é€‰æ‹©æ ‡è®° */
 			buttonLayerInformation->mouseSelectImage->isSelectPlants = true;
 			buttonLayerInformation->mouseSelectImage->selectPlantsId = _selectPlantsTag;
 
 			createPreviewPlants();
 
-			/* Ö²ÎïÒªÇó¸üĞÂ */
-			backgroundLayerInformation->gameType->updateRequirementNumbers("Ö²ÎïÊıÁ¿¼õÉÙ");
+			/* æ¤ç‰©è¦æ±‚æ›´æ–° */
+			backgroundLayerInformation->gameType->updateRequirementNumbers("æ¤ç‰©æ•°é‡å‡å°‘");
 		}
 		break;
 	}
@@ -241,7 +241,7 @@ void GSControlLayer::createPreviewPlants()
 {
 	CURSOR_VISIBLE(false)
 
-	Plants* previewPlants, * curPlants;/* Ô¤ÀÀÖ²Îï */
+	Plants* previewPlants, * curPlants;/* é¢„è§ˆæ¤ç‰© */
 	switch (_selectPlantsTag)
 	{
 	case PlantsType::SunFlower:          previewPlants = SunFlower::create(this);         curPlants = SunFlower::create(this);         break;
@@ -276,17 +276,17 @@ void GSControlLayer::zombiesComeTiming()
 		_zombiesAppearControl->setIsBegin(true);
 	}
 
-	/* ¼ÆÊ± */
+	/* è®¡æ—¶ */
 	_zombiesAppearControl->setTimeAdd();
 }
 
 void GSControlLayer::createZombies()
 {
-	/* Ë¢ĞÂ½©Ê¬ */
+	/* åˆ·æ–°åƒµå°¸ */
 	if (_zombiesAppearControl->getLastFrequencyZombiesWasDeath())
 	{
 		_zombiesAppearControl->setLastFrequencyZombiesWasDeath(false);
-		_zombiesAppearControl->setTimeClear(); /* ¾àÀëÉÏÒ»²¨Ë¢ĞÂÊ±¼äÇåÁã */
+		_zombiesAppearControl->setTimeClear(); /* è·ç¦»ä¸Šä¸€æ³¢åˆ·æ–°æ—¶é—´æ¸…é›¶ */
 		if (_zombiesAppearControl->getZombiesAppearFrequency() < _openLevelData->readLevelData(_openLevelData->getLevelNumber())->getZombiesFrequency())
 		{
 			unsigned int zombiesNumbers = _zombiesAppearControl->getZombiesNumbersForAppearFrequency(_zombiesAppearControl->getZombiesAppearFrequency());
@@ -294,16 +294,16 @@ void GSControlLayer::createZombies()
 			{
 				animationLayerInformation->createZombies();
 			}
-			/* ½ø¹¥²¨Êı×ÔÔöÒ» */
+			/* è¿›æ”»æ³¢æ•°è‡ªå¢ä¸€ */
 			_zombiesAppearControl->setZombiesAppearFrequency();
 
-			/* ½ø¶ÈÌõ¸üĞÂ */
+			/* è¿›åº¦æ¡æ›´æ–° */
 			informationLayerInformation->updateProgressBar(_zombiesAppearControl->getZombiesAppearFrequency());
 		}
 	}
 	informationLayerInformation->updateProgressBarHead();
 	
-	/* ¿ØÖÆ½©Ê¬µÄË¢ĞÂ */
+	/* æ§åˆ¶åƒµå°¸çš„åˆ·æ–° */
 	if (controlRefurbishZombies())
 	{
 		_zombiesAppearControl->setLastFrequencyZombiesWasDeath(true);
@@ -314,22 +314,22 @@ void GSControlLayer::createZombies()
 bool GSControlLayer::controlRefurbishZombies()
 {
 	if ((Zombies::getZombiesNumbers() <= 4 &&
-		_zombiesAppearControl->getZombiesAppearFrequency() > 3)                    /* Èç¹û»î×ÅµÄ½©Ê¬ÊıĞ¡ÓÚ¹æ¶¨£¬Ë¢ĞÂÏÂÒ»²¨ */
+		_zombiesAppearControl->getZombiesAppearFrequency() > 3)                    /* å¦‚æœæ´»ç€çš„åƒµå°¸æ•°å°äºè§„å®šï¼Œåˆ·æ–°ä¸‹ä¸€æ³¢ */
 
-		|| (Zombies::getZombiesNumbers() <= 0 &&                                   /* Èç¹ûÃ»ÓĞ´æ»î½©Ê¬ÔòÁ¢¼´Ë¢ĞÂ½©Ê¬ */
+		|| (Zombies::getZombiesNumbers() <= 0 &&                                   /* å¦‚æœæ²¡æœ‰å­˜æ´»åƒµå°¸åˆ™ç«‹å³åˆ·æ–°åƒµå°¸ */
 			_zombiesAppearControl->getZombiesAppearFrequency() > 1)
 
 		|| (_zombiesAppearControl->getTime() >= 
 			_openLevelData->readLevelData(
 				_openLevelData->getLevelNumber())->getFirstFrequencyTime() &&
-			_zombiesAppearControl->getZombiesAppearFrequency() == 0)               /* µÚÒ»²¨Ë¢ĞÂ¿ØÖÆ */
+			_zombiesAppearControl->getZombiesAppearFrequency() == 0)               /* ç¬¬ä¸€æ³¢åˆ·æ–°æ§åˆ¶ */
 
 		|| (_zombiesAppearControl->getTime() >= 32 + rand() % 10 &&
 			(_zombiesAppearControl->getZombiesAppearFrequency() == 1 || 
-		     _zombiesAppearControl->getZombiesAppearFrequency() == 2))             /* µÚ¶şÈı²¨Ë¢ĞÂ¿ØÖÆ */
+		     _zombiesAppearControl->getZombiesAppearFrequency() == 2))             /* ç¬¬äºŒä¸‰æ³¢åˆ·æ–°æ§åˆ¶ */
 
 		|| (_zombiesAppearControl->getTime() >= 45 &&
-			_zombiesAppearControl->getZombiesAppearFrequency() > 2)                /* Èç¹û´óÓÚ45ÃëË¢ĞÂÏÂÒ»²¨ */
+			_zombiesAppearControl->getZombiesAppearFrequency() > 2)                /* å¦‚æœå¤§äº45ç§’åˆ·æ–°ä¸‹ä¸€æ³¢ */
 		)
 	{
 		return true;
@@ -339,14 +339,14 @@ bool GSControlLayer::controlRefurbishZombies()
 
 void GSControlLayer::controlRefurbishMusicAndText()
 {
-	/* ¿ØÖÆ´ó²¨½©Ê¬À´Ï®µÄÎÄ×ÖÓëÒôÀÖ */
+	/* æ§åˆ¶å¤§æ³¢åƒµå°¸æ¥è¢­çš„æ–‡å­—ä¸éŸ³ä¹ */
 	auto level = _openLevelData->readLevelData(_openLevelData->getLevelNumber());
 	if (_zombiesAppearControl->getTime() >= level->getFirstFrequencyTime() && _zombiesAppearControl->getZombiesAppearFrequency() == 0)
 	{
 		PlayMusic::playMusic("awooga");
 	}
 
-	/* ×îºóÒ»²¨½©Ê¬µÄÎÄ×ÖÏÔÊ¾ÓëÆì×Ó¸üĞÂ */
+	/* æœ€åä¸€æ³¢åƒµå°¸çš„æ–‡å­—æ˜¾ç¤ºä¸æ——å­æ›´æ–° */
 	if (_zombiesAppearControl->getZombiesAppearFrequency() == level->getZombiesFrequency() && !_zombiesAppearControl->getIsShowWords())
 	{
 		if (informationLayerInformation->updateProgressBarFlag())
@@ -355,7 +355,7 @@ void GSControlLayer::controlRefurbishMusicAndText()
 		}
 	}
 
-	/* Ç°¼¸²¨ÎÄ×ÖÏÔÊ¾ÓëÆì×Ó¸üĞÂ */
+	/* å‰å‡ æ³¢æ–‡å­—æ˜¾ç¤ºä¸æ——å­æ›´æ–° */
 	for (auto data = _levelData.begin(); data != _levelData.end();)
 	{
 		if (_zombiesAppearControl->getZombiesAppearFrequency() == *data)
@@ -396,8 +396,8 @@ bool GSControlLayer::judgeMousePositionIsInMap()
 
 bool GSControlLayer::judgeMousePositionIsCanPlant()
 {
-	return (_gameMapInformation->plantsMap[static_cast<unsigned int>(_plantsPosition.y)][static_cast<unsigned int>(_plantsPosition.x)] != CAN_NOT_PLANT /* ²»µÈÓÚ²»ÄÜÖÖÖ² £¨ÔÚÄÜÖÖÖ²µÄ·¶Î§ÔÚÄÚ£©*/
-		&& _gameMapInformation->plantsMap[static_cast<unsigned int>(_plantsPosition.y)][static_cast<unsigned int>(_plantsPosition.x)] == NO_PLANTS)     /* ÄÜÖÖÖ²µÄ·¶Î§ÄÚ»¹Ã»ÓĞÖÖÖ² */
+	return (_gameMapInformation->plantsMap[static_cast<unsigned int>(_plantsPosition.y)][static_cast<unsigned int>(_plantsPosition.x)] != CAN_NOT_PLANT /* ä¸ç­‰äºä¸èƒ½ç§æ¤ ï¼ˆåœ¨èƒ½ç§æ¤çš„èŒƒå›´åœ¨å†…ï¼‰*/
+		&& _gameMapInformation->plantsMap[static_cast<unsigned int>(_plantsPosition.y)][static_cast<unsigned int>(_plantsPosition.x)] == NO_PLANTS)     /* èƒ½ç§æ¤çš„èŒƒå›´å†…è¿˜æ²¡æœ‰ç§æ¤ */
 		? true : false;
 }
 
@@ -410,7 +410,7 @@ bool GSControlLayer::judgeMousePositionHavePlant()
 
 void GSControlLayer::removePreviewPlant()
 {
-	/* ÒÆ³ıÔ¤ÀÀÖ²Îï */
+	/* ç§»é™¤é¢„è§ˆæ¤ç‰© */
 	_plantPreviewImage->removeFromParent();
 	_plantCurImage->removeFromParent();
 	buttonLayerInformation->mouseSelectImage->isSelectPlants = false;
@@ -443,7 +443,7 @@ void GSControlLayer::recoveryPlantsColor()
 
 void GSControlLayer::judgeLevelIsFinished()
 {
-	/* ¹Ø¿¨½áÊø */
+	/* å…³å¡ç»“æŸ */
 	if (ZombiesGroup.size() <= 0 && _zombiesAppearControl->getZombiesAppearFrequency() >=
 		_openLevelData->readLevelData(_openLevelData->getLevelNumber())->getZombiesFrequency())
 	{
@@ -463,7 +463,7 @@ void GSControlLayer::judgeLevelIsFinished()
 		}
 		else
 		{
-			_gameEndShieldLayer->breakThrough(winOrLose); /* ´³¹ØÊ§°Ü */
+			_gameEndShieldLayer->breakThrough(winOrLose); /* é—¯å…³å¤±è´¥ */
 		}
 		delete judgeUserWin;
 	}
@@ -483,7 +483,7 @@ void GSControlLayer::setGameEnd()
 
 void GSControlLayer::mouseMoveControl()
 {
-	/* Èç¹ûÊó±êÑ¡ÔñÁËÖ²Îï */
+	/* å¦‚æœé¼ æ ‡é€‰æ‹©äº†æ¤ç‰© */
 	if (buttonLayerInformation->mouseSelectImage->isSelectPlants)
 	{
 		int posX = static_cast<int>(_plantsPosition.x);
@@ -507,7 +507,7 @@ void GSControlLayer::mouseMoveControl()
 		_plantCurImage->setPosition(_cur + Vec2(0, 30));
 	}
 
-	/* Êó±êÉÏÓĞ²ù×Ó */
+	/* é¼ æ ‡ä¸Šæœ‰é“²å­ */
 	if (buttonLayerInformation->mouseSelectImage->isSelectShovel)
 	{
 		if (!_animationLayer)
@@ -515,10 +515,10 @@ void GSControlLayer::mouseMoveControl()
 			_animationLayer = _director->getRunningScene()->getChildByName("animationLayer");
 		}
 
-		/* Ñ­»·°ÑÖ²Îï»Ö¸´µ½Ô­À´µÄÑÕÉ« */
+		/* å¾ªç¯æŠŠæ¤ç‰©æ¢å¤åˆ°åŸæ¥çš„é¢œè‰² */
 		recoveryPlantsColor();
 
-		if (judgeMousePositionIsInMap() && judgeMousePositionHavePlant())  /* Èç¹ûÔÚµØÍ¼·¶Î§ÄÚ && ÖÖÓĞÖ²Îï */
+		if (judgeMousePositionIsInMap() && judgeMousePositionHavePlant())  /* å¦‚æœåœ¨åœ°å›¾èŒƒå›´å†… && ç§æœ‰æ¤ç‰© */
 		{
 			auto plant = _animationLayer->getChildByTag(SET_TAG(_plantsPosition));
 			if (plant)
@@ -531,49 +531,49 @@ void GSControlLayer::mouseMoveControl()
 
 void GSControlLayer::mouseDownControl(EventMouse* eventmouse)
 {
-	if (eventmouse->getMouseButton() == EventMouse::MouseButton::BUTTON_RIGHT) /* Èç¹ûÊÇÓÒ¼ü°´ÏÂ */
+	if (eventmouse->getMouseButton() == EventMouse::MouseButton::BUTTON_RIGHT) /* å¦‚æœæ˜¯å³é”®æŒ‰ä¸‹ */
 	{	
-		if (buttonLayerInformation->mouseSelectImage->isSelectPlants)/* Êó±êÉÏÓĞÖ²Îï */
+		if (buttonLayerInformation->mouseSelectImage->isSelectPlants)/* é¼ æ ‡ä¸Šæœ‰æ¤ç‰© */
 		{
 			PlayMusic::playMusic("tap2");
 			buttonLayerInformation->plantsCards[static_cast<unsigned int>(buttonLayerInformation->mouseSelectImage->selectPlantsId)].progressTimer->setPercentage(0);
 			buttonLayerInformation->plantsCards[static_cast<unsigned int>(buttonLayerInformation->mouseSelectImage->selectPlantsId)].plantsCards->setColor(Color3B::WHITE);
 
-			/* ¼ÓÉÏËùĞèµÄÑô¹âÊı²¢¸üĞÂ */
+			/* åŠ ä¸Šæ‰€éœ€çš„é˜³å…‰æ•°å¹¶æ›´æ–° */
 			_global->userInformation->setSunNumbers(_global->userInformation->getSunNumbers() +
 				buttonLayerInformation->plantsInformation->PlantsNeedSunNumbers[static_cast<unsigned int>(buttonLayerInformation->mouseSelectImage->selectPlantsId)]);
 			informationLayerInformation->updateSunNumbers();
 
-			/* Ö²ÎïÒªÇó¸üĞÂ */
-			backgroundLayerInformation->gameType->updateRequirementNumbers("Ö²ÎïÊıÁ¿Ôö¼Ó");
+			/* æ¤ç‰©è¦æ±‚æ›´æ–° */
+			backgroundLayerInformation->gameType->updateRequirementNumbers("æ¤ç‰©æ•°é‡å¢åŠ ");
 
 			removePreviewPlant();
 		}
 
-		if (buttonLayerInformation->mouseSelectImage->isSelectShovel) /* Êó±êÉÏÓĞ²ù×Ó */
+		if (buttonLayerInformation->mouseSelectImage->isSelectShovel) /* é¼ æ ‡ä¸Šæœ‰é“²å­ */
 		{
 			removeShovel();
 			recoveryPlantsColor();
 		}
 	}
 
-	if (eventmouse->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT) /* Èç¹ûÊÇ×ó¼ü°´ÏÂ */
+	if (eventmouse->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT) /* å¦‚æœæ˜¯å·¦é”®æŒ‰ä¸‹ */
 	{
 		if (buttonLayerInformation->mouseSelectImage->isSelectPlants)
 		{
-			if (judgeMousePositionIsInMap() && judgeMousePositionIsCanPlant()) /* Èç¹ûÔÚµØÍ¼·¶Î§ÄÚ && ¿ÉÒÔÖÖÖ²Ö²Îï */
+			if (judgeMousePositionIsInMap() && judgeMousePositionIsCanPlant()) /* å¦‚æœåœ¨åœ°å›¾èŒƒå›´å†… && å¯ä»¥ç§æ¤æ¤ç‰© */
 			{
-				/* ¼ÇÂ¼Ê¹ÓÃÖ²ÎïÊıÁ¿ */
+				/* è®°å½•ä½¿ç”¨æ¤ç‰©æ•°é‡ */
 				UserData::getInstance()->caveUserData("USEPLANTSNUMBERS", ++_global->userInformation->getUsePlantsNumbers());
 
-				/* ÖÖÖ²Ö²Îï */
+				/* ç§æ¤æ¤ç‰© */
 				animationLayerInformation->plantPlants();
 
-				/* µØÍ¼¼ÇÂ¼ÖÖÖ²µÄÖ²Îï */
+				/* åœ°å›¾è®°å½•ç§æ¤çš„æ¤ç‰© */
 				_gameMapInformation->plantsMap[static_cast<unsigned int>(_plantsPosition.y)][static_cast<unsigned int>(_plantsPosition.x)] =
 					static_cast<unsigned int>(buttonLayerInformation->mouseSelectImage->selectPlantsId);
 
-				/* ÉèÖÃµ¹¼ÆÊ±²¢ÇÒ°´Å¥²»¿ÉÓÃ */
+				/* è®¾ç½®å€’è®¡æ—¶å¹¶ä¸”æŒ‰é’®ä¸å¯ç”¨ */
 				unsigned int plantsTag = static_cast<unsigned int>(buttonLayerInformation->mouseSelectImage->selectPlantsId);
 				buttonLayerInformation->plantsCards[static_cast<unsigned int>(buttonLayerInformation->mouseSelectImage->selectPlantsId)].timeBarIsFinished = false;
 				buttonLayerInformation->plantsCards[static_cast<unsigned int>(buttonLayerInformation->mouseSelectImage->selectPlantsId)].plantsCards->setEnabled(false);
@@ -589,31 +589,31 @@ void GSControlLayer::mouseDownControl(EventMouse* eventmouse)
 				if (_cur.x > CARD_BAR_RIGHT)
 				{
 					PlayMusic::playMusic("buzzer");
-					/* ¿¨ÅÆÑÕÉ«»Ö¸´ */
+					/* å¡ç‰Œé¢œè‰²æ¢å¤ */
 					buttonLayerInformation->plantsCards[static_cast<unsigned int>(buttonLayerInformation->mouseSelectImage->selectPlantsId)].progressTimer->setPercentage(0);
 					buttonLayerInformation->plantsCards[static_cast<unsigned int>(buttonLayerInformation->mouseSelectImage->selectPlantsId)].plantsCards->setColor(Color3B::WHITE);
 
-					/* ÌáÊ¾ĞÅÏ¢ */
+					/* æç¤ºä¿¡æ¯ */
 					informationLayerInformation->createPromptText();
 
 					removePreviewPlant();
 
-					/* ¼ÓÉÏËùĞèµÄÑô¹âÊı²¢¸üĞÂ */
+					/* åŠ ä¸Šæ‰€éœ€çš„é˜³å…‰æ•°å¹¶æ›´æ–° */
 					_global->userInformation->setSunNumbers(_global->userInformation->getSunNumbers() +
 						buttonLayerInformation->plantsInformation->PlantsNeedSunNumbers[static_cast<unsigned int>(buttonLayerInformation->mouseSelectImage->selectPlantsId)]);
 					informationLayerInformation->updateSunNumbers();
 
-					/* Ö²ÎïÒªÇó¸üĞÂ */
-					backgroundLayerInformation->gameType->updateRequirementNumbers("Ö²ÎïÊıÁ¿Ôö¼Ó");
+					/* æ¤ç‰©è¦æ±‚æ›´æ–° */
+					backgroundLayerInformation->gameType->updateRequirementNumbers("æ¤ç‰©æ•°é‡å¢åŠ ");
 				}
 			}
 		}
-		if (buttonLayerInformation->mouseSelectImage->isSelectShovel) /* Êó±êÉÏÓĞ²ù×Ó */
+		if (buttonLayerInformation->mouseSelectImage->isSelectShovel) /* é¼ æ ‡ä¸Šæœ‰é“²å­ */
 		{
 			PlayMusic::playMusic("plant2");
-			if (judgeMousePositionIsInMap() && judgeMousePositionHavePlant())    /* Èç¹ûÔÚµØÍ¼·¶Î§ÄÚ && ÖÖÓĞÖ²Îï */
+			if (judgeMousePositionIsInMap() && judgeMousePositionHavePlant())    /* å¦‚æœåœ¨åœ°å›¾èŒƒå›´å†… && ç§æœ‰æ¤ç‰© */
 			{
-				animationLayerInformation->deletePlants();/* ²ù³ıÖ²Îï */
+				animationLayerInformation->deletePlants();/* é“²é™¤æ¤ç‰© */
 			}
 			removeShovel();
 			recoveryPlantsColor();

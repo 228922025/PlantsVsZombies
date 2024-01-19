@@ -16,7 +16,7 @@ DWORD UserInformation::_screenDisplayFrequency = 0;
 
 UserInformation::UserInformation():
   _isUpdate(false)
-, _userName("Î´ÃüÃû´æµµ")
+, _userName("æœªå‘½åå­˜æ¡£")
 , _soundEffectVolume(0.5f)
 , _backGroundMusicVolume(0.2f)
 , _userCaveFileNumber(0)

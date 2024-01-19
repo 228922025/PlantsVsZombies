@@ -280,7 +280,7 @@ public:
 	{
 		glfwSetWindowShouldClose(window, false);
         MessageBoxW(glfwGetWin32Window(window),
-            L"ÓÉÓÚ³ÌĞòÒª¼ÇÂ¼ÓÎÏ·ÖĞ±ØÒªµÄÊı¾İ£¬²»ÄÜÖĞÍ¾¹Ø±Õ¡£ÇëÁÂ½â£¡", L"ÌáÊ¾", MB_OK);
+            L"ç”±äºç¨‹åºè¦è®°å½•æ¸¸æˆä¸­å¿…è¦çš„æ•°æ®ï¼Œä¸èƒ½ä¸­é€”å…³é—­ã€‚è¯·è°…è§£ï¼", L"æç¤º", MB_OK);
 	}
 
 private:

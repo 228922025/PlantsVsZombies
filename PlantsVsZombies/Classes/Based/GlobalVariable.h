@@ -29,7 +29,7 @@ private:
 	~Global();
 
 private:
-	static Global* _instance;    /* µ¥Àı */
+	static Global* _instance;    /* å•ä¾‹ */
 	float _sumAnimationInterval;
 	int _frequence;
 };

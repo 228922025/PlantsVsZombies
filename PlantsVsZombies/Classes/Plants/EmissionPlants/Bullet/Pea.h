@@ -12,73 +12,73 @@ class Pea :public Bullet
 {
 public:
 	/**
-	 *ÉèÖÃÊÇ·ñÈ¼ÉÕ
+	 *è®¾ç½®æ˜¯å¦ç‡ƒçƒ§
 	 */
 	virtual void setIsFire(const bool isFire);
 
 	/**
-	 *ÉèÖÃÈ¼ÉÕ´ÎÊı
+	 *è®¾ç½®ç‡ƒçƒ§æ¬¡æ•°
 	 */
 	virtual void setPeaFireNumbers(const int fireNumbers);
 
 	/**
-	 *Ôö¼Ó×Óµ¯È¼ÉÕ´ÎÊı
+	 *å¢åŠ å­å¼¹ç‡ƒçƒ§æ¬¡æ•°
 	 */
 	virtual void addPeaFireNumbers();
 
 	/**
-	 *ÉèÖÃ»ğ¾æÊ÷×®±àºÅ
+	 *è®¾ç½®ç«ç‚¬æ ‘æ¡©ç¼–å·
 	 */
 	virtual void setTorchwoodTag(const int torchwoodTag);
 
 	/**
-	 *»ñÈ¡ÊÇ·ñÈ¼ÉÕ
+	 *è·å–æ˜¯å¦ç‡ƒçƒ§
 	 */
 	virtual bool getIsFire() const;
 
 	/**
-	 *»ñÈ¡È¼ÉÕ´ÎÊı
+	 *è·å–ç‡ƒçƒ§æ¬¡æ•°
 	 */
 	virtual int getPeaFireNumbers() const;
 
 	/**
-	 *»ñÈ¡»ğ¾æÊ÷×®±àºÅ
+	 *è·å–ç«ç‚¬æ ‘æ¡©ç¼–å·
 	 */
 	virtual int getTorchwoodTag() const;
 
 protected:
 	/**
-	 *´´½¨Íã¶¹
+	 *åˆ›å»ºè±Œè±†
 	 */
 	virtual void createBullet() override;
 
 	/**
-	 *Íã¶¹Óë½©Ê¬Åö×²ºÍ¼ì²â
+	 *è±Œè±†ä¸åƒµå°¸ç¢°æ’å’Œæ£€æµ‹
 	 */
 	virtual void bulletAndZombiesCollision() override;
 
 	/**
-	 *´´½¨Íã¶¹±¬Õ¨¶¯»­
+	 *åˆ›å»ºè±Œè±†çˆ†ç‚¸åŠ¨ç”»
 	 */
 	virtual void  createPeaExplode();
 
 	/**
-	 *×Óµ¯³õÊ¼»¯
+	 *å­å¼¹åˆå§‹åŒ–
 	 */
 	virtual void bulletInit() override;
 
 	/**
-	 *´´½¨×Óµ¯Ó°×Ó
+	 *åˆ›å»ºå­å¼¹å½±å­
 	 */
 	virtual void createShadow() override;
 
 	/**
-	 *×Óµ¯¹¥»÷½©Ê¬
+	 *å­å¼¹æ”»å‡»åƒµå°¸
 	 */
 	virtual void bulletAttackZombies();
 
 	/**
-	 *»ğ×Óµ¯¹¥»÷½©Ê¬
+	 *ç«å­å¼¹æ”»å‡»åƒµå°¸
 	 */
 	virtual void fireBulletAttackZombies();
 
@@ -91,8 +91,8 @@ private:
 	float getZombieInExplodeRange(Zombies* zombie);
 
 protected:
-	bool _isFire;                         // ÊÇ·ñÈ¼ÉÕ 
-	int _fireNumbers;                     // È¼ÉÕ´ÎÊı
-	int _torchwoodTag;                    // »ğ¾æÊ÷×®±ê¼Ç
-	string _peaAnimationName;             // Íã¶¹¶¯»­Ãû³Æ
+	bool _isFire;                         // æ˜¯å¦ç‡ƒçƒ§ 
+	int _fireNumbers;                     // ç‡ƒçƒ§æ¬¡æ•°
+	int _torchwoodTag;                    // ç«ç‚¬æ ‘æ¡©æ ‡è®°
+	string _peaAnimationName;             // è±Œè±†åŠ¨ç”»åç§°
 };

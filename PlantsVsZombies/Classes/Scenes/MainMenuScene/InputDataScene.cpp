@@ -56,7 +56,7 @@ void InputDataMenu::createDialog()
 	_caveFileDialog->setName("CaveFileDialog");
 	this->addChild(_caveFileDialog);
 
-	auto question = Label::createWithTTF("Ñ¡ÔñÄãµÄ´æµµ", GAME_FONT_NAME_1, 30);
+	auto question = Label::createWithTTF("é€‰æ‹©ä½ çš„å­˜æ¡£", GAME_FONT_NAME_1, 30);
 	question->setTextColor(Color4B::YELLOW);
 	question->setPosition(Vec2(_caveFileDialog->getContentSize().width / 2, _caveFileDialog->getContentSize().height - 110));
 	_caveFileDialog->addChild(question);
@@ -83,12 +83,12 @@ void InputDataMenu::createDialog()
 		_dataButton.find(_caveFileNumber)->second->setColor(Color3B(0, 255, 255));
 	}
 
-	/* ´´½¨°´Å¥ */
-	this->createButtons(_caveFileDialog, _global->userInformation->getGameText().find("È·¶¨")->second, Vec2(110, 70), 1.0f, 3);
-	this->createButtons(_caveFileDialog, _global->userInformation->getGameText().find("È¡Ïû")->second, Vec2(380, 70), 1.0f, 4);
-	this->createButtons(_caveFileDialog, _global->userInformation->getGameText().find("ÖØÃüÃû")->second, Vec2(245, 70), 1.0f, 5);
+	/* åˆ›å»ºæŒ‰é’® */
+	this->createButtons(_caveFileDialog, _global->userInformation->getGameText().find("ç¡®å®š")->second, Vec2(110, 70), 1.0f, 3);
+	this->createButtons(_caveFileDialog, _global->userInformation->getGameText().find("å–æ¶ˆ")->second, Vec2(380, 70), 1.0f, 4);
+	this->createButtons(_caveFileDialog, _global->userInformation->getGameText().find("é‡å‘½å")->second, Vec2(245, 70), 1.0f, 5);
 
-	/* ´´½¨¼àÌı */
+	/* åˆ›å»ºç›‘å¬ */
 	this->createTouchtListener(_caveFileDialog);
 }
 
@@ -112,7 +112,7 @@ void InputDataMenu::CreateInputDialog()
 	_inputDataDialog->addChild(_inputCursor);
 	_inputCursor->runAction(RepeatForever::create(Sequence::create(FadeOut::create(0.25f), FadeIn::create(0.25f), nullptr)));
 
-	_textField = TextField::create("µã»÷´Ë´¦ÊäÈë´æµµÃû³Æ",GAME_FONT_NAME_1, FontSize);
+	_textField = TextField::create("ç‚¹å‡»æ­¤å¤„è¾“å…¥å­˜æ¡£åç§°",GAME_FONT_NAME_1, FontSize);
 	_inputDataDialog->addChild(_textField);
 	_textField->setPosition(Vec2(155, 137));
 	_textField->setMaxLengthEnabled(true);
@@ -126,18 +126,18 @@ void InputDataMenu::CreateInputDialog()
 				_inputCursor->setVisible(true);
 				break;
 			case cocos2d::ui::TextField::EventType::DETACH_WITH_IME:
-				_textField->setPlaceHolder("µã»÷´Ë´¦½øĞĞÊäÈë´æµµÃû³Æ");
+				_textField->setPlaceHolder("ç‚¹å‡»æ­¤å¤„è¿›è¡Œè¾“å…¥å­˜æ¡£åç§°");
 				_inputCursor->setVisible(false);
 				break;
 			case cocos2d::ui::TextField::EventType::INSERT_TEXT:
 			{
-				/* »ñÈ¡ĞÂÔö¼ÓµÄ×Ö·û */
+				/* è·å–æ–°å¢åŠ çš„å­—ç¬¦ */
 				_newInputstring = _textField->getString().substr(_inputString.size());
 
-				/* ¸üĞÂ×Ö·û´® */
+				/* æ›´æ–°å­—ç¬¦ä¸² */
 				_inputString = _textField->getString();
 
-				/* ²åÈë×Ö·û¶¯»­ */
+				/* æ’å…¥å­—ç¬¦åŠ¨ç”» */
 				auto textLabel = onTextFieldInsertText();
 				
 				_inputCursor->setPositionX(_inputCursor->getPositionX() + textLabel->getContentSize().width / 2);
@@ -146,13 +146,13 @@ void InputDataMenu::CreateInputDialog()
 				break;
 			case cocos2d::ui::TextField::EventType::DELETE_BACKWARD:
 			{
-				/* »ñÈ¡É¾³ıµÄ×Ö·û */
+				/* è·å–åˆ é™¤çš„å­—ç¬¦ */
 				_newInputstring = _inputString.substr(_textField->getString().size());
 
-				/* ¸üĞÂ×Ö·û´® */
+				/* æ›´æ–°å­—ç¬¦ä¸² */
 				_inputString = _textField->getString();
 
-				/* É¾³ı¶¯»­ */
+				/* åˆ é™¤åŠ¨ç”» */
 				auto textLabel = onTextFieldDeleteBackward();
 
 				_inputCursor->setPositionX(_inputCursor->getPositionX() - textLabel->getContentSize().width / 2);
@@ -163,11 +163,11 @@ void InputDataMenu::CreateInputDialog()
 			}
 		});
 
-	/* ´´½¨°´Å¥ */
-	this->createButtons(_inputDataDialog, _global->userInformation->getGameText().find("È·¶¨")->second, Vec2(90, 65),1.0f, 1);
-	this->createButtons(_inputDataDialog, _global->userInformation->getGameText().find("È¡Ïû")->second, Vec2(225, 65),1.0f, 2);
+	/* åˆ›å»ºæŒ‰é’® */
+	this->createButtons(_inputDataDialog, _global->userInformation->getGameText().find("ç¡®å®š")->second, Vec2(90, 65),1.0f, 1);
+	this->createButtons(_inputDataDialog, _global->userInformation->getGameText().find("å–æ¶ˆ")->second, Vec2(225, 65),1.0f, 2);
 	
-	/* ´´½¨¼àÌı */
+	/* åˆ›å»ºç›‘å¬ */
 	this->createTouchtListener(_inputDataDialog);
 }
 
@@ -189,9 +189,9 @@ void InputDataMenu::createButtons(Sprite* sprite, const std::string &Label, Vec2
 		case Widget::TouchEventType::ENDED:
 			switch (ID)
 			{
-			case 1: /* È·¶¨ */
+			case 1: /* ç¡®å®š */
 				if (!_textField->getString().empty() &&
-					_textField->getString() != "Î´ÃüÃû´æµµ")
+					_textField->getString() != "æœªå‘½åå­˜æ¡£")
 				{
 					caveData();
 					updateButtonText();
@@ -199,20 +199,20 @@ void InputDataMenu::createButtons(Sprite* sprite, const std::string &Label, Vec2
 					_inputString.clear();
 				}
 				break;
-			case 2: /* È¡Ïû */
-				if (_global->userInformation->getUserName() != "Î´ÃüÃû´æµµ")
+			case 2: /* å–æ¶ˆ */
+				if (_global->userInformation->getUserName() != "æœªå‘½åå­˜æ¡£")
 				{
 					this->removeChildByName("_shieldDialogLayer");
 					_inputString.clear();
 				}
 				break;
 			case 3:
-				UserDefault::getInstance()->setIntegerForKey("USERDATANUMBER", _caveFileNumber); /* ¼ÇÂ¼ËùÑ¡´æµµ */
+				UserDefault::getInstance()->setIntegerForKey("USERDATANUMBER", _caveFileNumber); /* è®°å½•æ‰€é€‰å­˜æ¡£ */
 				_global->userInformation->setUserCaveFileNumber(_caveFileNumber);
 				UserData::getInstance()->createNewUserDataDocument();
 				LoadingScene::loadUserFileData();
 
-				/* ¶ÁÈ¡ËùÑ¡´æµµµÄÃû×Ö²¢¸üĞÂ */
+				/* è¯»å–æ‰€é€‰å­˜æ¡£çš„åå­—å¹¶æ›´æ–° */
 				if (UserDefault::getInstance()->getStringForKey(
 					_global->userInformation->getUserCaveFileNameKey(
 						_global->userInformation->getUserCaveFileNumber()).c_str()) != "")
@@ -332,7 +332,7 @@ void InputDataMenu::updateButtonText()
 
 void InputDataMenu::inputNewFileDataName()
 {
-	if (_global->userInformation->getUserName() == "Î´ÃüÃû´æµµ")
+	if (_global->userInformation->getUserName() == "æœªå‘½åå­˜æ¡£")
 	{
 		createShieldLayer();
 	}

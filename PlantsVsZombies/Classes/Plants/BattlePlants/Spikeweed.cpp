@@ -53,25 +53,25 @@ void Spikeweed::createPlantAnimation()
 	_plantAnimation->setScale(0.8f);
 	_node->addChild(_plantAnimation);
 
-	// Ó°×Ó
+	// å½±å­
 	setPlantShadow(1.0f);
 
-	// ÄàÍÁ·É½¦¶¯»­
+	// æ³¥åœŸé£žæº…åŠ¨ç”»
 	setPlantSoilSplashAnimation(0.8f);
 }
 
 void Spikeweed::determineRelativePositionPlantsAndZombies()
 {
-	plantAttack();         /* Ö²Îï¹¥»÷ */
+	plantAttack();         /* æ¤ç‰©æ”»å‡» */
 
-	// ½©Ê¬¶ÔÖ²Îï½øÐÐÉËº¦£¿£¿£¿ ÔÚ´ËÌí¼Ó
+	// åƒµå°¸å¯¹æ¤ç‰©è¿›è¡Œä¼¤å®³ï¼Ÿï¼Ÿï¼Ÿ åœ¨æ­¤æ·»åŠ 
 }
 
 void Spikeweed::plantAttack()
 {
 	for (auto zombie : ZombiesGroup)
 	{
-		if (zombie->getZombieIsSurvive() && getZombieIsSameLineWithPlant(zombie) && getzombieIsEncounterPlant(zombie))       /* ½©Ê¬Ã»ÓÐËÀÍö && ½©Ê¬ÓëÖ²ÎïÔÚÍ¬Ò»ÐÐ && ½©Ê¬Óöµ½Ö²Îï */
+		if (zombie->getZombieIsSurvive() && getZombieIsSameLineWithPlant(zombie) && getzombieIsEncounterPlant(zombie))       /* åƒµå°¸æ²¡æœ‰æ­»äº¡ && åƒµå°¸ä¸Žæ¤ç‰©åœ¨åŒä¸€è¡Œ && åƒµå°¸é‡åˆ°æ¤ç‰© */
 		{
 			plantAnimationChange(zombie);
 		}
@@ -82,8 +82,8 @@ void Spikeweed::plantAttack()
 
 void Spikeweed::plantAnimationChange(Zombies* zombie)
 {
-	_isHaveZombies = true; /* ÓÐ½©Ê¬±ê¼Ç */
-	if (!_isChanged)       /* ÅÐ¶Ï¶¯»­ÊÇ·ñÒÑ¾­¸Ä±ä */
+	_isHaveZombies = true; /* æœ‰åƒµå°¸æ ‡è®° */
+	if (!_isChanged)       /* åˆ¤æ–­åŠ¨ç”»æ˜¯å¦å·²ç»æ”¹å˜ */
 	{
 		_plantAnimation->addAnimation(0, "Spikeweed_Attack", true);
 		_isChanged = true;
@@ -109,7 +109,7 @@ void Spikeweed::plantAnimationChange(Zombies* zombie)
 
 void Spikeweed::plantAnimationRecovery()
 {
-	if (!_isHaveZombies && _isChanged) /* Ã»ÓÐ½©Ê¬ */
+	if (!_isHaveZombies && _isChanged) /* æ²¡æœ‰åƒµå°¸ */
 	{
 		_plantAnimation->addAnimation(0, "Spikeweed_Normal", true);
 		_isChanged = false;

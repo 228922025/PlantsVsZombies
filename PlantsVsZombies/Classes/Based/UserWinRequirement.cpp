@@ -49,7 +49,7 @@ void UserWinRequirement::createDialogBox(GameTypes finishedid)
 	_node->addChild(_levelObjiectives);
 
 	auto LevelObjiectivesText = Text::create();
-	LevelObjiectivesText->setString(_global->userInformation->getGameText().find("Í¨¹ØÒªÇó£¡")->second);
+	LevelObjiectivesText->setString(_global->userInformation->getGameText().find("é€šå…³è¦æ±‚ï¼")->second);
 	LevelObjiectivesText->setFontName(GAME_FONT_NAME_1);
 	LevelObjiectivesText->setFontSize(50);
 	LevelObjiectivesText->setScale(0.5f);
@@ -57,7 +57,7 @@ void UserWinRequirement::createDialogBox(GameTypes finishedid)
 	LevelObjiectivesText->setPosition(Vec2(_levelObjiectives->getContentSize().width / 2, 245));
 	_levelObjiectives->addChild(LevelObjiectivesText);
 
-	/* ÏÔÊ¾ÒªÇó */
+	/* æ˜¾ç¤ºè¦æ±‚ */
 	showRequirement(finishedid);
 
 	Dialog::createTouchtListener(_levelObjiectives);
@@ -113,44 +113,44 @@ void UserWinRequirement::showRequirement(GameTypes finishedid)
 		switch (static_cast<GameTypes>(leveldata->getGameType().at(i)))
 		{
 		case GameTypes::CreateWall:
-			showText(_global->userInformation->getGameText().find("½¨Á¢ÄãµÄ·ÀÏß£¬×èÖ¹½©Ê¬µÄ½ø¹¥£¡")->second, i);
+			showText(_global->userInformation->getGameText().find("å»ºç«‹ä½ çš„é˜²çº¿ï¼Œé˜»æ­¢åƒµå°¸çš„è¿›æ”»ï¼")->second, i);
 			break;
 		case GameTypes::AtLeastSunNumbers:
 		{
 			char buff[128];
-			snprintf(buff, 128,_global->userInformation->getGameText().find("ÖÁÉÙ²úÉú %d µÄÑô¹â£¡")->second.c_str(), leveldata->getAtLeastSunNumbers());
+			snprintf(buff, 128,_global->userInformation->getGameText().find("è‡³å°‘äº§ç”Ÿ %d çš„é˜³å…‰ï¼")->second.c_str(), leveldata->getAtLeastSunNumbers());
 			finishedid == GameTypes::AtLeastSunNumbers ? showText(buff, i, Color3B::RED) : showText(buff, i);
 		}
 			break;
 		case GameTypes::FlowerPosition:
-			finishedid == GameTypes::FlowerPosition ? showText(_global->userInformation->getGameText().find("½©Ê¬²È»µÁËÄãµÄ»¨Ì³£¡")->second, i, Color3B::RED) :
-				showText(_global->userInformation->getGameText().find("²»ÒªÈÃ½©Ê¬²È»µÄãµÄ»¨Ì³£¡")->second, i);
+			finishedid == GameTypes::FlowerPosition ? showText(_global->userInformation->getGameText().find("åƒµå°¸è¸©åäº†ä½ çš„èŠ±å›ï¼")->second, i, Color3B::RED) :
+				showText(_global->userInformation->getGameText().find("ä¸è¦è®©åƒµå°¸è¸©åä½ çš„èŠ±å›ï¼")->second, i);
 			break;
 		case GameTypes::CarNumbers:
 		{
 			char buff[128];
-			snprintf(buff, 128, _global->userInformation->getGameText().find("½©Ê¬½ø¹¥½áÊøºóÖÁÉÙ´æÁô %d Á¾Ğ¡³µ£¡")->second.c_str(), leveldata->getCarNumbers());
+			snprintf(buff, 128, _global->userInformation->getGameText().find("åƒµå°¸è¿›æ”»ç»“æŸåè‡³å°‘å­˜ç•™ %d è¾†å°è½¦ï¼")->second.c_str(), leveldata->getCarNumbers());
 			finishedid == GameTypes::CarNumbers ? showText(buff, i, Color3B::RED) : showText(buff, i);
 		}
 			break;
 		case GameTypes::UserPlantsNumbers:
 		{
 			char buff[128];
-			snprintf(buff, 128, _global->userInformation->getGameText().find("×î¶àÊ¹ÓÃ %d ÖêÖ²ÎïÀ´½¨Á¢ÄãµÄ·ÀÏß£¡")->second.c_str(), leveldata->getUsePlantsNumbers());
+			snprintf(buff, 128, _global->userInformation->getGameText().find("æœ€å¤šä½¿ç”¨ %d æ ªæ¤ç‰©æ¥å»ºç«‹ä½ çš„é˜²çº¿ï¼")->second.c_str(), leveldata->getUsePlantsNumbers());
 			showText(buff, i);
 		}
 			break;
 		case GameTypes::ZombiesInvisible:
-			showText(_global->userInformation->getGameText().find("×èÖ¹ÒşĞÎµÄ½©Ê¬µÄ½ø¹¥£¡")->second, i);
+			showText(_global->userInformation->getGameText().find("é˜»æ­¢éšå½¢çš„åƒµå°¸çš„è¿›æ”»ï¼")->second, i);
 			break;
 		case GameTypes::SmallZombies:
-			showText(_global->userInformation->getGameText().find("Ğ¡½©Ê¬´óÂé·³£¡")->second, i);
+			showText(_global->userInformation->getGameText().find("å°åƒµå°¸å¤§éº»çƒ¦ï¼")->second, i);
 			break;
 		case GameTypes::BigZombies:
-			showText(_global->userInformation->getGameText().find("µÖÓù¾ŞÈË½©Ê¬µÄ½ø¹¥£¡")->second, i);
+			showText(_global->userInformation->getGameText().find("æŠµå¾¡å·¨äººåƒµå°¸çš„è¿›æ”»ï¼")->second, i);
 			break;
 		case GameTypes::NoPlants:
-			showText(_global->userInformation->getGameText().find("Çë°ÑÖ²ÎïÖÖÖ²ÔÚºÏÊÊµÄµØ·½£¡")->second, i);
+			showText(_global->userInformation->getGameText().find("è¯·æŠŠæ¤ç‰©ç§æ¤åœ¨åˆé€‚çš„åœ°æ–¹ï¼")->second, i);
 			break;
 		default:
 			break;

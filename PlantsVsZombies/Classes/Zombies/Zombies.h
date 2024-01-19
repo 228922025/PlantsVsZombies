@@ -22,7 +22,7 @@ class Plants;
 class GSGameResultJudgement;
 class GSGameEndLayer;
 
-/* ½©Ê¬ÀàĞÍ */
+/* åƒµå°¸ç±»å‹ */
 enum class ZombiesType
 {
 	None = 0,
@@ -54,447 +54,447 @@ class Zombies :public Node
 {
 public:
 	/**
-	 *»ñÈ¡¸÷ÖÖ½©Ê¬ÖÖÀà¶¯»­Ãû³Æ
+	 *è·å–å„ç§åƒµå°¸ç§ç±»åŠ¨ç”»åç§°
 	 */
 	static string getZombieAniamtionName(ZombiesType zombiestype);
 
 	/**
-	 *É¾³ı½©Ê¬
+	 *åˆ é™¤åƒµå°¸
 	 */
 	static void zombiesDeleteUpdate(list<Zombies*>::iterator& zombie);
 
 	/**
-	 *»ñÈ¡½©Ê¬ÊıÁ¿
+	 *è·å–åƒµå°¸æ•°é‡
 	 */
 	static unsigned int getZombiesNumbers();
 
 	/**
-	 *ÉèÖÃ½©Ê¬ÊıÁ¿
+	 *è®¾ç½®åƒµå°¸æ•°é‡
 	 */
 	static void setZombiesNumbers(const unsigned int numbers);
 
 	/**
-	 *½©Ê¬ÊıÁ¿×ÔÔö/×Ô¼õÒ»
-	 *@ ++ ×ÔÔö1
-	 *@ -- ×Ô¼õ1
+	 *åƒµå°¸æ•°é‡è‡ªå¢/è‡ªå‡ä¸€
+	 *@ ++ è‡ªå¢1
+	 *@ -- è‡ªå‡1
 	 */
 	static void zombiesNumbersChange(const string&);
 
 	/**
-	 *ÅĞ¶Ï½©Ê¬Ó®
+	 *åˆ¤æ–­åƒµå°¸èµ¢
 	 */
 	static void judgeZombieWin(list<Zombies*>::iterator zombie);
 
 	/**
-	 *½©Ê¬ÊäÓ®³õÊ¼»¯
+	 *åƒµå°¸è¾“èµ¢åˆå§‹åŒ–
 	 */
 	static void zombiesWinOrLoseInit();
 
 	/**
-	 *»ñÈ¡¸ßÁÁ
+	 *è·å–é«˜äº®
 	 */
 	static GLProgram* getHighLight();
 
 	/**
-	 *½±Àø½ğ±Ò
+	 *å¥–åŠ±é‡‘å¸
 	 */
 	static void rewardCoin(SkeletonAnimation* zombies);
 
 	/**
-	 *´´½¨½©Ê¬
+	 *åˆ›å»ºåƒµå°¸
 	 */
 	virtual void createZombie() = 0;
 
 	/**
-	 *´´½¨Ô¤ÀÀ½©Ê¬
+	 *åˆ›å»ºé¢„è§ˆåƒµå°¸
 	 */
 	virtual void createPreviewZombie() = 0;
 
 	/**
-	 *½©Ê¬ÊÜÉËÊÂ¼ş¸üĞÂ
+	 *åƒµå°¸å—ä¼¤äº‹ä»¶æ›´æ–°
 	 */
 	virtual void zombieInjuredEventUpdate() = 0;
 
 	/**
-	 *´´½¨½©Ê¬Ó°×Ó
+	 *åˆ›å»ºåƒµå°¸å½±å­
 	 */
 	virtual void createZombieShadow();
 
 	/**
-	 *ÉèÖÃ½©Ê¬´óĞ¡
+	 *è®¾ç½®åƒµå°¸å¤§å°
 	 */
 	virtual void setZombieScale(const Size& scale = Size(40, 40)) const;
 
 	/**
-	 *ÉèÖÃ½©Ê¬´óĞ¡
+	 *è®¾ç½®åƒµå°¸å¤§å°
 	 */
 	virtual void setZombieScale(const int& scale) const;
 
 	/**
-	 *ÉèÖÃ¶¯»­²¥·ÅËÙ¶È
+	 *è®¾ç½®åŠ¨ç”»æ’­æ”¾é€Ÿåº¦
 	 */
 	virtual void setZombieTimeScale(const float& timeScale) const;
 
 	/**
-	 *ÉèÖÃ½©Ê¬¶¯»­±àºÅ
+	 *è®¾ç½®åƒµå°¸åŠ¨ç”»ç¼–å·
 	 */
 	virtual void setZombieAnimationInformation(const int tag, const bool isLoop = true) const;
 
 	/**
-	 *ÉèÖÃ½©Ê¬¶¯»­
+	 *è®¾ç½®åƒµå°¸åŠ¨ç”»
 	 */
 	virtual void setZombieAnimationName(const string& name, bool isLoop = true) const;
 
 	/**
-	 *ÉèÖÃ½©Ê¬µÄ´óĞ¡
+	 *è®¾ç½®åƒµå°¸çš„å¤§å°
 	 */
 	virtual void setZombieAttributeForGameType();
 
 	/**
-	 *ÉèÖÃÊÇ·ñÏÔÊ¾½©Ê¬µôÂäÖ«Ìå¶¯»­
+	 *è®¾ç½®æ˜¯å¦æ˜¾ç¤ºåƒµå°¸æ‰è½è‚¢ä½“åŠ¨ç”»
 	 */
 	virtual void setZombieIsShowLoseLimbsAnimation(const bool isShow);
 
 	/**
-	 *ÉèÖÃ½©Ê¬Ëù³ÔÖ²Îï±àºÅ
+	 *è®¾ç½®åƒµå°¸æ‰€åƒæ¤ç‰©ç¼–å·
 	 */
 	virtual void setZombieEatPlantNumber(const int& number);
 
 	/**
-	 *ÉèÖÃ½©Ê¬ÒÆ¶¯
+	 *è®¾ç½®åƒµå°¸ç§»åŠ¨
 	 */
 	virtual void setZombieMove(const float delta);
 
 	/**
-	 *ÉèÖÃ½©Ê¬Í¸Ã÷¶È
+	 *è®¾ç½®åƒµå°¸é€æ˜åº¦
 	 */
 	virtual void setZombieOpacity(GLubyte opacity);
 
 	/**
-	 *ÉèÖÃÎ»ÖÃ
+	 *è®¾ç½®ä½ç½®
 	 */
 	virtual void setZombiePosition(const Vec2& position);
 
 	/**
-	 *ÉèÖÃÃû×Ö
+	 *è®¾ç½®åå­—
 	 */
 	virtual void setZombieName(const string& name); 
 
 	/**
-	 *ÉèÖÃ½©Ê¬±àºÅ
+	 *è®¾ç½®åƒµå°¸ç¼–å·
 	 */
 	virtual void setZombieTag(const int& tag);
 
 	/**
-	 *ÉèÖÃ½©Ê¬µ±Ç°ËÙ¶È
+	 *è®¾ç½®åƒµå°¸å½“å‰é€Ÿåº¦
 	 */
 	virtual void setZombieCurrentSpeed(const int currentSpeed);
 
 	/**
-	 *ÉèÖÃ½©Ê¬Í£Ö¹ÒÆ¶¯
+	 *è®¾ç½®åƒµå°¸åœæ­¢ç§»åŠ¨
 	 */
 	virtual void setZombieStop();
 
 	/**
-	 *ÉèÖÃ½©Ê¬ÊÇ·ñÏÔÊ¾
+	 *è®¾ç½®åƒµå°¸æ˜¯å¦æ˜¾ç¤º
 	 */
 	virtual void setZombieIsShow(const bool isShow);
 
 	/**
-	 *ÉèÖÃ½©Ê¬ÊÇ·ñ³ÔÖ²Îï
+	 *è®¾ç½®åƒµå°¸æ˜¯å¦åƒæ¤ç‰©
 	 */
 	virtual void setZombieIsEat(const bool isEat);
 
 	/**
-	 *ÉèÖÃ½©Ê¬ËÀÍö
+	 *è®¾ç½®åƒµå°¸æ­»äº¡
 	 */
 	virtual void setZombieDeath(const bool death);
 
-	/**ÉèÖÃ½©½©Ê¬ÊÇ·ñÏÔÊ¾
+	/**è®¾ç½®åƒµåƒµå°¸æ˜¯å¦æ˜¾ç¤º
 	 */
 	virtual void setZombieVisible(const bool isVisible);
 
 	/**
-	 *ÉèÖÃ½©Ê¬ÉíÌå»¤¶ÜÑªÁ¿
+	 *è®¾ç½®åƒµå°¸èº«ä½“æŠ¤ç›¾è¡€é‡
 	 */
 	virtual void setZombieCurrentBodyShieldVolume(const float currentBodyShieldVolume);
 
 	/**
-	 *ÉèÖÃ½©Ê¬Í·²¿»¤¶ÜÑªÁ¿
+	 *è®¾ç½®åƒµå°¸å¤´éƒ¨æŠ¤ç›¾è¡€é‡
 	 */
 	virtual void setZombieCurrentHeadShieldVolume(const float currentHeadShieldVolume);
 
 	/**
-	 *ÉèÖÃ½©Ê¬ÑªÁ¿
+	 *è®¾ç½®åƒµå°¸è¡€é‡
 	 */
 	virtual void setZombieCurrentBloodVolume(const float currentBloodVolume);
 
 	/**
-	 *ÉèÖÃ½©Ê¬ÊÇ·ñ±»»÷·É
+	 *è®¾ç½®åƒµå°¸æ˜¯å¦è¢«å‡»é£
 	 */
 	virtual void setZombieIsStrikeFly(const bool isStrikeFly);
 
 	/**
-	 *ÉèÖÃ½©Ê¬ÊÜÉËÉÁË¸
+	 *è®¾ç½®åƒµå°¸å—ä¼¤é—ªçƒ
 	 */
 	virtual void setZombieHurtBlink();
 
 	/**
-	 *ÉèÖÃ½©Ê¬´óĞ¡
+	 *è®¾ç½®åƒµå°¸å¤§å°
 	 */
 	virtual void setZombieScale();
 
 	/**
-	 *»ñÈ¡½©Ê¬¶¯»­
+	 *è·å–åƒµå°¸åŠ¨ç”»
 	 */
 	virtual SkeletonAnimation* getZombieAnimation() const;
 
 	/**
-	 *½©Ê¬ÊÇ·ñ´æ»î
+	 *åƒµå°¸æ˜¯å¦å­˜æ´»
 	 */
 	virtual bool getZombieIsSurvive() const;
 
 	/**
-	 *»ñÈ¡½©Ê¬ÊÇ·ñÏÔÊ¾
+	 *è·å–åƒµå°¸æ˜¯å¦æ˜¾ç¤º
 	 */
 	virtual bool getZombieIsVisible() const;
 
 	/**
-	 *»ñÈ¡½©Ê¬Ãû×Ö
+	 *è·å–åƒµå°¸åå­—
 	 */
 	virtual string getZombieName() const;
 
 	/**
-	 *»ñÈ¡½©Ê¬±àºÅ
+	 *è·å–åƒµå°¸ç¼–å·
 	 */
 	virtual int getZombieTag() const;
 
 	/**
-	 *»ñÈ¡½©Ê¬Ëù³ÔÖ²Îï±àºÅ
+	 *è·å–åƒµå°¸æ‰€åƒæ¤ç‰©ç¼–å·
 	 */
 	virtual int getZombieEatPlantNumber() const;
 
 	/**
-	 *½©Ê¬Ã»ÓĞ²¥·ÅËÀÍö¶¯»­
+	 *åƒµå°¸æ²¡æœ‰æ’­æ”¾æ­»äº¡åŠ¨ç”»
 	 */
 	virtual bool getZombieIsPlayDieAnimation() const;
 
 	/**
-	 *»ñÈ¡½©Ê¬Î»ÖÃ
+	 *è·å–åƒµå°¸ä½ç½®
 	 */
 	virtual Vec2 getZombiePosition()  const;
 
 	/**
-	 *»ñÈ¡½©Ê¬x×ø±ê
+	 *è·å–åƒµå°¸xåæ ‡
 	 */
 	virtual float getZombiePositionX() const;
 
 	/**
-	 *»ñÈ¡½©ËÀy×ø±ê
+	 *è·å–åƒµæ­»yåæ ‡
 	 */
 	virtual float getZombiePositionY() const; 
 	
 	/**
-	 *»ñÈ¡½©Ê¬ÊÇ·ñ½øÈëµØÍ¼
+	 *è·å–åƒµå°¸æ˜¯å¦è¿›å…¥åœ°å›¾
 	 */
 	virtual bool getZombieIsEnterMap() const;
 
 	/**
-	 *»ñÈ¡½©Ê¬ÉíÌå»¤¶ÜÑªÁ¿
+	 *è·å–åƒµå°¸èº«ä½“æŠ¤ç›¾è¡€é‡
 	 */
 	virtual float getZombieCurrentBodyShieldVolume() const;
 
 	/**
-	 *»ñÈ¡½©Ê¬Í·²¿»¤¶ÜÑªÁ¿
+	 *è·å–åƒµå°¸å¤´éƒ¨æŠ¤ç›¾è¡€é‡
 	 */
 	virtual float getZombieCurrentHeadShieldVolume() const;
 
 	/**
-	 *»ñÈ¡½©Ê¬ÑªÁ¿
+	 *è·å–åƒµå°¸è¡€é‡
 	 */
 	virtual float getZombieCurrentBloodVolume() const;
 
 	/**
-	 *»ñÈ¡½©Ê¬ÊÇ·ñÔÚ³ÔÖ²Îï
+	 *è·å–åƒµå°¸æ˜¯å¦åœ¨åƒæ¤ç‰©
 	 */
 	virtual bool getZombieIsEat() const;
 
 	/**
-	 *»ñÈ¡½©Ê¬ÊÇ·ñÍ£Ö¹
+	 *è·å–åƒµå°¸æ˜¯å¦åœæ­¢
 	 */
 	virtual bool getZombieIsStop() const;
 
 	/**
-	 *@ 1.»ñÈ¡½©Ê¬µ±Ç°µÄËÙ¶È
+	 *@ 1.è·å–åƒµå°¸å½“å‰çš„é€Ÿåº¦
 	 */
 	virtual float getZombieCurrentSpeed() const;
 
 	/**
-	 *@ 2.»ñÈ¡½©Ê¬Ô­±¾ËÙ¶È
+	 *@ 2.è·å–åƒµå°¸åŸæœ¬é€Ÿåº¦
 	 */
 	virtual float getZombieSpeed() const;
 
 	/**
-	 *»ñÈ¡½©Ê¬ÊÇ·ñÏÔÊ¾
+	 *è·å–åƒµå°¸æ˜¯å¦æ˜¾ç¤º
 	 */
 	virtual bool getZombieIsShow() const;
 
 	/**
-	 *»ñÈ¡½©Ê¬ÖÖÀà
+	 *è·å–åƒµå°¸ç§ç±»
 	 */
 	virtual ZombiesType getZombieType() const;
 
 	/**
-	 *»ñÈ¡½©Ê¬Í·²¿±»¹¥»÷µÄÒôĞ§ 
+	 *è·å–åƒµå°¸å¤´éƒ¨è¢«æ”»å‡»çš„éŸ³æ•ˆ 
 	 */
 	virtual int getZombieHeadAttackSoundEffect() const;
 
 	/**
-	 *»ñÈ¡½©Ê¬ÉíÌå±»¹¥»÷ÒôĞ§
+	 *è·å–åƒµå°¸èº«ä½“è¢«æ”»å‡»éŸ³æ•ˆ
 	 */
 	virtual int getZombieBodyAttackSoundEffect() const;
 
 	/**
-	 *»ñÈ¡ÊÇ·ñ¿ÉÉ¾³ı
+	 *è·å–æ˜¯å¦å¯åˆ é™¤
 	 */
 	virtual bool* getIsCanDelete();
 
 	/**
-	 *»ñÈ¡½©Ê¬ÊÇ·ñÓĞ»¤¶Ü
+	 *è·å–åƒµå°¸æ˜¯å¦æœ‰æŠ¤ç›¾
 	 */
 	virtual bool getZombieIsHaveShield() const;
 
 	/**
-	 *»ñÈ¡½©Ê¬ÊÇ·ñ±»»÷·É
+	 *è·å–åƒµå°¸æ˜¯å¦è¢«å‡»é£
 	 */
 	virtual bool getZombieIsStrikeFly() const;
 
 	/**
-	 *»ñÈ¡½©Ê¬ÉíÌå»¤¶ÜÀàĞÍ
+	 *è·å–åƒµå°¸èº«ä½“æŠ¤ç›¾ç±»å‹
 	 */
 	ShieldType getZombieBodyShieldType()const;
 
 	/**
-	 *»ñÈ¡½©Ê¬Í·²¿»¤¶ÜÀàĞÍ
+	 *è·å–åƒµå°¸å¤´éƒ¨æŠ¤ç›¾ç±»å‹
 	 */
 	ShieldType getZombieHeadShieldType()const;
 
 	/**
-	 *²¥·Å½©Ê¬ËÀÍö¶¯»­
+	 *æ’­æ”¾åƒµå°¸æ­»äº¡åŠ¨ç”»
 	 */
 	virtual void playZombiesDieAnimation();
 
 	/**
-	 *²¥·Å½©Ê¬ÒôĞ§
+	 *æ’­æ”¾åƒµå°¸éŸ³æ•ˆ
 	 */
 	virtual void playZombieSoundEffect();
 
 protected:
 	/*
-	 *³õÊ¼»¯½©Ê¬
+	 *åˆå§‹åŒ–åƒµå°¸
 	 */
 	virtual void zombieInit(const string& animation_name = "Zombies");
 
 	/**
-     *»ñÈ¡½©Ê¬»æÖÆÍ¼²ã
+     *è·å–åƒµå°¸ç»˜åˆ¶å›¾å±‚
      */
 	virtual float getZombieLocalZOrder(const int& positiionY) const;
 
 	/**
-	 *ÉèÖÃ½Úµã
+	 *è®¾ç½®èŠ‚ç‚¹
 	 */
 	virtual void setNode(Node* node){ _node = node; }
 
 	/**
-	 *ÉèÖÃ½©Ê¬Ò»¼¶ËğÉË
+	 *è®¾ç½®åƒµå°¸ä¸€çº§æŸä¼¤
 	 */
 	virtual void setZombiePrimaryInjure();
 
 	/**
-	 *ÉèÖÃ½©Ê¬¶ş¼¶ËğÉË
+	 *è®¾ç½®åƒµå°¸äºŒçº§æŸä¼¤
 	 */
 	virtual void setZombieSecondaryInjure();
 
 	/**
-	 *½©Ê¬µô¸ì²²¶¯»­
+	 *åƒµå°¸æ‰èƒ³è†ŠåŠ¨ç”»
 	 */
 	virtual void zombieLoseArmAnimation(const std::string& name);
 
 	/**
-	 *½©Ê¬µôÍ·¶¯»­
+	 *åƒµå°¸æ‰å¤´åŠ¨ç”»
 	 */
 	virtual void zombieLoseHeadAnimation(const std::string& name);
 
 	/**
-	 *½©Ê¬µô»¤¶Ü¶¯»­
+	 *åƒµå°¸æ‰æŠ¤ç›¾åŠ¨ç”»
 	 */
 	virtual void zombieLoseShieldAnimation(const std::string& name);
 
 	/**
-	 *½©Ê¬ÏûÊ§¶¯»­
+	 *åƒµå°¸æ¶ˆå¤±åŠ¨ç”»
 	 */
 	virtual void zombieFadeOutAnimation();
 
 	/**
-	 *½©Ê¬ÒôĞ§
+	 *åƒµå°¸éŸ³æ•ˆ
 	 */
 	virtual void playZombieSoundEffect(const string& name);
 
 	/**
-	 *ÏÔÊ¾½©Ê¬Ö«ÌåÓë»¤¶ÜÓ°×Ó
+	 *æ˜¾ç¤ºåƒµå°¸è‚¢ä½“ä¸æŠ¤ç›¾å½±å­
 	 */
 	virtual void showZombieShadow(Node* node, const int posy);
 
 	/**
-	 *ÉèÖÃ½©Ê¬²»Í¬¹Ø¿¨µÄÊôĞÔ
+	 *è®¾ç½®åƒµå°¸ä¸åŒå…³å¡çš„å±æ€§
 	 */
 	virtual void setZombieAttributeForGameType(Node* sprite);
 
 	/**
-	 *ÉèÖÃÍ·²¿»¤¶ÜÒ»¼¶ËğÉË
-	 *²ÎÊı£º¸ü»»Ö®Ç°Ãû×Ö
-	 *²ÎÊı£ºÒª¸ü»»µÄÃû×Ö
-	 *²ÎÊı£ºËğÉËµÈ¼¶
+	 *è®¾ç½®å¤´éƒ¨æŠ¤ç›¾ä¸€çº§æŸä¼¤
+	 *å‚æ•°ï¼šæ›´æ¢ä¹‹å‰åå­—
+	 *å‚æ•°ï¼šè¦æ›´æ¢çš„åå­—
+	 *å‚æ•°ï¼šæŸä¼¤ç­‰çº§
 	 */
 	virtual void setZombieHeadShieldPrimaryInjure(const string& oldName, const string& newName);
 
 	/**
-	 *ÉèÖÃÍ·²¿»¤¶Ü¶ş¼¶ËğÉË
-	 *²ÎÊı£º¸ü»»Ö®Ç°Ãû×Ö
-	 *²ÎÊı£ºÒª¸ü»»µÄÃû×Ö
-	 *²ÎÊı£ºËğÉËµÈ¼¶
+	 *è®¾ç½®å¤´éƒ¨æŠ¤ç›¾äºŒçº§æŸä¼¤
+	 *å‚æ•°ï¼šæ›´æ¢ä¹‹å‰åå­—
+	 *å‚æ•°ï¼šè¦æ›´æ¢çš„åå­—
+	 *å‚æ•°ï¼šæŸä¼¤ç­‰çº§
 	 */
 	virtual void setZombieHeadShieldSecondaryInjure(const string& oldName, const string& newName);
 
 	/**
-	 *ÉèÖÃÍ·²¿»¤¶ÜÈı¼¶ËğÉË
-	 *²ÎÊı£º¸ü»»Ö®Ç°Ãû×Ö
-	 *²ÎÊı£ºÒª¸ü»»µÄÃû×Ö
-	 *²ÎÊı£ºËğÉËµÈ¼¶
+	 *è®¾ç½®å¤´éƒ¨æŠ¤ç›¾ä¸‰çº§æŸä¼¤
+	 *å‚æ•°ï¼šæ›´æ¢ä¹‹å‰åå­—
+	 *å‚æ•°ï¼šè¦æ›´æ¢çš„åå­—
+	 *å‚æ•°ï¼šæŸä¼¤ç­‰çº§
 	 */
 	virtual void setZombieHeadShieldThirdInjure(const string& oldName, const string& newName);
 
 	/**
-	 *ÉèÖÃÉíÌå»¤¶ÜÒ»¼¶ËğÉË
-	 *²ÎÊı£º¸ü»»Ö®Ç°Ãû×Ö
-	 *²ÎÊı£ºÒª¸ü»»µÄÃû×Ö
-	 *²ÎÊı£ºËğÉËµÈ¼¶
+	 *è®¾ç½®èº«ä½“æŠ¤ç›¾ä¸€çº§æŸä¼¤
+	 *å‚æ•°ï¼šæ›´æ¢ä¹‹å‰åå­—
+	 *å‚æ•°ï¼šè¦æ›´æ¢çš„åå­—
+	 *å‚æ•°ï¼šæŸä¼¤ç­‰çº§
 	 */
 	virtual void setZombieBodyShieldPrimaryInjure(const string& oldName, const string& newName);
 
 	/**
-	 *ÉèÖÃÉíÌå»¤¶Ü¶ş¼¶ËğÉË
-	 *²ÎÊı£º¸ü»»Ö®Ç°Ãû×Ö
-	 *²ÎÊı£ºÒª¸ü»»µÄÃû×Ö
-	 *²ÎÊı£ºËğÉËµÈ¼¶
+	 *è®¾ç½®èº«ä½“æŠ¤ç›¾äºŒçº§æŸä¼¤
+	 *å‚æ•°ï¼šæ›´æ¢ä¹‹å‰åå­—
+	 *å‚æ•°ï¼šè¦æ›´æ¢çš„åå­—
+	 *å‚æ•°ï¼šæŸä¼¤ç­‰çº§
 	 */
 	virtual void setZombieBodyShieldSecondaryInjure(const string& oldName, const string& newName);
 
 	/**
-	 *ÉèÖÃÉíÌå»¤¶ÜÈı¼¶ËğÉË
-	 *²ÎÊı£º¸ü»»Ö®Ç°Ãû×Ö
-	 *²ÎÊı£ºÒª¸ü»»µÄÃû×Ö
-	 *²ÎÊı£ºËğÉËµÈ¼¶
+	 *è®¾ç½®èº«ä½“æŠ¤ç›¾ä¸‰çº§æŸä¼¤
+	 *å‚æ•°ï¼šæ›´æ¢ä¹‹å‰åå­—
+	 *å‚æ•°ï¼šè¦æ›´æ¢çš„åå­—
+	 *å‚æ•°ï¼šæŸä¼¤ç­‰çº§
 	 */
 	virtual void setZombieBodyShieldThirdInjure(const string& oldName, const string& newName);
 
@@ -511,41 +511,41 @@ private:
 	string& createZombieName();
 
 protected:
-	int _attackHeadSoundEffectType;           // ¹¥»÷Í·²¿ÒôĞ§   
-	int _attackBodySoundEffectType;           // ¹¥»÷ÉíÌåÒôĞ§
-	int _bodyAnimationId;                     // ÉíÌå¶¯»­±àºÅ
-	int _bodyShieldAnimationId;               // ÉíÌå»¤¶Ü¶¯»­±àºÅ
-	int _headShieldAnimationId;               // Í·²¿»¤¶Ü¶¯»­±àºÅ
-	int _zombieTag;                           // ½©Ê¬±àºÅ(ÔİÎ´Ê¹ÓÃ)
-	float _bloodVolume;                       // ÑªÁ¿
-	float _headShieldVolume;                  // »¤¶ÜÑªÁ¿
-	float _bodyShieldVolume;                  // »¤¶Ü1ÑªÁ¿
-	float _currentBloodVolume;                // µ±Ç°ÑªÁ¿
-	float _currentHeadShieldVolume;           // µ±Ç°»¤¶ÜÑªÁ¿
-	float _currentBodyShieldVolume;           // µ±Ç°»¤¶Ü1ÑªÁ¿
-	float _speed;                             // ´æ´¢ÒÆ¶¯ËÙ¶È
-	float _currentSpeed;                      // ÒÆ¶¯ËÙ¶È
-	bool _isHaveShield;                       // ÊÇ·ñÓĞ»¤¶Ü
-	bool _isUseForGameType;                   // ÊÇ·ñ±»Ê¹ÓÃÔÚÓÎÏ·ÀàĞÍ
-	bool _isEat;                              // ÊÇ·ñÔÚ³ÔÖ²Îï
-	bool _isEatGarlic;                        // ÊÇ·ñ³Ô´óËâ
-	bool _isShow;                             // ÊÇ·ñÏÔÊ¾
-	bool _isPreview;                          // ÊÇ·ñÊÇÔ¤ÀÀÄ£Ê½
-	bool _isShowLoseLimbsAnimation;           // ÊÇ·ñÏÔÊ¾½©Ê¬µôÂäÖ«Ìå¶¯»­
-	bool _isCanDelete[2];                     // ÊÇ·ñ¿ÉÒÔÉ¾³ı
-	bool _isStrikeFly;                        // ÊÇ·ñ»÷·É
-	string _zombieName;                       // ½©Ê¬Ãû×Ö
-	Vec2 _position;                           // Î»ÖÃ
-	Node* _node;                              // ½Úµã
-	Global* _global;                          // È«¾Ö±äÁ¿
-	SkeletonAnimation* _zombiesAnimation;     // ½©Ê¬¶¯»­
-	ShieldType _headShieldType;               // Í·²¿»¤¶ÜÀàĞÍ
-	ShieldType _bodyShieldType;               // ÉíÌå»¤¶ÜÀàĞÍ
-	ZombiesType _zombiesType;                 // ½©Ê¬ÀàĞÍ
-	string _animationName[7];                 // ¶¯»­Ãû³Æ
-	default_random_engine _random;            // Ëæ»úÊıÒıÇæ
+	int _attackHeadSoundEffectType;           // æ”»å‡»å¤´éƒ¨éŸ³æ•ˆ   
+	int _attackBodySoundEffectType;           // æ”»å‡»èº«ä½“éŸ³æ•ˆ
+	int _bodyAnimationId;                     // èº«ä½“åŠ¨ç”»ç¼–å·
+	int _bodyShieldAnimationId;               // èº«ä½“æŠ¤ç›¾åŠ¨ç”»ç¼–å·
+	int _headShieldAnimationId;               // å¤´éƒ¨æŠ¤ç›¾åŠ¨ç”»ç¼–å·
+	int _zombieTag;                           // åƒµå°¸ç¼–å·(æš‚æœªä½¿ç”¨)
+	float _bloodVolume;                       // è¡€é‡
+	float _headShieldVolume;                  // æŠ¤ç›¾è¡€é‡
+	float _bodyShieldVolume;                  // æŠ¤ç›¾1è¡€é‡
+	float _currentBloodVolume;                // å½“å‰è¡€é‡
+	float _currentHeadShieldVolume;           // å½“å‰æŠ¤ç›¾è¡€é‡
+	float _currentBodyShieldVolume;           // å½“å‰æŠ¤ç›¾1è¡€é‡
+	float _speed;                             // å­˜å‚¨ç§»åŠ¨é€Ÿåº¦
+	float _currentSpeed;                      // ç§»åŠ¨é€Ÿåº¦
+	bool _isHaveShield;                       // æ˜¯å¦æœ‰æŠ¤ç›¾
+	bool _isUseForGameType;                   // æ˜¯å¦è¢«ä½¿ç”¨åœ¨æ¸¸æˆç±»å‹
+	bool _isEat;                              // æ˜¯å¦åœ¨åƒæ¤ç‰©
+	bool _isEatGarlic;                        // æ˜¯å¦åƒå¤§è’œ
+	bool _isShow;                             // æ˜¯å¦æ˜¾ç¤º
+	bool _isPreview;                          // æ˜¯å¦æ˜¯é¢„è§ˆæ¨¡å¼
+	bool _isShowLoseLimbsAnimation;           // æ˜¯å¦æ˜¾ç¤ºåƒµå°¸æ‰è½è‚¢ä½“åŠ¨ç”»
+	bool _isCanDelete[2];                     // æ˜¯å¦å¯ä»¥åˆ é™¤
+	bool _isStrikeFly;                        // æ˜¯å¦å‡»é£
+	string _zombieName;                       // åƒµå°¸åå­—
+	Vec2 _position;                           // ä½ç½®
+	Node* _node;                              // èŠ‚ç‚¹
+	Global* _global;                          // å…¨å±€å˜é‡
+	SkeletonAnimation* _zombiesAnimation;     // åƒµå°¸åŠ¨ç”»
+	ShieldType _headShieldType;               // å¤´éƒ¨æŠ¤ç›¾ç±»å‹
+	ShieldType _bodyShieldType;               // èº«ä½“æŠ¤ç›¾ç±»å‹
+	ZombiesType _zombiesType;                 // åƒµå°¸ç±»å‹
+	string _animationName[7];                 // åŠ¨ç”»åç§°
+	default_random_engine _random;            // éšæœºæ•°å¼•æ“
 	random_device _device;
-	static unsigned int _zombiesNumbers;      // ½©Ê¬ÊıÁ¿
+	static unsigned int _zombiesNumbers;      // åƒµå°¸æ•°é‡
 
 private:
 	int _zombieEatPlantNumber;

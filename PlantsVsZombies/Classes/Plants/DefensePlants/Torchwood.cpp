@@ -17,7 +17,7 @@ Torchwood::Torchwood(Node* node)
 	_node = node;
 	_plantImage = nullptr;
 
-	_combatEffecttiveness = 2; // Ê¹Íã¶¹¹¥»÷Á¦·­±¶
+	_combatEffecttiveness = 2; // ä½¿è±Œè±†æ”»å‡»åŠ›ç¿»å€
 	_healthPoint = 300;
 	_plantsType = PlantsType::Torchwood;
 }
@@ -51,11 +51,11 @@ void Torchwood::createPlantAnimation()
 	_plantAnimation->setScale(1.0f);
 	_node->addChild(_plantAnimation);
 
-	// Ó°×Ó
+	// å½±å­
 	setPlantShadow(1.5f);
 	_plantAnimation->getChildByName("plantshadow")->setPosition(Vec2(0, 10));
 
-	// ÄàÍÁ·É½¦¶¯»­
+	// æ³¥åœŸé£æº…åŠ¨ç”»
 	setPlantSoilSplashAnimation(0.8f);
 }
 
@@ -63,9 +63,9 @@ void Torchwood::determineRelativePositionPlantsAndZombies()
 {
 	for (auto zombie : ZombiesGroup)
 	{
-		zombieEatPlant(zombie);      /* ½©Ê¬³ÔÖ²Îï */
+		zombieEatPlant(zombie);      /* åƒµå°¸åƒæ¤ç‰© */
 
-		zombieRecoveryMove(zombie);  /* ½©Ê¬»Ö¸´ÒÆ¶¯ */
+		zombieRecoveryMove(zombie);  /* åƒµå°¸æ¢å¤ç§»åŠ¨ */
 	}
 
 	judgeTorchwoodAndPeaPosition();
@@ -75,10 +75,10 @@ void Torchwood::judgeTorchwoodAndPeaPosition()
 {
 	for (auto bullet : BulletGroup)
 	{
-		if (getBulletIsPea(bullet) && getPlantIsSurvive() &&                                 /* ×Óµ¯ÊÇÍã¶¹ && Ö²Îï´æ»î */
-			getPeaIsSameLineWithTorchwood(bullet) && getPeaIsEncounterTorchwood(bullet))     /* Íã¶¹Óë»ğ¾æÊ÷×®ÔÚÍ¬Ò»ĞĞ && Íã¶¹Óöµ½»ğ¾æÊ÷×® */
+		if (getBulletIsPea(bullet) && getPlantIsSurvive() &&                                 /* å­å¼¹æ˜¯è±Œè±† && æ¤ç‰©å­˜æ´» */
+			getPeaIsSameLineWithTorchwood(bullet) && getPeaIsEncounterTorchwood(bullet))     /* è±Œè±†ä¸ç«ç‚¬æ ‘æ¡©åœ¨åŒä¸€è¡Œ && è±Œè±†é‡åˆ°ç«ç‚¬æ ‘æ¡© */
 		{
-			if (!dynamic_cast<Pea*>(bullet)->getIsFire()) // Ã»ÓĞÈ¼ÉÕ
+			if (!dynamic_cast<Pea*>(bullet)->getIsFire()) // æ²¡æœ‰ç‡ƒçƒ§
 			{
 				bullet->getBullet()->setAnimation(0, "fire", true);
 				bullet->getBullet()->getChildByName("shadow")->setPosition(Vec2(0, -52));

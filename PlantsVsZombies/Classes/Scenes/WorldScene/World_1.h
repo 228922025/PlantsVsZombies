@@ -56,8 +56,8 @@ protected:
 	Size _backgroundSize;
 	ui::ScrollView* _scrollView;
 	int _level;
-	float _worldPosition;                 /* 世界初始位置 */
-	float _worldRollingDistance;          /* 计算鼠标滚动距离 */
+	float _worldPosition;                 /* 涓栫晫鍒濆浣嶇疆 */
+	float _worldRollingDistance;          /* 璁＄畻榧犳爣婊氬姩璺濈 */
 	list<Button*> _levelButton;
 
 private:

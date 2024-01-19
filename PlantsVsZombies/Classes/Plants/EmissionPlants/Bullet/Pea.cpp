@@ -50,7 +50,7 @@ void Pea::bulletInit()
 
 void Pea::createShadow()
 {
-	/* ´´½¨Ó°×Ó */
+	/* åˆ›å»ºå½±å­ */
 	auto shadow = Sprite::createWithSpriteFrameName("plantshadow.png");
 	shadow->setScale(1.7f);
 	shadow->setName("shadow");
@@ -69,23 +69,23 @@ void Pea::bulletAttackZombies()
 {
 	for (auto zombie : ZombiesGroup)
 	{
-		if (!_isUsed && getBulletIsSameLineWithZombie(zombie) &&  /* Íã¶¹Ã»ÓÐ±»Ê¹ÓÃ && Íã¶¹Óë½©Ê¬ÔÚÍ¬Ò»ÐÐ */
-			getBulletIsEncounterWithZombie(zombie) &&             /* Íã¶¹Óë½©Ê¬Åö×² */
-			zombie->getZombieIsSurvive() && zombie->getZombieIsEnterMap()) /* ½©Ê¬Ã»ÓÐËÀÍö && ½©Ê¬½øÈëµØÍ¼ÄÚ */
+		if (!_isUsed && getBulletIsSameLineWithZombie(zombie) &&  /* è±Œè±†æ²¡æœ‰è¢«ä½¿ç”¨ && è±Œè±†ä¸Žåƒµå°¸åœ¨åŒä¸€è¡Œ */
+			getBulletIsEncounterWithZombie(zombie) &&             /* è±Œè±†ä¸Žåƒµå°¸ç¢°æ’ž */
+			zombie->getZombieIsSurvive() && zombie->getZombieIsEnterMap()) /* åƒµå°¸æ²¡æœ‰æ­»äº¡ && åƒµå°¸è¿›å…¥åœ°å›¾å†… */
 		{
 			selectSoundEffect(zombie->getZombieBodyAttackSoundEffect(),
-				zombie->getZombieHeadAttackSoundEffect());  /* ²¥·ÅÖ¸¶¨ÒôÀÖ */
+				zombie->getZombieHeadAttackSoundEffect());  /* æ’­æ”¾æŒ‡å®šéŸ³ä¹ */
 
-			setBulletOpacity();                /* ×Óµ¯ÏûÊ§ */
-			bulletAttackHurtZombies(zombie);   /* ½©Ê¬¼õÉÙÉúÃüÖµ */
+			setBulletOpacity();                /* å­å¼¹æ¶ˆå¤± */
+			bulletAttackHurtZombies(zombie);   /* åƒµå°¸å‡å°‘ç”Ÿå‘½å€¼ */
 
 			zombie->setZombieHurtBlink();
 
-			createPeaExplode(); /* ´´½¨Íã¶¹±¬Õ¨¶¯»­ */
+			createPeaExplode(); /* åˆ›å»ºè±Œè±†çˆ†ç‚¸åŠ¨ç”» */
 			setBulletAttack(0);
 			setBulletIsUsed(true);
 
-			break; /* Ò»¸öÍã¶¹Ö»ÄÜ»÷ÖÐÒ»¸ö½©Ê¬ */
+			break; /* ä¸€ä¸ªè±Œè±†åªèƒ½å‡»ä¸­ä¸€ä¸ªåƒµå°¸ */
 		}
 	}
 }
@@ -94,15 +94,15 @@ void Pea::fireBulletAttackZombies()
 {
 	for (auto zombie : ZombiesGroup)
 	{
-		if (!_isUsed && getBulletIsSameLineWithZombie(zombie) &&           /* Íã¶¹Ã»ÓÐ±»Ê¹ÓÃ && Íã¶¹Óë½©Ê¬ÔÚÍ¬Ò»ÐÐ */
-			getBulletIsEncounterWithZombie(zombie) &&                      /* Íã¶¹Óë½©Ê¬Åö×² */
-			zombie->getZombieIsSurvive() && zombie->getZombieIsEnterMap()) /* ½©Ê¬Ã»ÓÐËÀÍö && ½©Ê¬½øÈëµØÍ¼ÄÚ */
+		if (!_isUsed && getBulletIsSameLineWithZombie(zombie) &&           /* è±Œè±†æ²¡æœ‰è¢«ä½¿ç”¨ && è±Œè±†ä¸Žåƒµå°¸åœ¨åŒä¸€è¡Œ */
+			getBulletIsEncounterWithZombie(zombie) &&                      /* è±Œè±†ä¸Žåƒµå°¸ç¢°æ’ž */
+			zombie->getZombieIsSurvive() && zombie->getZombieIsEnterMap()) /* åƒµå°¸æ²¡æœ‰æ­»äº¡ && åƒµå°¸è¿›å…¥åœ°å›¾å†… */
 		{
-			playSoundEffect(SoundEffectType::firepea); /* ²¥·ÅÖ¸¶¨ÒôÀÖ */
+			playSoundEffect(SoundEffectType::firepea); /* æ’­æ”¾æŒ‡å®šéŸ³ä¹ */
 
-			setBulletOpacity();                /* ×Óµ¯ÏûÊ§ */
-			attackZombies();                   /* ¹¥»÷½©Ê¬ */
-			createPeaExplode();                /* ´´½¨Íã¶¹±¬Õ¨¶¯»­ */
+			setBulletOpacity();                /* å­å¼¹æ¶ˆå¤± */
+			attackZombies();                   /* æ”»å‡»åƒµå°¸ */
+			createPeaExplode();                /* åˆ›å»ºè±Œè±†çˆ†ç‚¸åŠ¨ç”» */
 			setBulletAttack(0);
 			setBulletIsUsed(true);
 
@@ -132,7 +132,7 @@ void Pea::attackZombies()
 
 float Pea::getZombieInExplodeRange(Zombies* zombie)
 {
-	/* ½©Ê¬ÊÇ·ñÔÚ±¬Õ¨·¶Î§ÅÐ¶Ï */
+	/* åƒµå°¸æ˜¯å¦åœ¨çˆ†ç‚¸èŒƒå›´åˆ¤æ–­ */
 	return fabs(zombie->getZombieAnimation()->getPositionX() - _bulletAnimation->getPositionX());
 }
 

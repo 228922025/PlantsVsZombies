@@ -23,7 +23,7 @@ class VideoPlayer;
 class GameEasterEggs :public Scene
 {
 public:
-	static Scene* createScene();             /* ´´½¨³¡¾° */
+	static Scene* createScene();             /* åˆ›å»ºåœºæ™¯ */
 	CREATE_FUNC(GameEasterEggs);
     void onTouchesEnded(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event* event);
 

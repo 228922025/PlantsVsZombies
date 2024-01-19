@@ -91,8 +91,8 @@ void Car::createCarListener()
 {
 	for (auto& zombie : ZombiesGroup)
 	{
-		if (zombie->getZombieIsEnterMap() && zombie->getZombieIsSurvive() &&         /* ½©Ê¬½øÈëµØÍ¼ && ½©Ê¬Ã»ÓĞËÀÍö */       
-			getZombieIsSameLineWithCar(zombie) && getzombieIsEncounterCar(zombie))   /* ½©Ê¬ÓëĞ¡³µÔÚÍ¬Ò»ĞĞ && ½©Ê¬Óöµ½Ğ¡³µ */
+		if (zombie->getZombieIsEnterMap() && zombie->getZombieIsSurvive() &&         /* åƒµå°¸è¿›å…¥åœ°å›¾ && åƒµå°¸æ²¡æœ‰æ­»äº¡ */       
+			getZombieIsSameLineWithCar(zombie) && getzombieIsEncounterCar(zombie))   /* åƒµå°¸ä¸å°è½¦åœ¨åŒä¸€è¡Œ && åƒµå°¸é‡åˆ°å°è½¦ */
 		{
 			_isLive = true;
 

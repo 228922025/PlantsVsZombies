@@ -54,11 +54,11 @@ void PeaShooter::createPlantAnimation()
 	_plantAnimation->setScale(1.0f);
 	_node->addChild(_plantAnimation);
 
-	// Ó°×Ó
+	// å½±å­
 	setPlantShadow(1.9f);
 	_plantAnimation->getChildByName("plantshadow")->setPosition(Vec2(0, 15));
 
-	// ÄàÍÁ·É½¦¶¯»­
+	// æ³¥åœŸé£æº…åŠ¨ç”»
 	setPlantSoilSplashAnimation(0.8f);
 }
 
@@ -66,11 +66,11 @@ void PeaShooter::determineRelativePositionPlantsAndZombies()
 {
 	for (auto zombie : ZombiesGroup)
 	{
-		zombieEatPlant(zombie);      /* ½©Ê¬³ÔÖ²Îï */
+		zombieEatPlant(zombie);      /* åƒµå°¸åƒæ¤ç‰© */
 
-		zombieRecoveryMove(zombie);  /* ½©Ê¬»Ö¸´ÒÆ¶¯ */
+		zombieRecoveryMove(zombie);  /* åƒµå°¸æ¢å¤ç§»åŠ¨ */
 
-		plantAttack(zombie);         /* Ö²Îï¹¥»÷ */
+		plantAttack(zombie);         /* æ¤ç‰©æ”»å‡» */
 	}
 
 	plantRecovery("PeaShooter_Normal");
@@ -78,8 +78,8 @@ void PeaShooter::determineRelativePositionPlantsAndZombies()
 
 void PeaShooter::plantAttack(Zombies* zombie)
 {
-	if (getPlantIsSurvive() && zombie->getZombieIsSurvive() && zombie->getZombieIsEnterMap() &&     /* Ö²Îï´æ»î && ½©Ê¬Ã»ÓĞËÀÍö && ½©Ê¬½øÈëµØÍ¼ */
-		getZombieIsTheFrontOfPlant(zombie) && getZombieIsSameLineWithPlant(zombie))                 /* ½©Ê¬ÓëÖ²ÎïÔÚÍ¬Ò»ĞĞ && ½©Ê¬ÔÚÖ²ÎïµÄÇ°·½ */
+	if (getPlantIsSurvive() && zombie->getZombieIsSurvive() && zombie->getZombieIsEnterMap() &&     /* æ¤ç‰©å­˜æ´» && åƒµå°¸æ²¡æœ‰æ­»äº¡ && åƒµå°¸è¿›å…¥åœ°å›¾ */
+		getZombieIsTheFrontOfPlant(zombie) && getZombieIsSameLineWithPlant(zombie))                 /* åƒµå°¸ä¸æ¤ç‰©åœ¨åŒä¸€è¡Œ && åƒµå°¸åœ¨æ¤ç‰©çš„å‰æ–¹ */
 	{
 		plantEmission("PeaShooter_Shoot");
 	}
@@ -87,8 +87,8 @@ void PeaShooter::plantAttack(Zombies* zombie)
 
 void PeaShooter::plantEmission(const string& plantAnimation)
 {
-	_isCreatePea = true; /* ±íÊ¾ÓĞ½©Ê¬ÓëÖ²ÎïÔÚÍ¬Ò»ĞĞ */
-	if (!_isChanged)     /* ÅĞ¶Ï¶¯»­ÊÇ·ñÒÑ¾­¸Ä±ä */
+	_isCreatePea = true; /* è¡¨ç¤ºæœ‰åƒµå°¸ä¸æ¤ç‰©åœ¨åŒä¸€è¡Œ */
+	if (!_isChanged)     /* åˆ¤æ–­åŠ¨ç”»æ˜¯å¦å·²ç»æ”¹å˜ */
 	{
 		_plantAnimation->addAnimation(0, plantAnimation, true);
 		_isChanged = true;
@@ -106,7 +106,7 @@ void PeaShooter::plantEmission(const string& plantAnimation)
 
 void PeaShooter::plantRecovery(const string& plantAnimation)
 {
-	if (!_isCreatePea) /* ÅĞ¶ÏÊÇ·ñÓĞ½©Ê¬ÓëÍã¶¹ÉäÊÖÔÚÍ¬Ò»ĞĞ */
+	if (!_isCreatePea) /* åˆ¤æ–­æ˜¯å¦æœ‰åƒµå°¸ä¸è±Œè±†å°„æ‰‹åœ¨åŒä¸€è¡Œ */
 	{
 		if (_isChanged)
 		{
@@ -115,7 +115,7 @@ void PeaShooter::plantRecovery(const string& plantAnimation)
 		}
 	}
 
-	_isCreatePea = false; /* Ã¿Ñ­»·Ò»´Î¾Í³õÊ¼»¯ */
+	_isCreatePea = false; /* æ¯å¾ªç¯ä¸€æ¬¡å°±åˆå§‹åŒ– */
 }
 
 void PeaShooter::createPea()

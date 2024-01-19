@@ -37,12 +37,12 @@ private:
 	int getZOrder(const float& pos_y) const;
 
 private:
-	Sprite* _carImage;    // Ğ¡³µÍ¼Æ¬
-	Vec2 _position;       // Î»ÖÃ
-	bool _isLive;         // ÊÇ·ñ¼¤»î
-	int _tag;             // ±ê¼Ç
-	int _carState;        // Ğ¡³µ×´Ì¬
-	float _scale;         // ´óĞ¡
-	Node* _node;          // ¸¸½Úµã
+	Sprite* _carImage;    // å°è½¦å›¾ç‰‡
+	Vec2 _position;       // ä½ç½®
+	bool _isLive;         // æ˜¯å¦æ¿€æ´»
+	int _tag;             // æ ‡è®°
+	int _carState;        // å°è½¦çŠ¶æ€
+	float _scale;         // å¤§å°
+	Node* _node;          // çˆ¶èŠ‚ç‚¹
 	Global* _global;
 };

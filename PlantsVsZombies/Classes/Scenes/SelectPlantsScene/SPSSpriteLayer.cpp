@@ -91,7 +91,7 @@ void SPSSpriteLayer::alreadyHavePlantsDialog()
 	State->setAnimation(0, "Rotate", true);
 	_seedChooser->addChild(State);
 
-	auto SeedChooserText = ui::Text::create(_global->userInformation->getGameText().find("ÇëÑ¡ÔñÄã³öÕ½µÄÖ²Îï£¡")->second, GAME_FONT_NAME_1, 50);
+	auto SeedChooserText = ui::Text::create(_global->userInformation->getGameText().find("è¯·é€‰æ‹©ä½ å‡ºæˆ˜çš„æ¤ç‰©ï¼")->second, GAME_FONT_NAME_1, 50);
 	SeedChooserText->setColor(Color3B::YELLOW);
 	SeedChooserText->setPosition(Vec2(400, 1000));
 	_seedChooser->addChild(SeedChooserText);
@@ -99,7 +99,7 @@ void SPSSpriteLayer::alreadyHavePlantsDialog()
 
 void SPSSpriteLayer::createScrollview()
 {
-	/* Ö²Îï¿¨ÅÆ»¬¶¯ÊÓÍ¼ */
+	/* æ¤ç‰©å¡ç‰Œæ»‘åŠ¨è§†å›¾ */
 	_plantCardScrollView->setDirection(ui::ScrollView::Direction::VERTICAL);
 	_plantCardScrollView->setContentSize(Size(800.0f, 420));
 	_plantCardScrollView->setPosition(Vec2(0, 120));
@@ -112,7 +112,7 @@ void SPSSpriteLayer::createScrollview()
 	//this->schedule(schedule_selector(SPSSpriteLayer::scrollViewUpdate), 0.1f);
 	_seedChooser->addChild(_plantCardScrollView);
 
-	/* Ö²Îï¿¨ÅÆ½éÉÜ»¬¶¯ÊÓÍ¼ */
+	/* æ¤ç‰©å¡ç‰Œä»‹ç»æ»‘åŠ¨è§†å›¾ */
 	_plantCardTextScrollView = ui::ScrollView::create();
 	_plantCardTextScrollView->setDirection(ui::ScrollView::Direction::VERTICAL);
 	_plantCardTextScrollView->setContentSize(Size(400.0f, 360.0f));
@@ -132,7 +132,7 @@ void SPSSpriteLayer::scrollViewUpdate(float Time)
 
 void SPSSpriteLayer::createMouseListener()
 {
-	/* Êó±ê»¬¶¯¼àÌý */
+	/* é¼ æ ‡æ»‘åŠ¨ç›‘å¬ */
 	auto mouse = EventListenerMouse::create();
 	mouse->onMouseScroll = [&](Event* event)
 	{
@@ -194,22 +194,22 @@ Button* SPSSpriteLayer::createButtons(const Vec2& vec2, const unsigned int& id)
 					{
 						button->setEnabled(false);
 						button->setColor(Color3B(70, 70, 70));
-						button->setCascadeColorEnabled(true);  /* ÉèÖÃ¸¸½ÚµãÓ°Ïì×Ó½Úµã */
+						button->setCascadeColorEnabled(true);  /* è®¾ç½®çˆ¶èŠ‚ç‚¹å½±å“å­èŠ‚ç‚¹ */
 
 						createMoveButton(button, vec2, id);
 					}
 				}
 
-				createAnimationAndText(id);//´´½¨Ö²Îï¶¯»­ 
+				createAnimationAndText(id);//åˆ›å»ºæ¤ç‰©åŠ¨ç”» 
 				
 				break;
 			}
 		});
 	_plantCardScrollView->addChild(button);
 
-	controlPlantCanSelect(button,id);  /* ¿ØÖÆÖ²ÎïÊÇ·ñ¿ÉÒÔÑ¡Ôñ */
+	controlPlantCanSelect(button,id);  /* æŽ§åˆ¶æ¤ç‰©æ˜¯å¦å¯ä»¥é€‰æ‹© */
 
-	showPlantsInformation(button, id); /* ÏÔÊ¾Ö²ÎïÐÅÏ¢ */
+	showPlantsInformation(button, id); /* æ˜¾ç¤ºæ¤ç‰©ä¿¡æ¯ */
 
 	if (!_isPlantIsCanSelect[id])
 	{
@@ -223,7 +223,7 @@ void SPSSpriteLayer::showRandPlantsInformation()
 {
 	preLoadText();
 
-	/* ¿ªÊ¼½øÈë´´½¨Ëæ»ú¶¯»­ */
+	/* å¼€å§‹è¿›å…¥åˆ›å»ºéšæœºåŠ¨ç”» */
 	srand(time(nullptr));
 	createAnimationAndText(rand() % 11);
 }
@@ -263,7 +263,7 @@ Text* SPSSpriteLayer::showPlantsInformation(Button* button, const unsigned int i
 		Color3B::RED,Color3B::ORANGE,Color3B(0,255,255)
 	};
 
-	/* Í¼Æ¬ */
+	/* å›¾ç‰‡ */
 	createPlantsImage(button, PlantsImageName[id][0]);
 
 	auto PlantsLevelIamge = Sprite::createWithSpriteFrameName("PlantsLevel_Copper.png");
@@ -286,7 +286,7 @@ Text* SPSSpriteLayer::showPlantsInformation(Button* button, const unsigned int i
 	PlantsIcon->setScale(1.2f);
 	PlantsIconBackground->addChild(PlantsIcon);
 
-	/* ÎÄ±¾ */
+	/* æ–‡æœ¬ */
 	auto PlantsNeedSuns = ui::Text::create();
 	PlantsNeedSuns->setFontName(GAME_FONT_NAME_2);
 	PlantsNeedSuns->setColor(Color3B::BLACK);
@@ -318,7 +318,7 @@ void SPSSpriteLayer::createPlantsImage(Button* button, const std::string& resour
 
 void SPSSpriteLayer::createMoveButton(Button* button, const Vec2& vec2, const unsigned int& id)
 {
-	/* ´´½¨ÒÆ¶¯¿¨ÅÆ */
+	/* åˆ›å»ºç§»åŠ¨å¡ç‰Œ */
 	auto MoveCard = ui::Button::create("SeedPacket_Larger.png", "", "", TextureResType::PLIST);
 	MoveCard->setPosition(Vec2(vec2.x + 212, vec2.y + _plantCardScrollViewPercent));
 	MoveCard->setTitleColor(Color3B::RED);
@@ -327,9 +327,9 @@ void SPSSpriteLayer::createMoveButton(Button* button, const Vec2& vec2, const un
 	MoveCard->runAction(MoveTo::create(0.2f, Vec2(105, 1008 - 103 * seedBankButton.size())));
 	this->addChild(MoveCard);
 
-	showPlantsInformation(MoveCard, id); //ÏÔÊ¾ÐÅÏ¢
+	showPlantsInformation(MoveCard, id); //æ˜¾ç¤ºä¿¡æ¯
 
-	/* ´æ´¢µ½¿¨ÅÆÀ¸ÖÐ */
+	/* å­˜å‚¨åˆ°å¡ç‰Œæ ä¸­ */
 	UserSelectCard seed_bank_button;
 	seed_bank_button.cardbutton = MoveCard;
 	seed_bank_button.cardTag = id;
@@ -344,12 +344,12 @@ void SPSSpriteLayer::createMoveButton(Button* button, const Vec2& vec2, const un
 				PlayMusic::playMusic("tap2");
 				break;
 			case ui::Widget::TouchEventType::ENDED:
-				createAnimationAndText(id);  //´´½¨Ö²Îï¶¯»­
-				sortPlantsCard(id);          //¶ÔÖ²Îï¿¨ÅÆÖØÐÂÅÅÐò
-				_plantCardScrollView->scrollToPercentVertical(PlantCardScrollViewPercentLast / 25.0f, 0.5f, true);//¹ö¶¯µ½³õÊ¼Î»ÖÃ
+				createAnimationAndText(id);  //åˆ›å»ºæ¤ç‰©åŠ¨ç”»
+				sortPlantsCard(id);          //å¯¹æ¤ç‰©å¡ç‰Œé‡æ–°æŽ’åº
+				_plantCardScrollView->scrollToPercentVertical(PlantCardScrollViewPercentLast / 25.0f, 0.5f, true);//æ»šåŠ¨åˆ°åˆå§‹ä½ç½®
 				_plantCardRollingDistance = PlantCardScrollViewPercentLast / 25.0f;
 				MoveCard->runAction(Sequence::create(MoveTo::create(0.2f, Vec2(vec2.x + 212, vec2.y + PlantCardScrollViewPercentLast)), 
-					CallFuncN::create(CC_CALLBACK_1(SPSSpriteLayer::removePlantsCardCallBack, this, id, button)), nullptr));//Ö²Îï¿¨ÅÆÈ¡ÏûÑ¡Ôñ
+					CallFuncN::create(CC_CALLBACK_1(SPSSpriteLayer::removePlantsCardCallBack, this, id, button)), nullptr));//æ¤ç‰©å¡ç‰Œå–æ¶ˆé€‰æ‹©
 				break;
 			}
 		});
@@ -357,7 +357,7 @@ void SPSSpriteLayer::createMoveButton(Button* button, const Vec2& vec2, const un
 
 void SPSSpriteLayer::sortPlantsCard(const unsigned int& id)
 {
-	/* É¾³ýÈ¡ÏûÑ¡ÔñµÄ¿¨ÅÆ */
+	/* åˆ é™¤å–æ¶ˆé€‰æ‹©çš„å¡ç‰Œ */
 	for (auto& card = seedBankButton.begin(); card != seedBankButton.end();)
 	{
 		if (card->cardTag == id)
@@ -370,7 +370,7 @@ void SPSSpriteLayer::sortPlantsCard(const unsigned int& id)
 		}
 	}
 
-	/* ÎªÖ²Îï¿¨ÅÆÖØÐÂÉèÖÃÎ»ÖÃ */
+	/* ä¸ºæ¤ç‰©å¡ç‰Œé‡æ–°è®¾ç½®ä½ç½® */
 	int i = -1;
 	for (auto& card : seedBankButton)
 	{
@@ -387,10 +387,10 @@ void SPSSpriteLayer::sortPlantsCard(const unsigned int& id)
 
 void SPSSpriteLayer::removePlantsCardCallBack(Node* node, const unsigned int& id, Button* button)
 {
-	/* É¾³ýÒÆ¶¯¿¨ÅÆ¾«Áé */
+	/* åˆ é™¤ç§»åŠ¨å¡ç‰Œç²¾çµ */
 	this->removeChildByTag(id);
 
-	/* ÉèÖÃ¿¨ÅÆ¾«Áé¿ÉÒÔÔÙ´ÎÑ¡Ôñ */
+	/* è®¾ç½®å¡ç‰Œç²¾çµå¯ä»¥å†æ¬¡é€‰æ‹© */
 	button->setEnabled(true);
 	button->setColor(Color3B::WHITE);
 }
@@ -398,7 +398,7 @@ void SPSSpriteLayer::removePlantsCardCallBack(Node* node, const unsigned int& id
 void SPSSpriteLayer::createBeginButton()
 {
 	auto button = Button::create("SeedChooser_Button_Disabled.png", "SeedChooser_Button.png", "", TextureResType::PLIST);
-	button->setTitleText(_global->userInformation->getGameText().find("¿ªÊ¼Õ½¶·°É£¡")->second);
+	button->setTitleText(_global->userInformation->getGameText().find("å¼€å§‹æˆ˜æ–—å§ï¼")->second);
 	button->setTitleColor(Color3B::WHITE);
 	button->setTitleFontName(GAME_FONT_NAME_1);
 	button->setTitleFontSize(20);
@@ -415,7 +415,7 @@ void SPSSpriteLayer::createBeginButton()
 				break;
 			case ui::Widget::TouchEventType::ENDED:
 				PlayMusic::playMusic("swing");
-				/* ÉèÖÃ°´Å¥²»¿ÉÓÃ */
+				/* è®¾ç½®æŒ‰é’®ä¸å¯ç”¨ */
 				for (auto& card : seedBankButton)
 				{
 					card.cardbutton->setEnabled(false);
@@ -444,7 +444,7 @@ void SPSSpriteLayer::controlPlantCanSelect(Button* button, const unsigned int id
 		if (coinNumber < vec[id - 9].x || killZombiesNumber < vec[id - 9].y)
 		{
 			button->setColor(Color3B(70, 70, 70));
-			button->setCascadeColorEnabled(true);  /* ÉèÖÃ¸¸½ÚµãÓ°Ïì×Ó½Úµã */
+			button->setCascadeColorEnabled(true);  /* è®¾ç½®çˆ¶èŠ‚ç‚¹å½±å“å­èŠ‚ç‚¹ */
 			_isPlantIsCanSelect[id] = false;
 		}
 	}
@@ -460,9 +460,9 @@ void SPSSpriteLayer::createProhibit(Button* button)
 
 void SPSSpriteLayer::createPlantsAnimation(const std::string& filepath, const std::string& AnimationName, const std::string& skin, Vec2& vec2, const float& scale)
 {
-	/* ´´½¨¶¯»­ */
+	/* åˆ›å»ºåŠ¨ç”» */
 	auto iter = _global->userInformation->getAnimationData().find(filepath);
-	if (iter != _global->userInformation->getAnimationData().end())/* Èç¹û¿ÉÒÔÕÒµ½ */
+	if (iter != _global->userInformation->getAnimationData().end())/* å¦‚æžœå¯ä»¥æ‰¾åˆ° */
 	{
 		_plantsAnimation = SkeletonAnimation::createWithData(iter->second);
 		_plantsAnimation->setPosition(vec2);

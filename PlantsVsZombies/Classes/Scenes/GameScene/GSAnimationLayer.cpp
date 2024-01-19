@@ -185,7 +185,7 @@ void GSAnimationLayer::createSunLayer()
 
 void GSAnimationLayer::createRandomSuns()
 {
-	// ? 条件......
+	// ? 鏉′欢......
 	auto level = _global->userInformation->getCurrentPlayLevels();
 	if (level != 36 && level != 50 && level != 52)
 	{
@@ -217,10 +217,10 @@ void GSAnimationLayer::showCars()
 
 void GSAnimationLayer::gameMainLoop(float delta)
 {
-	zombiesEventUpdate(delta); /* 僵尸事件更新 */
-	plantsEventUpdate();       /* 植物事件更新 */
-	bulletEventUpdate();       /* 子弹事件更新 */
-	carsEventUpdate();         /* 小车事件更新 */
+	zombiesEventUpdate(delta); /* 鍍靛案浜嬩欢鏇存柊 */
+	plantsEventUpdate();       /* 妞嶇墿浜嬩欢鏇存柊 */
+	bulletEventUpdate();       /* 瀛愬脊浜嬩欢鏇存柊 */
+	carsEventUpdate();         /* 灏忚溅浜嬩欢鏇存柊 */
 }
 
 void GSAnimationLayer::zombiesEventUpdate(float delta)
@@ -248,7 +248,7 @@ void GSAnimationLayer::plantsEventUpdate()
 
 void GSAnimationLayer::plantsDeleteUpdate(map<int, Plants*>::iterator& plant)
 {
-	if (!plant->second->getPlantVisible()) /* 植物死亡 */
+	if (!plant->second->getPlantVisible()) /* 妞嶇墿姝讳骸 */
 	{
 		if (!plant->second->getPlantIsCanDelete()[0])
 		{

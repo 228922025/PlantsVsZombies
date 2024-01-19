@@ -88,26 +88,26 @@ Button* GSButtonLayer::createButton(const string& normal, const string& select, 
 
 void GSButtonLayer::createKeyBoardListener()
 {
-	/* ´´½¨¼üÅÌ¼àÌı */
+	/* åˆ›å»ºé”®ç›˜ç›‘å¬ */
 	auto KeyBoard = EventListenerKeyboard::create();
 	KeyBoard->onKeyReleased = [&](EventKeyboard::KeyCode code, Event* event)
 	{
 		switch (code)
 		{
-		case cocos2d::EventKeyboard::KeyCode::KEY_SPACE:                     /* ¿Õ¸ñ¼üÔİÍ£ */
+		case cocos2d::EventKeyboard::KeyCode::KEY_SPACE:                     /* ç©ºæ ¼é”®æš‚åœ */
 			//if (KEY_PRESS(pressKeySpace))
 		{
 			PlayMusic::playMusic("pause");
 			createRequirementLayer();
 		}
 		break;
-		case cocos2d::EventKeyboard::KeyCode::KEY_CAPITAL_W:                 /* ´óĞ¡Ğ´w»òÕßÏòÉÏ¼ıÍ·¼ÓËÙ */
+		case cocos2d::EventKeyboard::KeyCode::KEY_CAPITAL_W:                 /* å¤§å°å†™wæˆ–è€…å‘ä¸Šç®­å¤´åŠ é€Ÿ */
 		case cocos2d::EventKeyboard::KeyCode::KEY_W:
 		case cocos2d::EventKeyboard::KeyCode::KEY_UP_ARROW:
 			PlayMusic::playMusic("gravebutton");
 			controlAccelerateScheduler();
 			break;
-		case cocos2d::EventKeyboard::KeyCode::KEY_CAPITAL_S:                /* ´óĞ¡Ğ´s»òÕßÏòÏÂ¼ıÍ·¼õËÙ */
+		case cocos2d::EventKeyboard::KeyCode::KEY_CAPITAL_S:                /* å¤§å°å†™sæˆ–è€…å‘ä¸‹ç®­å¤´å‡é€Ÿ */
 		case cocos2d::EventKeyboard::KeyCode::KEY_S:
 		case cocos2d::EventKeyboard::KeyCode::KEY_DOWN_ARROW:
 			PlayMusic::playMusic("gravebutton");
@@ -128,7 +128,7 @@ void GSButtonLayer::createQuitDialog()
 
 void GSButtonLayer::createRequirementButton()
 {
-	/* Èç¹ûÓĞÒªÇóÔòÏÔÊ¾Í¨¹ıÒªÇó */
+	/* å¦‚æœæœ‰è¦æ±‚åˆ™æ˜¾ç¤ºé€šè¿‡è¦æ±‚ */
 	if (_openLevelData->readLevelData(_openLevelData->getLevelNumber())->getGameType().size())
 	{
 		auto Requirement = ui::Button::create("Requirement.png", "RequirementDown.png", "", TextureResType::PLIST);
@@ -202,7 +202,7 @@ void GSButtonLayer::showShovelBank()
 	shovelBank->setName("ShovelBank");
 	this->addChild(shovelBank);
 
-	/* ²ù×Ó¼àÌı */
+	/* é“²å­ç›‘å¬ */
 	shovelBank->addTouchEventListener([=](Ref* sender, ui::Widget::TouchEventType type)
 		{
 			switch (type)
@@ -268,9 +268,9 @@ void GSButtonLayer::createPlantsCard()
 ProgressTimer* GSButtonLayer::createProgressTimer(Button* button, const float _time, const int from, const unsigned int& id)
 {
 	auto timerBar = ProgressTimer::create(Sprite::createWithSpriteFrameName("SeedPacketSilhouette1.png"));
-	timerBar->setType(ProgressTimer::Type::BAR);  //ÉèÖÃÌõĞÎ½ø¶ÈÌõ
-	timerBar->setBarChangeRate(Vec2(1, 0));       //ÉèÖÃºáÏò
-	timerBar->setMidpoint(Vec2(0, 1));            //ÉèÖÃ´Ó×óÍùÓÒ
+	timerBar->setType(ProgressTimer::Type::BAR);  //è®¾ç½®æ¡å½¢è¿›åº¦æ¡
+	timerBar->setBarChangeRate(Vec2(1, 0));       //è®¾ç½®æ¨ªå‘
+	timerBar->setMidpoint(Vec2(0, 1));            //è®¾ç½®ä»å·¦å¾€å³
 	timerBar->setPosition(Vec2(90, 48));
 	timerBar->setOpacity(150);
 	timerBar->setPercentage(100);

@@ -31,7 +31,7 @@ protected:
     virtual bool getZombieIsInExplodeRange(Zombies* zombie) const;
 
 protected:
-    bool _isReadyExplode;          // 是否准备爆炸
-    bool _isExplode;               // 是否爆炸
-    Zombies* _zombie;              // 临时僵尸
+    bool _isReadyExplode;          // 鏄惁鍑嗗鐖嗙偢
+    bool _isExplode;               // 鏄惁鐖嗙偢
+    Zombies* _zombie;              // 涓存椂鍍靛案
 };

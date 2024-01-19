@@ -34,47 +34,47 @@ CC_CONSTRUCTOR_ACCESS:
 
 protected:
 	/**
-	 *´´½¨ÎÄ×Ö
+	 *åˆ›å»ºæ–‡å­—
 	 */
 	virtual void createReadyText(const std::string& name, const int& id);
 
 	/**
-	 *ÎÄ×Ö»Øµ÷
+	 *æ–‡å­—å›è°ƒ
 	 */
 	virtual void readyTextCallBack(Node* node, const std::string& name, const int& id);
 
 	/**
-	 *ÇĞ»»³¡¾°
+	 *åˆ‡æ¢åœºæ™¯
 	 */
 	virtual void replaceScene();
 
 	/**
-	 *´´½¨±³¾°²ã
+	 *åˆ›å»ºèƒŒæ™¯å±‚
 	 */
 	virtual void createBackgroundLayer();
 
 	/**
-	 *´´½¨¿ØÖÆ²ã
+	 *åˆ›å»ºæ§åˆ¶å±‚
 	 */
 	virtual void createControlLayer();
 
 	/**
-	 *ÊÂ¼ş¸üĞÂ
+	 *äº‹ä»¶æ›´æ–°
 	 */
 	virtual void eventUpdate(float Time);
 
 	/**
-	 *´´½¨Ö²ÎïÑ¡Ôñ¶Ô»°¿ò
+	 *åˆ›å»ºæ¤ç‰©é€‰æ‹©å¯¹è¯æ¡†
 	 */
 	virtual void createSelectPlantsDialog();
 
 	/**
-	 *¿ØÖÆÏÔÊ¾ÒªÇó
+	 *æ§åˆ¶æ˜¾ç¤ºè¦æ±‚
 	 */
 	virtual void controlShowRequirement();
 
 	/**
-	 *Ö²ÎïÑ¡Ôñ»Øµ÷º¯Êı
+	 *æ¤ç‰©é€‰æ‹©å›è°ƒå‡½æ•°
 	 */
 	virtual void selectPlantsCallBack();
 

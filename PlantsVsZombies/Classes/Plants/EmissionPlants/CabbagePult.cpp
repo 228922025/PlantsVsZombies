@@ -24,7 +24,7 @@ CabbagePult::CabbagePult(Node* node):
 	_plantImage = nullptr;
 
 	_healthPoint = 300;
-	_combatEffecttiveness = 0; // !!!ÔİÊ±Ã»ÓĞÊ¹ÓÃ Ê¹ÓÃµÄÊÇcabbageÀïÃæµÄ_attack
+	_combatEffecttiveness = 0; // !!!æš‚æ—¶æ²¡æœ‰ä½¿ç”¨ ä½¿ç”¨çš„æ˜¯cabbageé‡Œé¢çš„_attack
 	_plantsType = PlantsType::CabbagePult;
 }
 
@@ -57,27 +57,27 @@ void CabbagePult::createPlantAnimation()
 	_plantAnimation->setScale(0.8f);
 	_node->addChild(_plantAnimation);
 
-	// Ó°×Ó
+	// å½±å­
 	setPlantShadow(2.6f);
 
-	// ÄàÍÁ·É½¦¶¯»­
+	// æ³¥åœŸé£æº…åŠ¨ç”»
 	setPlantSoilSplashAnimation(1.0f);
 }
 
 void CabbagePult::determineRelativePositionPlantsAndZombies()
 {
-	_distance = _MAX_; /* ³õÊ¼»¯¾àÀë±äÁ¿ */
+	_distance = _MAX_; /* åˆå§‹åŒ–è·ç¦»å˜é‡ */
 
 	for (auto zombie : ZombiesGroup)
 	{
-		zombieEatPlant(zombie);      /* ½©Ê¬³ÔÖ²Îï */
+		zombieEatPlant(zombie);      /* åƒµå°¸åƒæ¤ç‰© */
 
-		plantAttack(zombie);         /* Ö²Îï¹¥»÷ */
+		plantAttack(zombie);         /* æ¤ç‰©æ”»å‡» */
 
-		zombieRecoveryMove(zombie);  /* ½©Ê¬»Ö¸´ÒÆ¶¯ */
+		zombieRecoveryMove(zombie);  /* åƒµå°¸æ¢å¤ç§»åŠ¨ */
 	}
 
-	if (_isCreateCabbage)  /* Èç¹ûÓĞ½©Ê¬Óë¾íĞÄ²ËÍ¶ÊÖÔÚÍ¬Ò»ĞĞ */
+	if (_isCreateCabbage)  /* å¦‚æœæœ‰åƒµå°¸ä¸å·å¿ƒèœæŠ•æ‰‹åœ¨åŒä¸€è¡Œ */
 	{
 		_zombiePostion = _zombie->getZombieAnimation()->getPosition();
 		_zombieSpeed = _zombie->getZombieSpeed();
@@ -91,7 +91,7 @@ void CabbagePult::determineRelativePositionPlantsAndZombies()
 			});
 	}
 
-	if (!_isCreateCabbage) /* Èç¹ûÃ»ÓĞ½©Ê¬Óë¾íĞÄ²ËÍ¶ÊÖÔÚÍ¬Ò»ĞĞ */
+	if (!_isCreateCabbage) /* å¦‚æœæ²¡æœ‰åƒµå°¸ä¸å·å¿ƒèœæŠ•æ‰‹åœ¨åŒä¸€è¡Œ */
 	{
 		if (_isChanged)
 		{
@@ -100,15 +100,15 @@ void CabbagePult::determineRelativePositionPlantsAndZombies()
 		}
 	}
 
-	_isCreateCabbage = false; /* Ã¿Ñ­»·Ò»´Î¾Í³õÊ¼»¯ */
+	_isCreateCabbage = false; /* æ¯å¾ªç¯ä¸€æ¬¡å°±åˆå§‹åŒ– */
 }
 
 void CabbagePult::plantAttack(Zombies* zombie)
 {
-	if (zombie->getZombieIsSurvive() && getPlantIsSurvive() && zombie->getZombieIsEnterMap() && /* ½©Ê¬´æ»î && Ö²Îï´æ»î && ½©Ê¬½øÈëµØÍ¼ */
-		getZombieIsSameLineWithPlant(zombie) && getZombieIsTheFrontOfPlant(zombie))             /* ÓëÖ²ÎïÔÚÍ¬Ò»ĞĞ && ½©Ê¬ÔÚÖ²ÎïµÄÇ°·½ */
+	if (zombie->getZombieIsSurvive() && getPlantIsSurvive() && zombie->getZombieIsEnterMap() && /* åƒµå°¸å­˜æ´» && æ¤ç‰©å­˜æ´» && åƒµå°¸è¿›å…¥åœ°å›¾ */
+		getZombieIsSameLineWithPlant(zombie) && getZombieIsTheFrontOfPlant(zombie))             /* ä¸æ¤ç‰©åœ¨åŒä¸€è¡Œ && åƒµå°¸åœ¨æ¤ç‰©çš„å‰æ–¹ */
 	{
-		_isCreateCabbage = true; /* ±íÊ¾ÓĞ½©Ê¬ÓëÖ²ÎïÔÚÍ¬Ò»ĞĞ */
+		_isCreateCabbage = true; /* è¡¨ç¤ºæœ‰åƒµå°¸ä¸æ¤ç‰©åœ¨åŒä¸€è¡Œ */
 		if (!_isChanged)
 		{
 			_plantAnimation->addAnimation(0, "Cabbage_Shoot", true);
@@ -116,10 +116,10 @@ void CabbagePult::plantAttack(Zombies* zombie)
 		}
 
 		float distance = zombie->getZombieAnimation()->getPositionX() - _plantAnimation->getPositionX();
-		if (_distance > distance) /* ½©Ê¬ÓëÖ²ÎïµÄ¾àÀëĞ¡ÓÚÉÏÒ»¸ö½©Ê¬ÓëÖ²ÎïµÄ¾àÀë */
+		if (_distance > distance) /* åƒµå°¸ä¸æ¤ç‰©çš„è·ç¦»å°äºä¸Šä¸€ä¸ªåƒµå°¸ä¸æ¤ç‰©çš„è·ç¦» */
 		{
 			_distance = distance;
-			_zombie = zombie;     /* ¼ÇÂ¼¸Ã½©Ê¬ */
+			_zombie = zombie;     /* è®°å½•è¯¥åƒµå°¸ */
 		}
 	}
 }

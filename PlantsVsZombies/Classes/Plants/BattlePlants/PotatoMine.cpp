@@ -70,13 +70,13 @@ void PotatoMine::createPlantAnimation()
 	_plantAnimation->setScale(1.0f);
 	_node->addChild(_plantAnimation);
 
-	// Ó°×Ó
+	// å½±å­
 	setPlantShadow(1.4f);
 
-	// ÄàÍÁ·É½¦¶¯»­
+	// æ³¥åœŸé£žæº…åŠ¨ç”»
 	setPlantSoilSplashAnimation(0.8f);
 
-	// ´´½¨¼àÌý
+	// åˆ›å»ºç›‘å¬
 	createListener();
 }
 
@@ -102,17 +102,17 @@ void PotatoMine::determineRelativePositionPlantsAndZombies()
 {
 	for (auto zombie : ZombiesGroup)
 	{
-		zombieEatPlant(zombie);      /* ½©Ê¬³ÔÖ²Îï */
+		zombieEatPlant(zombie);      /* åƒµå°¸åƒæ¤ç‰© */
 
-		plantExplode();              /* Ö²Îï¹¥»÷ */
+		plantExplode();              /* æ¤ç‰©æ”»å‡» */
 
-		zombieRecoveryMove(zombie);  /* ½©Ê¬»Ö¸´ÒÆ¶¯ */
+		zombieRecoveryMove(zombie);  /* åƒµå°¸æ¢å¤ç§»åŠ¨ */
 	}
 }
 
 void PotatoMine::plantExplode()
 {
-	if (_isBeginExplode && !_isExplodeFinished)/* ÍÁ¶¹À×±¬Õ¨ */
+	if (_isBeginExplode && !_isExplodeFinished)/* åœŸè±†é›·çˆ†ç‚¸ */
 	{
 		_isExplodeFinished = true;
 		_plantAnimation->setVisible(false);
@@ -148,9 +148,9 @@ void PotatoMine::plantExplode()
 
 void PotatoMine::zombieEatPlant(Zombies* zombie)
 {
-	if (getPlantIsSurvive() && getZombieIsSameLineWithPlant(zombie) && getzombieIsEncounterPlant(zombie)) /* Ö²Îï´æ»î && Ö²ÎïÓë½©Ê¬ÔÚÍ¬Ò»ÐÐ && ½©Ê¬Óöµ½Ö²Îï */
+	if (getPlantIsSurvive() && getZombieIsSameLineWithPlant(zombie) && getzombieIsEncounterPlant(zombie)) /* æ¤ç‰©å­˜æ´» && æ¤ç‰©ä¸Žåƒµå°¸åœ¨åŒä¸€è¡Œ && åƒµå°¸é‡åˆ°æ¤ç‰© */
 	{
-		if (_isReady)  /* ÍÁ¶¹À××¼±¸ºÃ */
+		if (_isReady)  /* åœŸè±†é›·å‡†å¤‡å¥½ */
 		{
 			_isBeginExplode = true;
 		}
@@ -184,7 +184,7 @@ void PotatoMine::explodeHurtZombies()
 	
 	for (auto zombie : ZombiesGroup)
 	{
-		if (zombie->getZombieIsSurvive() && zombie->getZombieIsEnterMap() && getZombieIsInExplodeRange(zombie)) /* ½©Ê¬´æ»î && ½©Ê¬½øÈëµØÍ¼ && ½©Ê¬ÔÚ±¬Õ¨·¶Î§ÄÚ */
+		if (zombie->getZombieIsSurvive() && zombie->getZombieIsEnterMap() && getZombieIsInExplodeRange(zombie)) /* åƒµå°¸å­˜æ´» && åƒµå°¸è¿›å…¥åœ°å›¾ && åƒµå°¸åœ¨çˆ†ç‚¸èŒƒå›´å†… */
 		{
 			hurtZombies(zombie);
 

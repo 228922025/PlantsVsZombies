@@ -30,10 +30,10 @@ private:
 	bool getZombieIsInExplodeRange(Zombies* zombie);
 	
 private:
-	bool _isReady;                 // ÊÇ·ñ×¼±¸ºÃ
-	bool _isExplodeFinished;       // ÊÇ·ñ±¬Õ¨Íê³É
-	bool _isBeginExplode;          // ÊÇ·ñ¿ªÊ¼±¬Õ¨
-	bool _isCanKillZombies;        // ÊÇ·ñ¿ÉÒÔÉ±ÊÖ½©Ê¬
-	bool _isKillZombiesFinished;   // ÊÇ·ñÉ±ËÀ½©Ê¬½áÊø
-	float _breakGround;            // ÆÆÍÁÊ±¼ä
+	bool _isReady;                 // æ˜¯å¦å‡†å¤‡å¥½
+	bool _isExplodeFinished;       // æ˜¯å¦çˆ†ç‚¸å®Œæˆ
+	bool _isBeginExplode;          // æ˜¯å¦å¼€å§‹çˆ†ç‚¸
+	bool _isCanKillZombies;        // æ˜¯å¦å¯ä»¥æ€æ‰‹åƒµå°¸
+	bool _isKillZombiesFinished;   // æ˜¯å¦æ€æ­»åƒµå°¸ç»“æŸ
+	float _breakGround;            // ç ´åœŸæ—¶é—´
 };

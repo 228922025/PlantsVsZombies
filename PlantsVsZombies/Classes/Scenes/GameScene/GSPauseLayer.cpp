@@ -54,7 +54,7 @@ void GSPauseLayer::createDialog()
     this->addChild(_levelObjiectives);
 
     auto LevelObjiectivesText = Text::create();
-    LevelObjiectivesText->setString("ÐÝÏ¢Ò»»á°É£¡");
+    LevelObjiectivesText->setString("ä¼‘æ¯ä¸€ä¼šå§ï¼");
     LevelObjiectivesText->setFontName(GAME_FONT_NAME_1);
     LevelObjiectivesText->setFontSize(50);
     LevelObjiectivesText->setScale(0.5f);
@@ -79,7 +79,7 @@ void GSPauseLayer::showAniamtions()
 void GSPauseLayer::showButton()
 {
     auto button = Button::create("Continue1.png", "Continue.png", "", TextureResType::PLIST);
-    button->setTitleText(Global::getInstance()->userInformation->getGameText().find("È·¶¨")->second);
+    button->setTitleText(Global::getInstance()->userInformation->getGameText().find("ç¡®å®š")->second);
     button->setTitleFontName(GAME_FONT_NAME_1);
     button->setTitleFontSize(30);
     button->setTitleColor(Color3B::YELLOW);

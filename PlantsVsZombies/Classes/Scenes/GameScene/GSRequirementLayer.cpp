@@ -36,7 +36,7 @@ void GSRequirementLayer::showRequirement()
 	_requirement->setShowDialogAction();
 
 	auto button = Button::create("Continue1.png", "Continue.png", "", TextureResType::PLIST);
-	button->setTitleText(Global::getInstance()->userInformation->getGameText().find("È·¶¨")->second);
+	button->setTitleText(Global::getInstance()->userInformation->getGameText().find("ç¡®å®š")->second);
 	button->setTitleFontName(GAME_FONT_NAME_1);
 	button->setTitleFontSize(30);
 	button->setTitleColor(Color3B::YELLOW);
@@ -72,7 +72,7 @@ void GSRequirementLayer::keyboardControl()
 	{
 		switch (code)
 		{
-		case cocos2d::EventKeyboard::KeyCode::KEY_SPACE:                     /* ¿Õ¸ñ¼ü»Ö¸´ */
+		case cocos2d::EventKeyboard::KeyCode::KEY_SPACE:                     /* ç©ºæ ¼é”®æ¢å¤ */
 			KeyBoard->setEnabled(false);
 			PlayMusic::playMusic("tap");
 			_requirement->setDelectDialogAction();

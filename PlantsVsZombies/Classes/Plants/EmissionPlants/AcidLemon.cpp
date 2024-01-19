@@ -53,11 +53,11 @@ void AcidLemonShooter::createPlantAnimation()
 	_plantAnimation->setTimeScale(0.8f);
 	_node->addChild(_plantAnimation);
 
-	// Ó°×Ó
+	// å½±å­
 	setPlantShadow(1.5f);
 	_plantAnimation->getChildByName("plantshadow")->setPosition(Vec2(0, 10));
 
-	// ÄàÍÁ·É½¦¶¯»­
+	// æ³¥åœŸé£æº…åŠ¨ç”»
 	setPlantSoilSplashAnimation(0.8f);
 }
 
@@ -65,11 +65,11 @@ void AcidLemonShooter::determineRelativePositionPlantsAndZombies()
 {
 	for (auto zombie : ZombiesGroup)
 	{
-		zombieEatPlant(zombie);      /* ½©Ê¬³ÔÖ²Îï */
+		zombieEatPlant(zombie);      /* åƒµå°¸åƒæ¤ç‰© */
 
-		plantAttack(zombie);         /* Ö²Îï¹¥»÷ */
+		plantAttack(zombie);         /* æ¤ç‰©æ”»å‡» */
 
-		zombieRecoveryMove(zombie);  /* ½©Ê¬»Ö¸´ÒÆ¶¯ */
+		zombieRecoveryMove(zombie);  /* åƒµå°¸æ¢å¤ç§»åŠ¨ */
 	}
 
 	plantRecovery("LemonNormal");
@@ -77,8 +77,8 @@ void AcidLemonShooter::determineRelativePositionPlantsAndZombies()
 
 void AcidLemonShooter::plantAttack(Zombies* zombie)
 {
-	if (getPlantIsSurvive() && zombie->getZombieIsSurvive() && zombie->getZombieIsEnterMap() &&     /* Ö²Îï´æ»î && ½©Ê¬Ã»ÓĞËÀÍö && ½©Ê¬½øÈëµØÍ¼ */
-		getZombieIsTheFrontOfPlant(zombie) && getZombieIsSameLineWithPlant(zombie))                 /* ½©Ê¬ÓëÖ²ÎïÔÚÍ¬Ò»ĞĞ && ½©Ê¬ÔÚÖ²ÎïµÄÇ°·½ */
+	if (getPlantIsSurvive() && zombie->getZombieIsSurvive() && zombie->getZombieIsEnterMap() &&     /* æ¤ç‰©å­˜æ´» && åƒµå°¸æ²¡æœ‰æ­»äº¡ && åƒµå°¸è¿›å…¥åœ°å›¾ */
+		getZombieIsTheFrontOfPlant(zombie) && getZombieIsSameLineWithPlant(zombie))                 /* åƒµå°¸ä¸æ¤ç‰©åœ¨åŒä¸€è¡Œ && åƒµå°¸åœ¨æ¤ç‰©çš„å‰æ–¹ */
 	{
 		plantEmission("LemonShooter");
 	}
@@ -86,8 +86,8 @@ void AcidLemonShooter::plantAttack(Zombies* zombie)
 
 void AcidLemonShooter::plantEmission(const string& plantAnimation)
 {
-	_isCreateAcidLemon = true; /* ±íÊ¾ÓĞ½©Ê¬ÓëÖ²ÎïÔÚÍ¬Ò»ĞĞ */
-	if (!_isChanged)     /* ÅĞ¶Ï¶¯»­ÊÇ·ñÒÑ¾­¸Ä±ä */
+	_isCreateAcidLemon = true; /* è¡¨ç¤ºæœ‰åƒµå°¸ä¸æ¤ç‰©åœ¨åŒä¸€è¡Œ */
+	if (!_isChanged)     /* åˆ¤æ–­åŠ¨ç”»æ˜¯å¦å·²ç»æ”¹å˜ */
 	{
 		_plantAnimation->addAnimation(0, plantAnimation, true);
 		_isChanged = true;
@@ -105,7 +105,7 @@ void AcidLemonShooter::plantEmission(const string& plantAnimation)
 
 void AcidLemonShooter::plantRecovery(const string& plantAnimation)
 {
-	if (!_isCreateAcidLemon)  /* ÅĞ¶ÏÊÇ·ñÓĞ½©Ê¬ÓëÇ¿ËáÄûÃÊÉäÊÖÔÚÍ¬Ò»ĞĞ */
+	if (!_isCreateAcidLemon)  /* åˆ¤æ–­æ˜¯å¦æœ‰åƒµå°¸ä¸å¼ºé…¸æŸ æª¬å°„æ‰‹åœ¨åŒä¸€è¡Œ */
 	{
 		if (_isChanged)
 		{
@@ -114,7 +114,7 @@ void AcidLemonShooter::plantRecovery(const string& plantAnimation)
 		}
 	}
 
-	_isCreateAcidLemon = false; /* Ã¿Ñ­»·Ò»´Î¾Í³õÊ¼»¯ */
+	_isCreateAcidLemon = false; /* æ¯å¾ªç¯ä¸€æ¬¡å°±åˆå§‹åŒ– */
 }
 
 void AcidLemonShooter::createAcidLemon()
